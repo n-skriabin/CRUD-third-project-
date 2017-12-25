@@ -1,0 +1,14 @@
+<div class="layout">
+  <div class="navigation-pane">
+    <kendo-panelbar>
+      <kendo-panelbar-item *ngFor="let route of router.config"
+                           [id]="route.path"
+                           [title]="route.path ? route.path : 'Home'"
+                           [routerLink]="route.path">
+      </kendo-panelbar-item>
+    </kendo-panelbar>
+  </div>
+  <div class="content-pane">
+    <router-outlet></router-outlet>
+  </div>
+</div>

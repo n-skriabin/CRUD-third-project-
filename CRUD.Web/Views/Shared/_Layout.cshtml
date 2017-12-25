@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/styles")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/kendo")*@
+</head>
+<body>
+    @*<div id="page-preloader"><span class="spinner"></span></div>*@
+
+    @*<script>
+        $(document).ready(function () {
+            $("#menu").kendoMenu();
+        });
+    </script>*@
+
+    <div class="container body-content">
+
+        @RenderBody()
+
+        <hr />
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/src/dist/inline.bundle.js"></script>
+    <script type="text/javascript" src="~/Scripts/src/dist/polyfills.bundle.js"></script>
+    <script type="text/javascript" src="~/Scripts/src/dist/styles.bundle.js"></script>
+    <script type="text/javascript" src="~/Scripts/src/dist/vendor.bundle.js"></script>
+    <script type="text/javascript" src="~/Scripts/src/dist/main.bundle.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
