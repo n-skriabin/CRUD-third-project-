@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent }from "../app/home-component/home.component";
 import { AuthorsComponent } from "../app/authors-component/authors-component";
-import { ProductsComponent } from "../app/articles-component/articles.component";
+import { ProductsComponent } from "../app/articles-component/articlesComponent";
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },

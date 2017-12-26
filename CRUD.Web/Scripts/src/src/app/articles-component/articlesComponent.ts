@@ -4,11 +4,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
-import { ArticlesService } from './articles.service';
+import { ArticlesService } from './articlesService';
 import { AuthorsService } from '../authors-component/author-edit.service';
 
 import { Author } from '../authors-component/author-model';
-import { Article } from './article-model';
+import { Article } from './articleModel';
 
 const formGroup = dataItem => new FormGroup({
   'Id': new FormControl(dataItem.Id),
@@ -21,7 +21,7 @@ const formGroup = dataItem => new FormGroup({
 
 @Component({
     selector: 'articles-table',
-    templateUrl: './articles.component.html' 
+    templateUrl: './articlesView.html' 
 })
 export class ProductsComponent implements OnInit {
     public view: Observable<GridDataResult>;

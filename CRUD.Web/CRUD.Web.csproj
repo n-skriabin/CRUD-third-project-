@@ -255,7 +255,7 @@
     <Content Include="Scripts\src\karma.conf.js" />
     <Content Include="Scripts\src\protractor.conf.js" />
     <Content Include="Scripts\src\src\app\app.component.html" />
-    <Content Include="Scripts\src\src\app\articles-component\products.component.html" />
+    <Content Include="Scripts\src\src\app\articles-component\articlesView.html" />
     <Content Include="Scripts\src\src\app\authors-component\authors-component.html" />
     <Content Include="Scripts\src\src\app\home-component\home.component.html" />
     <Content Include="Scripts\src\src\app\layout.css" />
@@ -333,9 +333,9 @@
     <TypeScriptCompile Include="Scripts\src\src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\app.component.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\app.module.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\article-model.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\products.component.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\products.service.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articleModel.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articlesComponent.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articlesService.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-edit.service.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-model.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authors-component.ts" />

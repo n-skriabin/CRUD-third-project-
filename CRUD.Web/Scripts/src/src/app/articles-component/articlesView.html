@@ -1,6 +1,5 @@
 <h3>Articles</h3>
 <p></p>
-
 <kendo-grid [data]="view | async"
             [height]="533"
             [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
@@ -20,20 +19,16 @@
     </ng-template>
     <ng-template kendoGridEditTemplate
       let-dataItem="dataItem"
-      let-formGroup="formGroup">
-     
+      let-formGroup="formGroup">    
       <kendo-dropdownlist
                   [data]="authors"
                   textField = "Abbreviated"
                   valueField="Id"     
-                  [valuePrimitive]="true"
-                  
-                  [formControl]="formGroup.get('AuthorId')"         
-                >
+                  [valuePrimitive]="true"          
+                  [formControl]="formGroup.get('AuthorId')">
                 </kendo-dropdownlist>
     </ng-template>
   </kendo-grid-column>
-
   <kendo-grid-command-column title="Actions" width="220">
     <ng-template kendoGridCellTemplate let-isNew="isNew">
       <button kendoGridEditCommand class="k-primary">Edit</button>
