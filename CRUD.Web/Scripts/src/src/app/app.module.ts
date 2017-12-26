@@ -20,6 +20,7 @@ import { PopupModule } from '@progress/kendo-angular-popup';
 import { ArticlesService } from '../app/articles-component/articlesService';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BooksComponent } from './books-component/booksComponent';
+import { BooksService } from './books-component/booksService';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,12 @@ import { BooksComponent } from './books-component/booksComponent';
         deps: [HttpClient],
         provide: ArticlesService,
         useFactory: (jsonp: HttpClient) => () => new ArticlesService(jsonp)
-      }
+      },
+      {
+        deps: [HttpClient],
+        provide: BooksService,
+        useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
+      },
     ],
     bootstrap:    [ AppComponent ]
 })
