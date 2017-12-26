@@ -13,19 +13,21 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { GridModule } from '@progress/kendo-angular-grid';
-import { AuthorsService } from '../app/authors-component/author-edit.service';
-import { AuthorsComponent } from './authors-component/authors-component';
-import { ProductsComponent } from '../app/articles-component/articlesComponent';
+import { AuthorsService } from './authors-component/authorsService';
+import { AuthorsComponent } from './authors-component/authorsComponent';
+import { ArticlesComponent } from '../app/articles-component/articlesComponent';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { ArticlesService } from '../app/articles-component/articlesService';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { BooksComponent } from './books-component/booksComponent';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthorsComponent,
-    ProductsComponent],
+    ArticlesComponent,
+    BooksComponent],
 
     imports:      [
       BrowserModule,

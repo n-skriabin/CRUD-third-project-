@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Author } from '../authors-component/author-model';
+import { Author } from '../authors-component/authorModel';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -59,10 +59,8 @@ export class ArticlesService extends BehaviorSubject<any[]> {
       public resetItem(dataItem: any) {
         if (!dataItem) { return; }
     
-        // find orignal data item
         const originalDataItem = this.data.find(item => item.Id === dataItem.Id);
     
-        // revert changes
         Object.assign(originalDataItem, dataItem);
     
         super.next(this.data);
@@ -82,12 +80,6 @@ export class ArticlesService extends BehaviorSubject<any[]> {
     
         if (action == 'Create') {
           var url = baseUrl + '/api/' + controller + CREATE_ACTION;
-          console.log('data(old):');
-          console.log(data);
-          /* data.AuthorId = data.Id;
-          data.Id = null; */
-          console.log('data(new):');
-          console.log(data.AuthorId);
           return this.http
             .post(url, data)
             .map(res => <any[]>res);

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {Author} from './author-model';
+import {Author} from './authorModel';
 
 const READ_ACTION = 'Read';
 const CREATE_ACTION = 'Create';

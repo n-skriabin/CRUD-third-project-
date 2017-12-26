@@ -1,16 +1,17 @@
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
 
-import { Author } from '../authors-component/author-model';
-import { AuthorsService } from '../authors-component/author-edit.service';
+import { Author } from '../authors-component/authorModel';
+import { AuthorsService } from '../authors-component/authorsService';
 
 @Component({
-  selector: 'authors-component',
-  templateUrl: './authors-component.html',
+  selector: 'app-authors',
+  templateUrl: './authorsView.html',
 })
 
 export class AuthorsComponent implements OnInit {
@@ -25,13 +26,13 @@ export class AuthorsComponent implements OnInit {
   private editService: AuthorsService;
   private editedRowIndex: number;
 
-  constructor( @Inject(AuthorsService) editServiceFactory: any) {
+  constructor( @Inject(AuthorsService) editServiceFactory: any, private titleService: Title) {
     this.editService = editServiceFactory();
   }
 
   public ngOnInit(): void {
     this.view = this.editService.map(data => process(data, this.gridState));
-    
+    this.titleService.setTitle('Authors Page');
     this.editService.read();
   }
 

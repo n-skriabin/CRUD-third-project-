@@ -256,7 +256,8 @@
     <Content Include="Scripts\src\protractor.conf.js" />
     <Content Include="Scripts\src\src\app\app.component.html" />
     <Content Include="Scripts\src\src\app\articles-component\articlesView.html" />
-    <Content Include="Scripts\src\src\app\authors-component\authors-component.html" />
+    <Content Include="Scripts\src\src\app\authors-component\authorsView.html" />
+    <Content Include="Scripts\src\src\app\books-component\booksVIew.html" />
     <Content Include="Scripts\src\src\app\home-component\home.component.html" />
     <Content Include="Scripts\src\src\app\layout.css" />
     <Content Include="Scripts\src\src\favicon.ico" />
@@ -311,7 +312,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\src\src\app\layout-component\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -336,9 +336,12 @@
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articleModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articlesComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\articlesService.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-edit.service.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-model.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authors-component.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authorModel.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authorsComponent.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authorsService.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\books-component\bookModel.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\books-component\booksComponent.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\books-component\booksService.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\home-component\home.component.ts" />
     <TypeScriptCompile Include="Scripts\src\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="Scripts\src\src\environments\environment.ts" />

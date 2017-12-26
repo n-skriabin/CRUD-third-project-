@@ -1,13 +1,15 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent }from "../app/home-component/home.component";
-import { AuthorsComponent } from "../app/authors-component/authors-component";
-import { ProductsComponent } from "../app/articles-component/articlesComponent";
+import { AuthorsComponent } from "../app/authors-component/authorsComponent";
+import { ArticlesComponent } from "../app/articles-component/articlesComponent";
+import { BooksComponent } from "./books-component/booksComponent";
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'Authors table', component: AuthorsComponent },
-    { path: 'Articles table', component: ProductsComponent }
+    { path: 'Articles table', component: ArticlesComponent },
+    { path: 'Books table', component: BooksComponent }
 ];
 
 export const appRoutingProviders: any[] = [

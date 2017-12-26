@@ -1,13 +1,14 @@
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit, Inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
 import { ArticlesService } from './articlesService';
-import { AuthorsService } from '../authors-component/author-edit.service';
+import { AuthorsService } from '../authors-component/authorsService';
 
-import { Author } from '../authors-component/author-model';
+import { Author } from '../authors-component/authorModel';
 import { Article } from './articleModel';
 
 const formGroup = dataItem => new FormGroup({
@@ -17,19 +18,16 @@ const formGroup = dataItem => new FormGroup({
         'AuthorId': new FormControl(dataItem.AuthorId, Validators.required),
 });
 
-/* import { categories } from './categories'; */
-
 @Component({
-    selector: 'articles-table',
+    selector: 'app-articles',
     templateUrl: './articlesView.html' 
 })
-export class ProductsComponent implements OnInit {
+export class ArticlesComponent implements OnInit {
     public view: Observable<GridDataResult>;
     public authors: Author[] = [];
     public authorsId: string;
     public formGroup: FormGroup;
     public selectedItem: string;
-    public selectedAuthorId: string;
     public gridState: State = {
       sort: [],
       skip: 0,
@@ -41,12 +39,10 @@ export class ProductsComponent implements OnInit {
     private editedRowIndex: number;
 
     public author(id: string): Author {
-      this.selectedAuthorId = id;
-      /* console.log('выбранный автор - ' + id); */
       return this.authors.find(x => x.Id === id);
   }
   
-    constructor( @Inject(ArticlesService) editServiceFactoryArticle: any, @Inject(AuthorsService) editServiceFactoryAuthor: any) {
+    constructor( @Inject(ArticlesService) editServiceFactoryArticle: any, @Inject(AuthorsService) editServiceFactoryAuthor: any, private titleService: Title) {
       this.editServiceArticle = editServiceFactoryArticle();
       this.editServiceAuthor = editServiceFactoryAuthor();
     }
@@ -54,22 +50,18 @@ export class ProductsComponent implements OnInit {
     public ngOnInit(): void {
       this.view = this.editServiceArticle.map(data => process(data, this.gridState));
       this.editServiceArticle.readAuthors().subscribe((data: Author[]) => {this.authors = data; console.log(this.authors);});
+      this.titleService.setTitle('Articles Page');
       this.editServiceArticle.read();
     }
   
     public addHandler({ sender }) {
       this.closeEditor(sender);
-  
       this.formGroup = new FormGroup({
         'Id': new FormControl(),
         'Name': new FormControl('', Validators.required),
         'Year': new FormControl('', Validators.required),
         'AuthorId': new FormControl(Validators.required),
-      });
-
-      console.log('form group');
-      console.log(this.formGroup);
-  
+      }); 
       sender.addRow(this.formGroup);
     }
   
@@ -94,11 +86,7 @@ export class ProductsComponent implements OnInit {
 
     public saveHandler({ sender, rowIndex, formGroup, isNew }) {
       const article: Article = formGroup.value;
-      /* article.AuthorId = this.selectedAuthorId; */
-      console.log('article - ');
-      console.log(article);
       this.editServiceArticle.save(article, isNew);
-  
       sender.closeRow(rowIndex);
     }
   
