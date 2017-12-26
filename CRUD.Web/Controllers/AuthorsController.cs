@@ -24,6 +24,7 @@ namespace CRUD.Web.Controllers
     [HttpGet]
     public List<Author> Read()
     {
+        
       var authorViewModel = _authorsService.Read();
       return authorViewModel;
     }

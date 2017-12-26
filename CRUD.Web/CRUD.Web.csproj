@@ -334,10 +334,8 @@
     <TypeScriptCompile Include="Scripts\src\src\app\app.component.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\app.module.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\article-model.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\categories.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\products.component.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\articles-component\products.service.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\articles-component\products.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-edit.service.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\author-model.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\authors-component\authors-component.ts" />

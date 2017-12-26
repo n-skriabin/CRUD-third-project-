@@ -15,9 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { AuthorsService } from '../app/authors-component/author-edit.service';
 import { AuthorsComponent } from './authors-component/authors-component';
-import { ProductsComponent } from '../app/articles-component/products.component';
+import { ProductsComponent } from '../app/articles-component/articles.component';
 import { PopupModule } from '@progress/kendo-angular-popup';
-import { ArticlesService } from '../app/articles-component/products.service';
+import { ArticlesService } from '../app/articles-component/articles.service';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 @NgModule({

@@ -41,7 +41,8 @@ export class ArticlesService extends BehaviorSubject<any[]> {
     
       public save(data: any, isNew?: boolean) {
         const action = isNew ? CREATE_ACTION : UPDATE_ACTION;
-    
+        console.log('data in save method:');
+        console.log(data);
         this.reset();
     
         this.fetch(action, data)
@@ -81,6 +82,12 @@ export class ArticlesService extends BehaviorSubject<any[]> {
     
         if (action == 'Create') {
           var url = baseUrl + '/api/' + controller + CREATE_ACTION;
+          console.log('data(old):');
+          console.log(data);
+          /* data.AuthorId = data.Id;
+          data.Id = null; */
+          console.log('data(new):');
+          console.log(data.AuthorId);
           return this.http
             .post(url, data)
             .map(res => <any[]>res);

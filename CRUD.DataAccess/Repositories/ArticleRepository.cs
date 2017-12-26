@@ -24,7 +24,7 @@ namespace CRUD.DataAccess.Repositories
         {
             string query = "SELECT * FROM Articles";
             var articles = _db.Query<Article>(query).ToList();
-            return articles;
+            return articles;          
         }
 
         public void Create(Article article)
