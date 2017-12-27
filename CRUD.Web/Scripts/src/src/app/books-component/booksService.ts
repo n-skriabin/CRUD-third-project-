@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Book } from './bookModel';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Author } from '../authors-component/authorModel';
@@ -10,7 +11,7 @@ const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
 
 const baseUrl = 'http://' + location.host + '/';
-const controller = 'Authors/';
+const controller = 'Books/';
 
 @Injectable()
 export class BooksService extends BehaviorSubject<any[]> {
@@ -19,7 +20,10 @@ export class BooksService extends BehaviorSubject<any[]> {
   }
 
   private data: any[] = [];
-  private dataAuthors: any[] = [];
+
+  public readAuthors(): Observable<Author[]>{
+    return this.http.get<Author[]>(baseUrl + 'api/Authors/' + READ_ACTION);
+  }
 
   public read() {
     if (this.data.length) {
@@ -37,6 +41,9 @@ export class BooksService extends BehaviorSubject<any[]> {
 
   public save(data: any, isNew?: boolean) {
     const action = isNew ? CREATE_ACTION : UPDATE_ACTION;
+
+    console.log('check_SaveData:');
+    console.log(data);
 
     this.reset();
 

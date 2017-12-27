@@ -1,4 +1,4 @@
-<h3>Authors</h3>
+<h3>Books</h3>
 <p></p>
 <kendo-grid [data]="view | async"
             [height]="533"
@@ -11,9 +11,24 @@
   <ng-template kendoGridToolbarTemplate>
     <button kendoGridAddCommand>Add new</button>
   </ng-template>
-  <kendo-grid-column field="FirstName" title="First name"></kendo-grid-column>
-  <kendo-grid-column field="Patronymic" title="Patronymic(or pseudonim)"></kendo-grid-column>
-  <kendo-grid-column field="LastName" title="Last name"></kendo-grid-column>
+  <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
+  <kendo-grid-column field="Year" title="Year"></kendo-grid-column>
+  <kendo-grid-column field="AuthorIds" title="Authors" width="200">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{authorsView(dataItem.AuthorIds)}}     
+    </ng-template>
+    <ng-template kendoGridEditTemplate
+      let-dataItem="dataItem"
+      let-formGroup="formGroup">    
+      <kendo-multiselect 
+        [data]="authors"
+        textField="Abbreviated"
+        valueField="Id"
+        [(ngModel)]="selectedItems"
+        [placeholder]="'Select authors...'" >
+      </kendo-multiselect >
+    </ng-template>
+  </kendo-grid-column>
   <kendo-grid-command-column title="Actions" width="220">
     <ng-template kendoGridCellTemplate let-isNew="isNew">
       <button kendoGridEditCommand class="k-primary">Edit</button>

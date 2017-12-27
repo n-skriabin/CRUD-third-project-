@@ -76,7 +76,7 @@ namespace CRUD.DataAccess.Repositories
 
         public List<Author> GetAuthors(Guid bookId)
         {
-            string query = "SELECT * FROM Authors AS A LEFT JOIN BooksAuthors AS BA ON A.Id = BA.AuthorId WHERE BA.BookId = @Id";
+            string query = "SELECT Authors.* FROM Authors LEFT JOIN BooksAuthors  ON Authors.Id = BooksAuthors.AuthorId WHERE BooksAuthors.BookId = @Id";
             var authors = _db.Query<Author>(query, new { Id = bookId }).ToList();
 
             return authors;

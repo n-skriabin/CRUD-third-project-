@@ -12,6 +12,7 @@ namespace CRUD.Views
         public string Name { get; set; }
         public string Year { get; set; }
         public string Author { get; set; }
+        public List<Guid> AuthorIds { get; set; }
         public List<Author> AuthorsList { get; set; }
     }
 }

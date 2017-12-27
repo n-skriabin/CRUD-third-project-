@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, RouterModule } from '@angular/router';
 import { LayoutModule } from '@progress/kendo-angular-layout';
+import { FormsModule } from '@angular/forms';
 
 import { panelbarRouting, appRoutingProviders } from './app-routing.module';
 import { HomeComponent } from '../app/home-component/home.component';
@@ -36,6 +37,7 @@ import { BooksService } from './books-component/booksService';
       LayoutModule,
       RouterModule,
       panelbarRouting,
+      FormsModule,
 
       HttpClientModule,
       BrowserModule,

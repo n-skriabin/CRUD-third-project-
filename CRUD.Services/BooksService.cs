@@ -45,6 +45,7 @@ namespace CRUD.Services
                     Year = book.Year,
                     AuthorsList = authors,
                 };
+                bookViewModel.AuthorIds = GetAuthorIdsArray(bookViewModel.AuthorsList);
                 booksListForViewModel.Add(bookViewModel);
             }
             return booksListForViewModel;
@@ -57,7 +58,7 @@ namespace CRUD.Services
             var book = ViewModelToDomain(responseBookViewModel);
             var bookViewModel = DomainToViewModel(responseBookViewModel);
 
-            _bookRepository.Create(book, responseBookViewModel.AuthorsList);
+            _bookRepository.Create(book, responseBookViewModel.AuthorIds);
 
             return bookViewModel;
         }
@@ -67,7 +68,7 @@ namespace CRUD.Services
             var book = ViewModelToDomain(responseBookViewModel);
             var bookViewModel = DomainToViewModel(responseBookViewModel);
 
-            _bookRepository.Update(book, responseBookViewModel.AuthorsList);
+            _bookRepository.Update(book, responseBookViewModel.AuthorIds);
 
             return bookViewModel;
         }
@@ -100,6 +101,16 @@ namespace CRUD.Services
             };
 
             return bookViewModel;
+        }
+
+        public List<Guid> GetAuthorIdsArray(List<Author> authors)
+        {    
+            var authorIds = new List<Guid>();
+            foreach (var author in authors)
+            {
+                authorIds.Add(author.Id);
+            }
+            return authorIds; 
         }
     }
 }
