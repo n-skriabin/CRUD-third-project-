@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { Book } from './bookModel';
+import { Book } from '../books-component/bookModel';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Author } from '../authors-component/authorModel';
+import { Article } from '../articles-component/articleModel';
 
 const READ_ACTION = 'Read';
 const CREATE_ACTION = 'Create';
@@ -11,18 +11,18 @@ const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
 
 const baseUrl = 'http://' + location.host + '/';
-const controller = 'Books/';
+const controller = 'Journals/';
 
 @Injectable()
-export class BooksService extends BehaviorSubject<any[]> {
+export class JournalsService extends BehaviorSubject<any[]> {
   constructor(private http: HttpClient) {
     super([]);
   }
 
   private data: any[] = [];
 
-  public readAuthors(): Observable<Author[]>{
-    return this.http.get<Author[]>(baseUrl + 'api/Authors/' + READ_ACTION);
+  public readArticles(): Observable<Article[]>{
+    return this.http.get<Article[]>(baseUrl + 'api/Articles/' + READ_ACTION);
   }
 
   public read() {

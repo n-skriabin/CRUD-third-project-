@@ -37,7 +37,7 @@ namespace CRUD.Services
                     Date = journal.Date,
                     ArticlesList = articles,
                 };
-
+                journalViewModel.ArticleIds = GetArticleIds(journalViewModel.ArticlesList);
                 journalsListForViewModel.Add(journalViewModel);
             }
             return journalsListForViewModel;
@@ -46,7 +46,7 @@ namespace CRUD.Services
         public JournalViewModel Create(ResponseJournalViewModel responseJournalViewModel)
         {
             responseJournalViewModel.Id = Guid.NewGuid();
-            var articlesIdList = responseJournalViewModel.ArticlesList;
+            var articlesIdList = responseJournalViewModel.ArticleIds;
 
             var journal = ViewModelToDomain(responseJournalViewModel);
             var journalViewModel = DomainToViewModel(responseJournalViewModel);
@@ -61,7 +61,7 @@ namespace CRUD.Services
             var journal = ViewModelToDomain(responseJournalViewModel);
             var journalViewModel = DomainToViewModel(responseJournalViewModel);
 
-            _journalRepository.Update(journal, responseJournalViewModel.ArticlesList);
+            _journalRepository.Update(journal, responseJournalViewModel.ArticleIds);
 
             return journalViewModel;
         }
@@ -96,10 +96,21 @@ namespace CRUD.Services
                 Id = responseJournalViewModel.Id,
                 Name = responseJournalViewModel.Name,
                 Date = responseJournalViewModel.Date,
-                ArticlesList = _articleRepository.GetArticles(responseJournalViewModel.ArticlesList),
+                ArticlesList = _articleRepository.GetArticles(responseJournalViewModel.ArticleIds),
             };
 
             return journalViewModel;
+        }
+
+        public List<Guid> GetArticleIds(List<Article> articles)
+        {
+            var articleIds = new List<Guid>();
+            foreach (var article in articles)
+            {
+                articleIds.Add(article.Id);
+            }
+
+            return articleIds;
         }
     }
 }

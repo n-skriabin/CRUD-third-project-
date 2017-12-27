@@ -22,6 +22,8 @@ import { ArticlesService } from '../app/articles-component/articlesService';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BooksComponent } from './books-component/booksComponent';
 import { BooksService } from './books-component/booksService';
+import { JournalsComponent } from './journals-component/journalsComponent';
+import { JournalsService } from './journals-component/journalsService';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { BooksService } from './books-component/booksService';
     HomeComponent,
     AuthorsComponent,
     ArticlesComponent,
-    BooksComponent],
+    BooksComponent,
+    JournalsComponent],
 
     imports:      [
       BrowserModule,
@@ -67,6 +70,16 @@ import { BooksService } from './books-component/booksService';
         provide: BooksService,
         useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
       },
+      {
+        deps: [HttpClient],
+        provide: JournalsService,
+        useFactory: (jsonp: HttpClient) => () => new JournalsService(jsonp)
+      },
+      /* {
+        deps: [HttpClient],
+        provide: BooksService,
+        useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
+      } */
     ],
     bootstrap:    [ AppComponent ]
 })

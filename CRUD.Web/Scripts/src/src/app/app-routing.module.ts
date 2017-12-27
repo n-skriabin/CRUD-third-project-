@@ -4,12 +4,14 @@ import { HomeComponent }from "../app/home-component/home.component";
 import { AuthorsComponent } from "../app/authors-component/authorsComponent";
 import { ArticlesComponent } from "../app/articles-component/articlesComponent";
 import { BooksComponent } from "./books-component/booksComponent";
+import { JournalsComponent } from './journals-component/journalsComponent';
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'Authors table', component: AuthorsComponent },
     { path: 'Articles table', component: ArticlesComponent },
-    { path: 'Books table', component: BooksComponent }
+    { path: 'Books table', component: BooksComponent },
+    { path: 'Journals table', component: JournalsComponent},
 ];
 
 export const appRoutingProviders: any[] = [
