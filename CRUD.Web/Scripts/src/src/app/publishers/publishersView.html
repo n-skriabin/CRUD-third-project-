@@ -1,4 +1,4 @@
-<h3>Journals</h3>
+<h3>Publishers</h3>
 <p></p>
 <kendo-grid [data]="view | async"
             [height]="533"
@@ -12,20 +12,37 @@
     <button kendoGridAddCommand>Add new</button>
   </ng-template>
   <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
-  <kendo-grid-column field="Date" title="Date"></kendo-grid-column>
-  <kendo-grid-column field="ArticleIds" title="Articles" width="200">
+
+  <kendo-grid-column field="BookIds" title="Books" width="200">
     <ng-template kendoGridCellTemplate let-dataItem>
-      {{articlesView(dataItem.ArticleIds)}}     
+      {{booksView(dataItem.BookIds)}}     
     </ng-template>
     <ng-template kendoGridEditTemplate
       let-dataItem="dataItem"
       let-formGroup="formGroup">    
       <kendo-multiselect 
-        [data]="articles"
+        [data]="books"
         textField="Name"
         valueField="Id"
-        [(ngModel)]="selectedItems"
-        [placeholder]="'Select authors...'" >
+        [(ngModel)]="selectedBooksItems"
+        [placeholder]="'Select books...'" >
+      </kendo-multiselect >
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="JournalIds" title="Journals" width="200">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{journalsView(dataItem.JournalIds)}}     
+    </ng-template>
+    <ng-template kendoGridEditTemplate
+      let-dataItem="dataItem"
+      let-formGroup="formGroup">    
+      <kendo-multiselect 
+        [data]="journals"
+        textField="Name"
+        valueField="Id"
+        [(ngModel)]="selectedJournalsItems"
+        [placeholder]="'Select journals...'" >
       </kendo-multiselect >
     </ng-template>
   </kendo-grid-column>
@@ -38,4 +55,3 @@
     </ng-template>
   </kendo-grid-command-column>
 </kendo-grid>
-

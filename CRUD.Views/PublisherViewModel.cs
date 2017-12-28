@@ -12,6 +12,8 @@ namespace CRUD.Views
         public string Name { get; set; }
         public string Journals { get; set; }
         public string Books { get; set; }
+        public List<Guid> BookIds { get; set; }
+        public List<Guid> JournalIds { get; set; }
 
         public List<Book> BooksList { get; set; }
         public List<Journal> JournalsList { get; set; }

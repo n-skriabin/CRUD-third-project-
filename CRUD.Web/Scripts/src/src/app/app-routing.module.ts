@@ -5,6 +5,7 @@ import { AuthorsComponent } from "../app/authors-component/authorsComponent";
 import { ArticlesComponent } from "../app/articles-component/articlesComponent";
 import { BooksComponent } from "./books-component/booksComponent";
 import { JournalsComponent } from './journals-component/journalsComponent';
+import { PublishersComponent } from './publishers/publishersComponent';
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -12,9 +13,9 @@ export const PanelbarRoutes: Routes = [
     { path: 'Articles table', component: ArticlesComponent },
     { path: 'Books table', component: BooksComponent },
     { path: 'Journals table', component: JournalsComponent},
+    { path: 'Publishers table', component: PublishersComponent}
 ];
 
-export const appRoutingProviders: any[] = [
-];
+export const appRoutingProviders: any[] = [];
 
 export const panelbarRouting: ModuleWithProviders = RouterModule.forRoot(PanelbarRoutes);

@@ -3,6 +3,9 @@ import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Article } from '../articles-component/articleModel';
+import { Publisher } from './publisherModel';
+import { Book } from '../books-component/bookModel';
+import { Journal } from '../journals-component/journalModel';
 
 const READ_ACTION = 'Read';
 const CREATE_ACTION = 'Create';
@@ -10,18 +13,22 @@ const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
 
 const baseUrl = 'http://' + location.host + '/';
-const controller = 'Journals/';
+const controller = 'Publishers/';
 
 @Injectable()
-export class JournalsService extends BehaviorSubject<any[]> {
+export class PublishersService extends BehaviorSubject<any[]> {
   constructor(private http: HttpClient) {
     super([]);
   }
 
   private data: any[] = [];
 
-  public readArticles(): Observable<Article[]>{
-    return this.http.get<Article[]>(baseUrl + 'api/Articles/' + READ_ACTION);
+  public readBooks(): Observable<Book[]>{
+    return this.http.get<Book[]>(baseUrl + 'api/Books/' + READ_ACTION);
+  }
+
+  public readJournals(): Observable<Journal[]>{
+    return this.http.get<Journal[]>(baseUrl + 'api/Journals/' + READ_ACTION);
   }
 
   public read() {

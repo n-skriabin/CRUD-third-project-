@@ -9,7 +9,7 @@ namespace CRUD.Views.ResponseModels
     public class ResponsePublisherViewModel : BaseEntityViewModel
     {
         public string Name { get; set; }
-        public List<Guid> BooksListId { get; set; }
-        public List<Guid> JournalsListId { get; set; }
+        public List<Guid> BookIds { get; set; }
+        public List<Guid> JournalIds { get; set; }
     }
 }

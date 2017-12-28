@@ -24,6 +24,8 @@ import { BooksComponent } from './books-component/booksComponent';
 import { BooksService } from './books-component/booksService';
 import { JournalsComponent } from './journals-component/journalsComponent';
 import { JournalsService } from './journals-component/journalsService';
+import { PublishersComponent } from './publishers/publishersComponent';
+import { PublishersService } from './publishers/publishersService';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { JournalsService } from './journals-component/journalsService';
     AuthorsComponent,
     ArticlesComponent,
     BooksComponent,
-    JournalsComponent],
+    JournalsComponent,
+    PublishersComponent],
 
     imports:      [
       BrowserModule,
@@ -41,7 +44,6 @@ import { JournalsService } from './journals-component/journalsService';
       RouterModule,
       panelbarRouting,
       FormsModule,
-
       HttpClientModule,
       BrowserModule,
       BrowserAnimationsModule,
@@ -75,11 +77,11 @@ import { JournalsService } from './journals-component/journalsService';
         provide: JournalsService,
         useFactory: (jsonp: HttpClient) => () => new JournalsService(jsonp)
       },
-      /* {
+      {
         deps: [HttpClient],
-        provide: BooksService,
-        useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
-      } */
+        provide: PublishersService,
+        useFactory: (jsonp: HttpClient) => () => new PublishersService(jsonp)
+      }
     ],
     bootstrap:    [ AppComponent ]
 })

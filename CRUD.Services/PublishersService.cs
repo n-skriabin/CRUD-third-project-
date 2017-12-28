@@ -40,6 +40,8 @@ namespace CRUD.Services
                     BooksList = _bookRepository.GetBooks(publisher.Id),
                     JournalsList = _journalRepository.GetJournals(publisher.Id),
                 };
+                publisherViewModel.BookIds = GetBookIdList(publisherViewModel.BooksList);
+                publisherViewModel.JournalIds = GetJournalIdList(publisherViewModel.JournalsList);
                 publisherListForViewModel.Add(publisherViewModel);
             }
             return publisherListForViewModel;
@@ -50,7 +52,7 @@ namespace CRUD.Services
             responsePublisherViewModel.Id = Guid.NewGuid();
 
             var publisher = ViewModelToDomain(responsePublisherViewModel);
-            _publisherRepository.Create(publisher, responsePublisherViewModel.JournalsListId, responsePublisherViewModel.BooksListId);
+            _publisherRepository.Create(publisher, responsePublisherViewModel.JournalIds, responsePublisherViewModel.BookIds);
 
             var publisherViewModel = DomainToViewModel(responsePublisherViewModel, publisher.Id);
 
@@ -60,7 +62,7 @@ namespace CRUD.Services
         public PublisherViewModel Update(ResponsePublisherViewModel responsePublisherViewModel)
         {
             var publisher = ViewModelToDomain(responsePublisherViewModel);
-            _publisherRepository.Update(publisher, responsePublisherViewModel.JournalsListId, responsePublisherViewModel.BooksListId);
+            _publisherRepository.Update(publisher, responsePublisherViewModel.JournalIds, responsePublisherViewModel.BookIds);
 
             var publisherViewModel = DomainToViewModel(responsePublisherViewModel, publisher.Id);
 
@@ -69,7 +71,7 @@ namespace CRUD.Services
 
         public void Delete(PublisherViewModel publisherViewModel)
         {
-            _journalRepository.Delete(publisherViewModel.Id);
+            _publisherRepository.Delete(publisherViewModel.Id);
         }     
         
         public Publisher ViewModelToDomain(ResponsePublisherViewModel responsePublisherViewModel)
@@ -94,6 +96,28 @@ namespace CRUD.Services
             };
 
             return publisherViewModel;
+        }
+
+        public List<Guid> GetBookIdList(List<Book> booksList)
+        {
+            var ids = new List<Guid>();
+            foreach (var book in booksList)
+            {
+                ids.Add(book.Id);
+            }
+
+            return ids;
+        }
+
+        public List<Guid> GetJournalIdList(List<Journal> journalsList)
+        {
+            var ids = new List<Guid>();
+            foreach (var book in journalsList)
+            {
+                ids.Add(book.Id);
+            }
+
+            return ids;
         }
     }
 }
