@@ -132,14 +132,18 @@ export class PublishersComponent implements OnInit {
     
     this.selectedBooksItems = this.selectFromBooks(dataItem.BookIds);
     this.selectedJournalsItems = this.selectFromJournals(dataItem.JournalIds);
+    
     this.formGroup = new FormGroup({
       'Id': new FormControl(dataItem.Id),
       'Name': new FormControl(dataItem.Name, Validators.required),
       'BookIds': new FormControl(dataItem.BookIds, Validators.required),
       'JournalIds': new FormControl(dataItem.JournalIds, Validators.required),
     });
+    
     this.editedRowIndex = rowIndex;
 
+    console.log('FormGroup: ');
+    console.log(this.formGroup);
     sender.editRow(rowIndex, this.formGroup);
   }
 
@@ -151,17 +155,30 @@ export class PublishersComponent implements OnInit {
     const publisher: Publisher = formGroup.value;
     publisher.BookIds = [];
     publisher.JournalIds = [];
+    if(this.selectedBooksItems !== undefined){
     for(let i = 0;i < this.selectedBooksItems.length; i++){
       publisher.BookIds[i] = this.selectedBooksItems[i].Id;
     }
+    }
+    if(this.selectedJournalsItems !== undefined){
     for(let i = 0;i < this.selectedJournalsItems.length; i++){
       publisher.JournalIds[i] = this.selectedJournalsItems[i].Id;
     }
-    this.selectedBooksItems = undefined; 
-    this.selectedJournalsItems = undefined;
-    this.editServicePublisher.save(publisher, isNew);
-
-    sender.closeRow(rowIndex);
+    }
+    /* this.selectedBooksItems = undefined; 
+    this.selectedJournalsItems = undefined; */
+    if(publisher.BookIds.length !== 0 && publisher.JournalIds.length !== 0)
+    {
+      this.selectedBooksItems = undefined; 
+      this.selectedJournalsItems = undefined;
+      this.editServicePublisher.save(publisher, isNew);
+      sender.closeRow(rowIndex);
+    }
+    else
+    {
+      alert("Вы не ввели все поля!");
+    }
+    /* sender.closeRow(rowIndex); */
   }
 
   public removeHandler({ dataItem }) {
