@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CRUD.Views.ResponseModels
 {
-    public class ResponseBookViewModel : BaseEntityViewModel
+    public class PostPublisherViewModel : BaseEntityViewModel
     {
         public string Name { get; set; }
-        public string Year { get; set; }
-        public List<Guid> AuthorIds { get; set; }
+        public List<Guid> BookIds { get; set; }
+        public List<Guid> JournalIds { get; set; }
     }
 }

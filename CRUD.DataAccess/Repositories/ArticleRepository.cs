@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using CRUD.Views;
 
 namespace CRUD.DataAccess.Repositories
 {

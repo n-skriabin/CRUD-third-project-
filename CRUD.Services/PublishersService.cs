@@ -47,24 +47,24 @@ namespace CRUD.Services
             return publisherListForViewModel;
         }
 
-        public PublisherViewModel Create(ResponsePublisherViewModel responsePublisherViewModel)
+        public PublisherViewModel Create(PostPublisherViewModel postPublisherViewModel)
         {
-            responsePublisherViewModel.Id = Guid.NewGuid();
+            postPublisherViewModel.Id = Guid.NewGuid();
 
-            var publisher = ViewModelToDomain(responsePublisherViewModel);
-            _publisherRepository.Create(publisher, responsePublisherViewModel.JournalIds, responsePublisherViewModel.BookIds);
+            var publisher = ViewModelToDomain(postPublisherViewModel);
+            _publisherRepository.Create(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
 
-            var publisherViewModel = DomainToViewModel(responsePublisherViewModel, publisher.Id);
+            var publisherViewModel = DomainToViewModel(postPublisherViewModel, publisher.Id);
 
             return publisherViewModel;
         }
 
-        public PublisherViewModel Update(ResponsePublisherViewModel responsePublisherViewModel)
+        public PublisherViewModel Update(PostPublisherViewModel postPublisherViewModel)
         {
-            var publisher = ViewModelToDomain(responsePublisherViewModel);
-            _publisherRepository.Update(publisher, responsePublisherViewModel.JournalIds, responsePublisherViewModel.BookIds);
+            var publisher = ViewModelToDomain(postPublisherViewModel);
+            _publisherRepository.Update(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
 
-            var publisherViewModel = DomainToViewModel(responsePublisherViewModel, publisher.Id);
+            var publisherViewModel = DomainToViewModel(postPublisherViewModel, publisher.Id);
 
             return publisherViewModel;
         }
@@ -74,23 +74,23 @@ namespace CRUD.Services
             _publisherRepository.Delete(publisherViewModel.Id);
         }     
         
-        public Publisher ViewModelToDomain(ResponsePublisherViewModel responsePublisherViewModel)
+        public Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)
         {
             Publisher publisher = new Publisher
             {
-                Id = responsePublisherViewModel.Id,
-                Name = responsePublisherViewModel.Name,
+                Id = postPublisherViewModel.Id,
+                Name = postPublisherViewModel.Name,
             };
 
             return publisher;
         }
 
-        public PublisherViewModel DomainToViewModel(ResponsePublisherViewModel responsePublisherViewModel, Guid publisherId)
+        public PublisherViewModel DomainToViewModel(PostPublisherViewModel postPublisherViewModel, Guid publisherId)
         {
             PublisherViewModel publisherViewModel = new PublisherViewModel
             {
-                Id = responsePublisherViewModel.Id,
-                Name = responsePublisherViewModel.Name,
+                Id = postPublisherViewModel.Id,
+                Name = postPublisherViewModel.Name,
                 BooksList = _bookRepository.GetBooks(publisherId),
                 JournalsList = _journalRepository.GetJournals(publisherId),
             };

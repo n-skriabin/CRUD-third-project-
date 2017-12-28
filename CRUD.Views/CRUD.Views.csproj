@@ -40,16 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleViewModel.cs" />
-    <Compile Include="AuthorViewModel.cs" />
+    <Compile Include="ArticleModels\ArticleViewModel.cs" />
+    <Compile Include="AuthorModels\AuthorViewModel.cs" />
     <Compile Include="BaseEntityViewModel.cs" />
-    <Compile Include="BookViewModel.cs" />
-    <Compile Include="JournalViewModel.cs" />
+    <Compile Include="BookModels\BookViewModel.cs" />
+    <Compile Include="JournalModels\JournalViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublisherViewModel.cs" />
-    <Compile Include="ResponseModels\ResponseBookViewModel.cs" />
-    <Compile Include="ResponseModels\ResponseJournalViewModel.cs" />
-    <Compile Include="ResponseModels\ResponsePublisherViewModel.cs" />
+    <Compile Include="PublisherModels\PublisherViewModel.cs" />
+    <Compile Include="BookModels\ResponseBookViewModel.cs" />
+    <Compile Include="JournalModels\ResponseJournalViewModel.cs" />
+    <Compile Include="PublisherModels\ResponsePublisherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

@@ -33,15 +33,15 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public void Create(ResponsePublisherViewModel responsePublisherViewModel)
+        public void Create(PostPublisherViewModel postPublisherViewModel)
         {
-            publishersService.Create(responsePublisherViewModel);
+            publishersService.Create(postPublisherViewModel);
         }
 
         [HttpPost]
-        public void Update(ResponsePublisherViewModel responsePublisherViewModel)
+        public void Update(PostPublisherViewModel postPublisherViewModel)
         {
-            publishersService.Update(responsePublisherViewModel);
+            publishersService.Update(postPublisherViewModel);
         }
 
         [HttpPost]

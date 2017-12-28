@@ -33,16 +33,16 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public BookViewModel Create(ResponseBookViewModel responseBookViewModel)
+        public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = booksService.Create(responseBookViewModel);
+            var bookViewModel = booksService.Create(postBookViewModel);
             return bookViewModel;
         }
 
         [HttpPost]
-        public BookViewModel Update(ResponseBookViewModel responseBookViewModel)
+        public BookViewModel Update(PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = booksService.Update(responseBookViewModel);
+            var bookViewModel = booksService.Update(postBookViewModel);
             return bookViewModel;
         }
 

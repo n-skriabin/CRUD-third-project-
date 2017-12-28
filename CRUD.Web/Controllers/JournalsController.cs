@@ -32,15 +32,15 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public void Create(ResponseJournalViewModel responseJournalViewModel)
+        public void Create(PostJournalViewModel postJournalViewModel)
         {
-            journalsService.Create(responseJournalViewModel);
+            journalsService.Create(postJournalViewModel);
         }
 
         [HttpPost]
-        public void Update(ResponseJournalViewModel responseJournalViewModel)
+        public void Update(PostJournalViewModel postJournalViewModel)
         {
-            journalsService.Update(responseJournalViewModel);
+            journalsService.Update(postJournalViewModel);
         }
 
         [HttpPost]

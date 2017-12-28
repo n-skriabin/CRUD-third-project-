@@ -43,25 +43,25 @@ namespace CRUD.Services
             return journalsListForViewModel;
         }
 
-        public JournalViewModel Create(ResponseJournalViewModel responseJournalViewModel)
+        public JournalViewModel Create(PostJournalViewModel postJournalViewModel)
         {
-            responseJournalViewModel.Id = Guid.NewGuid();
-            var articlesIdList = responseJournalViewModel.ArticleIds;
+            postJournalViewModel.Id = Guid.NewGuid();
+            var articlesIdList = postJournalViewModel.ArticleIds;
 
-            var journal = ViewModelToDomain(responseJournalViewModel);
-            var journalViewModel = DomainToViewModel(responseJournalViewModel);
+            var journal = ViewModelToDomain(postJournalViewModel);
+            var journalViewModel = DomainToViewModel(postJournalViewModel);
 
             _journalRepository.Create(journal, articlesIdList);
 
             return journalViewModel;
         }
 
-        public JournalViewModel Update(ResponseJournalViewModel responseJournalViewModel)
+        public JournalViewModel Update(PostJournalViewModel postJournalViewModel)
         {
-            var journal = ViewModelToDomain(responseJournalViewModel);
-            var journalViewModel = DomainToViewModel(responseJournalViewModel);
+            var journal = ViewModelToDomain(postJournalViewModel);
+            var journalViewModel = DomainToViewModel(postJournalViewModel);
 
-            _journalRepository.Update(journal, responseJournalViewModel.ArticleIds);
+            _journalRepository.Update(journal, postJournalViewModel.ArticleIds);
 
             return journalViewModel;
         }
@@ -77,26 +77,26 @@ namespace CRUD.Services
             return articles;
         }
 
-        public Journal ViewModelToDomain(ResponseJournalViewModel responseJournalViewModel)
+        public Journal ViewModelToDomain(PostJournalViewModel postJournalViewModel)
         {
             Journal journal = new Journal()
             {
-                Id = responseJournalViewModel.Id,
-                Name = responseJournalViewModel.Name,
-                Date = responseJournalViewModel.Date,
+                Id = postJournalViewModel.Id,
+                Name = postJournalViewModel.Name,
+                Date = postJournalViewModel.Date,
             };
 
             return journal;
         }
 
-        public JournalViewModel DomainToViewModel(ResponseJournalViewModel responseJournalViewModel)
+        public JournalViewModel DomainToViewModel(PostJournalViewModel postJournalViewModel)
         {
             var journalViewModel = new JournalViewModel
             {
-                Id = responseJournalViewModel.Id,
-                Name = responseJournalViewModel.Name,
-                Date = responseJournalViewModel.Date,
-                ArticlesList = _articleRepository.GetArticles(responseJournalViewModel.ArticleIds),
+                Id = postJournalViewModel.Id,
+                Name = postJournalViewModel.Name,
+                Date = postJournalViewModel.Date,
+                ArticlesList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds),
             };
 
             return journalViewModel;

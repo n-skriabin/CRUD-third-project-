@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUD.Views
 {
-    public class ResponseJournalViewModel : BaseEntityViewModel
+    public class PostJournalViewModel : BaseEntityViewModel
     {
         public string Name { get; set; }
         public string Date { get; set; }

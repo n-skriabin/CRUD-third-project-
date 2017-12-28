@@ -51,24 +51,24 @@ namespace CRUD.Services
             return booksListForViewModel;
         }
 
-        public BookViewModel Create(ResponseBookViewModel responseBookViewModel)
+        public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
-            responseBookViewModel.Id = Guid.NewGuid();
+            postBookViewModel.Id = Guid.NewGuid();
 
-            var book = ViewModelToDomain(responseBookViewModel);
-            var bookViewModel = DomainToViewModel(responseBookViewModel);
+            var book = ViewModelToDomain(postBookViewModel);
+            var bookViewModel = DomainToViewModel(postBookViewModel);
 
-            _bookRepository.Create(book, responseBookViewModel.AuthorIds);
+            _bookRepository.Create(book, postBookViewModel.AuthorIds);
 
             return bookViewModel;
         }
 
-        public BookViewModel Update(ResponseBookViewModel responseBookViewModel)
+        public BookViewModel Update(PostBookViewModel postBookViewModel)
         {
-            var book = ViewModelToDomain(responseBookViewModel);
-            var bookViewModel = DomainToViewModel(responseBookViewModel);
+            var book = ViewModelToDomain(postBookViewModel);
+            var bookViewModel = DomainToViewModel(postBookViewModel);
 
-            _bookRepository.Update(book, responseBookViewModel.AuthorIds);
+            _bookRepository.Update(book, postBookViewModel.AuthorIds);
 
             return bookViewModel;
         }
@@ -78,26 +78,26 @@ namespace CRUD.Services
             _bookRepository.Delete(bookViewModel.Id);
         }
 
-        public Book ViewModelToDomain(ResponseBookViewModel responseBookViewModel)
+        public Book ViewModelToDomain(PostBookViewModel postBookViewModel)
         {
             Book book = new Book()
             {
-                Id = responseBookViewModel.Id,
-                Name = responseBookViewModel.Name,
-                Year = responseBookViewModel.Year,
+                Id = postBookViewModel.Id,
+                Name = postBookViewModel.Name,
+                Year = postBookViewModel.Year,
             };
 
             return book;
         }
 
-        public BookViewModel DomainToViewModel(ResponseBookViewModel responseBookViewModel)
+        public BookViewModel DomainToViewModel(PostBookViewModel postBookViewModel)
         {
             BookViewModel bookViewModel = new BookViewModel
             {
-                Id = responseBookViewModel.Id,
-                Name = responseBookViewModel.Name,
-                Year = responseBookViewModel.Year,
-                AuthorsList = _authorRepository.GetAuthors(responseBookViewModel.Id),
+                Id = postBookViewModel.Id,
+                Name = postBookViewModel.Name,
+                Year = postBookViewModel.Year,
+                AuthorsList = _authorRepository.GetAuthors(postBookViewModel.Id),
             };
 
             return bookViewModel;
