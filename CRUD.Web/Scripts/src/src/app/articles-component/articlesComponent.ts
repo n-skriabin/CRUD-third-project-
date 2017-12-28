@@ -13,9 +13,9 @@ import { Article } from './articleModel';
 
 const formGroup = dataItem => new FormGroup({
   'Id': new FormControl(dataItem.Id),
-        'Name': new FormControl(dataItem.Name, Validators.required),
-        'Year': new FormControl(dataItem.Year, Validators.required),
-        'AuthorId': new FormControl(dataItem.AuthorId, Validators.required),
+  'Name': new FormControl(dataItem.Name, Validators.required),
+  'Year': new FormControl(dataItem.Year, Validators.required),
+  'AuthorId': new FormControl(dataItem.AuthorId, Validators.required),
 });
 
 @Component({
@@ -27,7 +27,6 @@ export class ArticlesComponent implements OnInit {
     public authors: Author[] = [];
     public authorsId: string;
     public formGroup: FormGroup;
-    /* regexpGuid = new RegExp('@"^[{(]?[0-9A-F]{8}[-]?([0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"'); */
     regexpGuid = new RegExp('^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$', 'i');
     public selectedItem: string;
     public gridState: State = {
@@ -50,9 +49,9 @@ export class ArticlesComponent implements OnInit {
     }
   
     public ngOnInit(): void {
-      this.view = this.editServiceArticle.map(data => process(data, this.gridState));
-      this.editServiceArticle.readAuthors().subscribe((data: Author[]) => {this.authors = data; console.log(this.authors);});
       this.titleService.setTitle('Articles Page');
+      this.view = this.editServiceArticle.map(data => process(data, this.gridState));
+      this.editServiceArticle.readAuthors().subscribe((data: Author[]) => {this.authors = data;});
       this.editServiceArticle.read();
     }
   
@@ -88,12 +87,10 @@ export class ArticlesComponent implements OnInit {
 
     public saveHandler({ sender, rowIndex, formGroup, isNew }) {
       const article: Article = formGroup.value;
-      console.log('formGroup.value.AuthorId:');
-      console.log(formGroup.value.AuthorId);
       var res = this.regexpGuid.test(article.AuthorId);
       if(res){
-      this.editServiceArticle.save(article, isNew);
-      sender.closeRow(rowIndex);
+        this.editServiceArticle.save(article, isNew);
+        sender.closeRow(rowIndex);
       }
       else
       {

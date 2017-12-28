@@ -12,9 +12,9 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 const formGroup = dataItem => new FormGroup({
   'Id': new FormControl(dataItem.Id),
-        'Name': new FormControl(dataItem.Name, Validators.required),
-        'Year': new FormControl(dataItem.Year, Validators.required),
-        'AuthorIds': new FormControl(dataItem.AuthorIds, Validators.required),
+  'Name': new FormControl(dataItem.Name, Validators.required),
+  'Year': new FormControl(dataItem.Year, Validators.required),
+  'AuthorIds': new FormControl(dataItem.AuthorIds, Validators.required),
 });
 
 @Component({
@@ -24,7 +24,6 @@ const formGroup = dataItem => new FormGroup({
 export class BooksComponent implements OnInit {
 
   public selectedItems: Author[] = [];
-  private editServiceAuthor: AuthorsService;
   private editServiceBook: BooksService;
   public authorsForDefaultValue: Author[]=[];
   public authors: Author[] = [];
@@ -41,8 +40,7 @@ export class BooksComponent implements OnInit {
   public formGroup: FormGroup;
   private editedRowIndex: number;
 
-  constructor(@Inject(AuthorsService) editServiceFactoryAuthor: any, @Inject(BooksService) editServiceFactoryBook: any, private titleService: Title) {
-    this.editServiceAuthor = editServiceFactoryAuthor();
+  constructor(@Inject(BooksService) editServiceFactoryBook: any, private titleService: Title) {
     this.editServiceBook = editServiceFactoryBook();
   }
 
@@ -115,15 +113,16 @@ export class BooksComponent implements OnInit {
     console.log(this.selectedItems);
     book.AuthorIds = [];
     if(this.selectedItems !== undefined){
-    for(let i = 0;i < this.selectedItems.length; i++){
-      book.AuthorIds[i] = this.selectedItems[i].Id;
+      for(let i = 0;i < this.selectedItems.length; i++){
+        book.AuthorIds[i] = this.selectedItems[i].Id;
+      }
     }
-    }
+
     if(book.AuthorIds.length !== 0)
     {
-    this.selectedItems = undefined;
-    this.editServiceBook.save(book, isNew);
-    sender.closeRow(rowIndex);
+      this.selectedItems = undefined;
+      this.editServiceBook.save(book, isNew);
+      sender.closeRow(rowIndex);
     }
     else
     {

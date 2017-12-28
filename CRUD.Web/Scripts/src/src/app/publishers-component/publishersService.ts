@@ -47,7 +47,6 @@ export class PublishersService extends BehaviorSubject<any[]> {
 
   public save(data: any, isNew?: boolean) {
     const action = isNew ? CREATE_ACTION : UPDATE_ACTION;
-    console.log('!check!');
 
     this.reset();
 

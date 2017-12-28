@@ -65,10 +65,8 @@ export class AuthorsService extends BehaviorSubject<any[]> {
   public resetItem(dataItem: any) {
     if (!dataItem) { return; }
 
-    // find orignal data item
     const originalDataItem = this.data.find(item => item.Id === dataItem.Id);
 
-    // revert changes
     Object.assign(originalDataItem, dataItem);
 
     super.next(this.data);

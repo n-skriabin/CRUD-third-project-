@@ -23,13 +23,10 @@ const formGroup = dataItem => new FormGroup({
 })
 export class JournalsComponent implements OnInit {
   public selectedItems: Article[] = [];
-  private editServiceArticle: ArticlesService;
   private editServiceJournal: JournalsService;
   public articlesForDefaultValue: Article[] = [];
   public articles: Article[] = [];
   articleNames: string = '';
-
-  authorsString: string;
 
   public view: Observable<GridDataResult>;
   public gridState: State = {
@@ -40,8 +37,7 @@ export class JournalsComponent implements OnInit {
   public formGroup: FormGroup;
   private editedRowIndex: number;
 
-  constructor(@Inject(ArticlesService) editServiceFactoryArticle: any, @Inject(JournalsService) editServiceFactoryJournal: any, private titleService: Title) {
-    this.editServiceArticle = editServiceFactoryArticle();
+  constructor(@Inject(JournalsService) editServiceFactoryJournal: any, private titleService: Title) {
     this.editServiceJournal = editServiceFactoryJournal();
   }
 
@@ -111,8 +107,6 @@ export class JournalsComponent implements OnInit {
 
   public saveHandler({ sender, rowIndex, formGroup, isNew }) {
     const journal: Journal = formGroup.value;
-    console.log('journal object:');
-    console.log(journal);
     journal.ArticleIds = [];
     if(this.selectedItems !== undefined){
       for(let i = 0;i < this.selectedItems.length; i++){

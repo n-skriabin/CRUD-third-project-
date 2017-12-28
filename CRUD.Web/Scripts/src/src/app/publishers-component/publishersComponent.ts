@@ -26,18 +26,15 @@ export class PublishersComponent implements OnInit {
   public selectedBooksItems: Book[] = [];
   public selectedJournalsItems: Journal[] = [];
 
-  private editServiceBook: ArticlesService;
   private editServicePublisher: PublishersService;
 
   public booksForDefaultValue: Book[] = [];
   public journalsForDefaultValue: Journal[] = [];
   public books: Book[] = [];
   public journals: Journal[] = [];
-  public publishers: Publisher[] = [];
+  //public publishers: Publisher[] = [];
   bookNames: string = '';
   journalNames: string = '';
-  
-  authorsString: string;
 
   public view: Observable<GridDataResult>;
   public gridState: State = {
@@ -154,15 +151,17 @@ export class PublishersComponent implements OnInit {
     publisher.BookIds = [];
     publisher.JournalIds = [];
     if(this.selectedBooksItems !== undefined){
-    for(let i = 0;i < this.selectedBooksItems.length; i++){
-      publisher.BookIds[i] = this.selectedBooksItems[i].Id;
+      for(let i = 0;i < this.selectedBooksItems.length; i++){
+        publisher.BookIds[i] = this.selectedBooksItems[i].Id;
+      }
     }
-    }
+
     if(this.selectedJournalsItems !== undefined){
-    for(let i = 0;i < this.selectedJournalsItems.length; i++){
-      publisher.JournalIds[i] = this.selectedJournalsItems[i].Id;
+      for(let i = 0;i < this.selectedJournalsItems.length; i++){
+        publisher.JournalIds[i] = this.selectedJournalsItems[i].Id;
+      }
     }
-    }
+    
     if(publisher.BookIds.length !== 0 && publisher.JournalIds.length !== 0)
     {
       this.selectedBooksItems = undefined; 
