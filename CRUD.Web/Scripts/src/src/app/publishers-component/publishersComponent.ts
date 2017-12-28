@@ -142,8 +142,6 @@ export class PublishersComponent implements OnInit {
     
     this.editedRowIndex = rowIndex;
 
-    console.log('FormGroup: ');
-    console.log(this.formGroup);
     sender.editRow(rowIndex, this.formGroup);
   }
 
@@ -165,8 +163,6 @@ export class PublishersComponent implements OnInit {
       publisher.JournalIds[i] = this.selectedJournalsItems[i].Id;
     }
     }
-    /* this.selectedBooksItems = undefined; 
-    this.selectedJournalsItems = undefined; */
     if(publisher.BookIds.length !== 0 && publisher.JournalIds.length !== 0)
     {
       this.selectedBooksItems = undefined; 
@@ -176,9 +172,8 @@ export class PublishersComponent implements OnInit {
     }
     else
     {
-      alert("Вы не ввели все поля!");
+      alert("Select at least one book and least one journal!");
     }
-    /* sender.closeRow(rowIndex); */
   }
 
   public removeHandler({ dataItem }) {

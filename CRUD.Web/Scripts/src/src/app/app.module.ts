@@ -24,8 +24,8 @@ import { BooksComponent } from './books-component/booksComponent';
 import { BooksService } from './books-component/booksService';
 import { JournalsComponent } from './journals-component/journalsComponent';
 import { JournalsService } from './journals-component/journalsService';
-import { PublishersComponent } from './publishers/publishersComponent';
-import { PublishersService } from './publishers/publishersService';
+import { PublishersComponent } from './publishers-component/publishersComponent';
+import { PublishersService } from './publishers-component/publishersService';
 
 @NgModule({
   declarations: [

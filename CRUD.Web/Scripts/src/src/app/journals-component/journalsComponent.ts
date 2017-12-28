@@ -114,13 +114,22 @@ export class JournalsComponent implements OnInit {
     console.log('journal object:');
     console.log(journal);
     journal.ArticleIds = [];
-    for(let i = 0;i < this.selectedItems.length; i++){
-      journal.ArticleIds[i] = this.selectedItems[i].Id;
+    if(this.selectedItems !== undefined){
+      for(let i = 0;i < this.selectedItems.length; i++){
+        journal.ArticleIds[i] = this.selectedItems[i].Id;
+      }
     }
-    this.selectedItems = undefined;
-    this.editServiceJournal.save(journal, isNew);
 
-    sender.closeRow(rowIndex);
+    if(journal.ArticleIds.length !== 0)
+    {
+      this.selectedItems = undefined;
+      this.editServiceJournal.save(journal, isNew);
+      sender.closeRow(rowIndex);
+    }
+    else
+    {
+      alert("Select at least one article!");
+    }
   }
 
   public removeHandler({ dataItem }) {

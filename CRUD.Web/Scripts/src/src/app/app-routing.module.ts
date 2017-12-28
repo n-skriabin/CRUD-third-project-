@@ -5,7 +5,7 @@ import { AuthorsComponent } from "../app/authors-component/authorsComponent";
 import { ArticlesComponent } from "../app/articles-component/articlesComponent";
 import { BooksComponent } from "./books-component/booksComponent";
 import { JournalsComponent } from './journals-component/journalsComponent';
-import { PublishersComponent } from './publishers/publishersComponent';
+import { PublishersComponent } from './publishers-component/publishersComponent';
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },

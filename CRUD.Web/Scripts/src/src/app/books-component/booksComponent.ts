@@ -114,13 +114,21 @@ export class BooksComponent implements OnInit {
     const book: Book = formGroup.value;
     console.log(this.selectedItems);
     book.AuthorIds = [];
+    if(this.selectedItems !== undefined){
     for(let i = 0;i < this.selectedItems.length; i++){
       book.AuthorIds[i] = this.selectedItems[i].Id;
     }
+    }
+    if(book.AuthorIds.length !== 0)
+    {
     this.selectedItems = undefined;
     this.editServiceBook.save(book, isNew);
-
     sender.closeRow(rowIndex);
+    }
+    else
+    {
+      alert("Select at least one author!");
+    }
   }
 
   public removeHandler({ dataItem }) {
