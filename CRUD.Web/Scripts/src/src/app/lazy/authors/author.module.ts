@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { AuthorsComponent } from '../../authors-component/authorsComponent';
-import { AuthorsRouting } from './author.routing';
 import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from "@angular/router";
+
+const routes: Routes = [
+  { path: 'load-AuthorsTable', component: AuthorsComponent },
+
+];
 
 @NgModule({
-    imports: [ AuthorsRouting, CommonModule ],
-    declarations: [ AuthorsComponent ],
+  imports:
+    [RouterModule.forChild(routes), CommonModule],
+  declarations:
+    [AuthorsComponent]
 })
 
-export class LazyModule {}
+export class AuthorsModule {}

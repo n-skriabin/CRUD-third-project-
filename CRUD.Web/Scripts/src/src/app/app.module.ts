@@ -1,4 +1,4 @@
-import { AppComponent }   from './app.component';
+import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +26,7 @@ import { JournalsComponent } from './journals-component/journalsComponent';
 import { JournalsService } from './journals-component/journalsService';
 import { PublishersComponent } from './publishers-component/publishersComponent';
 import { PublishersService } from './publishers-component/publishersService';
-import { AuthorsRouting } from './lazy/authors/author.routing';
+//import { AuthorsRouting } from './lazy/authors/author.routing';
 
 @NgModule({
   declarations: [
@@ -38,53 +38,53 @@ import { AuthorsRouting } from './lazy/authors/author.routing';
     JournalsComponent,
     PublishersComponent],
 
-    imports:      [
-      BrowserModule,
-      BrowserAnimationsModule,
-      LayoutModule,
-      RouterModule,
-      panelbarRouting,
-      FormsModule,
-      HttpClientModule,
-      BrowserModule,
-      BrowserAnimationsModule,
-      ReactiveFormsModule,
-      GridModule,
-      PopupModule,
-      DropDownsModule,
-      HttpClientModule,
-      AuthorsRouting
-    ],
-    
-    providers:    [
-      appRoutingProviders,
-      { provide: APP_BASE_HREF, useValue : window.location.pathname },
-      {
-        deps: [HttpClient],
-        provide: AuthorsService,
-        useFactory: (jsonp: HttpClient) => () => new AuthorsService(jsonp)
-      },
-      {
-        deps: [HttpClient],
-        provide: ArticlesService,
-        useFactory: (jsonp: HttpClient) => () => new ArticlesService(jsonp)
-      },
-      {
-        deps: [HttpClient],
-        provide: BooksService,
-        useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
-      },
-      {
-        deps: [HttpClient],
-        provide: JournalsService,
-        useFactory: (jsonp: HttpClient) => () => new JournalsService(jsonp)
-      },
-      {
-        deps: [HttpClient],
-        provide: PublishersService,
-        useFactory: (jsonp: HttpClient) => () => new PublishersService(jsonp)
-      }
-    ],
-    bootstrap:    [ AppComponent ]
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    RouterModule,
+    panelbarRouting,
+    FormsModule,
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    GridModule,
+    PopupModule,
+    DropDownsModule,
+    HttpClientModule,
+    //AuthorsRouting
+  ],
+
+  providers: [
+    appRoutingProviders,
+    { provide: APP_BASE_HREF, useValue: window.location.pathname },
+    {
+      deps: [HttpClient],
+      provide: AuthorsService,
+      useFactory: (jsonp: HttpClient) => () => new AuthorsService(jsonp)
+    },
+    {
+      deps: [HttpClient],
+      provide: ArticlesService,
+      useFactory: (jsonp: HttpClient) => () => new ArticlesService(jsonp)
+    },
+    {
+      deps: [HttpClient],
+      provide: BooksService,
+      useFactory: (jsonp: HttpClient) => () => new BooksService(jsonp)
+    },
+    {
+      deps: [HttpClient],
+      provide: JournalsService,
+      useFactory: (jsonp: HttpClient) => () => new JournalsService(jsonp)
+    },
+    {
+      deps: [HttpClient],
+      provide: PublishersService,
+      useFactory: (jsonp: HttpClient) => () => new PublishersService(jsonp)
+    }
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -354,7 +354,6 @@
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsService.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\lazy\authors\author.module.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\lazy\authors\author.routing.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publisherModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersService.ts" />
