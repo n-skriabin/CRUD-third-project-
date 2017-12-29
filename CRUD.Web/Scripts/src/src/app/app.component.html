@@ -1,5 +1,5 @@
 <div class="layout">
-  <div class="navigation-pane">
+  <!-- <div class="navigation-pane">
     <kendo-panelbar>
       <kendo-panelbar-item *ngFor="let route of router.config"
                            [id]="route.path"
@@ -7,8 +7,16 @@
                            [routerLink]="route.path">
       </kendo-panelbar-item>
     </kendo-panelbar>
-  </div>
-  <div class="content-pane">
+  </div> -->
+  <ul>
+    <li><a routerLink=''>Home</a></li>
+    <li><a routerLink='Authors table'>Authors</a></li>
+    <li><a routerLink='Articles table'>Articles</a></li>
+    <li><a routerLink='Books table'>Books</a></li>
+    <li><a routerLink='Journals table'>Journals</a></li>
+    <li><a routerLink='Publishers table'>Publishers</a></li>
+  </ul>
+  <!-- <div class="content-pane"> -->
     <router-outlet></router-outlet>
-  </div>
+  <!-- </div> -->
 </div>

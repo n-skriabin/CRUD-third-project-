@@ -8,7 +8,7 @@ import { Router, RouterModule } from '@angular/router';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { FormsModule } from '@angular/forms';
 
-import { panelbarRouting, appRoutingProviders } from './app-routing.module';
+import { panelbarRouting, appRoutingProviders, PanelbarRoutes } from './app-routing.module';
 import { HomeComponent } from '../app/home-component/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +26,7 @@ import { JournalsComponent } from './journals-component/journalsComponent';
 import { JournalsService } from './journals-component/journalsService';
 import { PublishersComponent } from './publishers-component/publishersComponent';
 import { PublishersService } from './publishers-component/publishersService';
+import { AuthorsRouting } from './lazy/authors/author.routing';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PublishersService } from './publishers-component/publishersService';
       GridModule,
       PopupModule,
       DropDownsModule,
-      HttpClientModule
+      HttpClientModule,
+      AuthorsRouting
     ],
     
     providers:    [
