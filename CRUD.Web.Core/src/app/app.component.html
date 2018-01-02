@@ -1,0 +1,22 @@
+<div class="layout">
+  <!-- <div class="navigation-pane">
+    <kendo-panelbar>
+      <kendo-panelbar-item *ngFor="let route of router.config"
+                           [id]="route.path"
+                           [title]="route.path ? route.path : 'Home'"
+                           [routerLink]="route.path">
+      </kendo-panelbar-item>
+    </kendo-panelbar>
+  </div> -->
+  <ul>
+    <li><a routerLink=''>Home</a></li>
+    <li><a routerLink='Authors'>Authors</a></li>
+    <li><a routerLink='Articles'>Articles</a></li>
+    <li><a routerLink='Books'>Books</a></li>
+    <li><a routerLink='Journals'>Journals</a></li>
+    <li><a routerLink='Publishers'>Publishers</a></li>
+  </ul>
+  <!-- <div class="content-pane"> -->
+    <router-outlet></router-outlet>
+  <!-- </div> -->
+</div>

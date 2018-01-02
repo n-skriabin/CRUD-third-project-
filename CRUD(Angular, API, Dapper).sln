@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{A5AF99FB-D519-49F7-A618-24D6A62EC330}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD.Views", "CRUD.Views\CRUD.Views.csproj", "{D47E8F23-47DC-4699-9C9B-46A011B52ADF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD.Web", "CRUD.Web\CRUD.Web.csproj", "{B73610C1-C008-4069-869C-D5B7684F11E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD.Web.Core", "CRUD.Web.Core\CRUD.Web.Core.csproj", "{DF80D54D-9773-41A6-82FC-B8C8F0503088}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{B73610C1-C008-4069-869C-D5B7684F11E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B73610C1-C008-4069-869C-D5B7684F11E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B73610C1-C008-4069-869C-D5B7684F11E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF80D54D-9773-41A6-82FC-B8C8F0503088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF80D54D-9773-41A6-82FC-B8C8F0503088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF80D54D-9773-41A6-82FC-B8C8F0503088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF80D54D-9773-41A6-82FC-B8C8F0503088}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

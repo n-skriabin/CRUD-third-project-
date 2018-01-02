@@ -265,7 +265,9 @@
     <Content Include="Scripts\src\src\app\publishers-component\publishersView.html" />
     <Content Include="Scripts\src\src\favicon.ico" />
     <Content Include="Scripts\src\src\index.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -316,6 +318,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\src\src\app\lazy\articles\" />
+    <Folder Include="Scripts\src\src\app\lazy\authors\" />
     <Folder Include="Scripts\src\src\app\lazy\books\" />
     <Folder Include="Scripts\src\src\app\lazy\journals\" />
     <Folder Include="Scripts\src\src\app\lazy\publishers\" />
@@ -353,7 +356,7 @@
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsService.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\lazy\authors\author.module.ts" />
+    <TypeScriptCompile Include="Scripts\src\src\app\author.module.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publisherModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersService.ts" />

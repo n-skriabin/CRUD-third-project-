@@ -1,0 +1,126 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="dist\favicon.ico" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\inline.bundle.js" />
+    <Content Include="dist\inline.bundle.js.map" />
+    <Content Include="dist\main.bundle.js" />
+    <Content Include="dist\main.bundle.js.map" />
+    <Content Include="dist\out-tsc\app\app-routing.module.js" />
+    <Content Include="dist\out-tsc\app\app-routing.module.js.map" />
+    <Content Include="dist\out-tsc\app\app.component.js" />
+    <Content Include="dist\out-tsc\app\app.component.js.map" />
+    <Content Include="dist\out-tsc\app\app.module.js" />
+    <Content Include="dist\out-tsc\app\app.module.js.map" />
+    <Content Include="dist\out-tsc\app\articles-component\article-model.js" />
+    <Content Include="dist\out-tsc\app\articles-component\article-model.js.map" />
+    <Content Include="dist\out-tsc\app\articles-component\categories.js" />
+    <Content Include="dist\out-tsc\app\articles-component\categories.js.map" />
+    <Content Include="dist\out-tsc\app\articles-component\products.component.js" />
+    <Content Include="dist\out-tsc\app\articles-component\products.component.js.map" />
+    <Content Include="dist\out-tsc\app\articles-component\products.js" />
+    <Content Include="dist\out-tsc\app\articles-component\products.js.map" />
+    <Content Include="dist\out-tsc\app\articles-component\products.service.js" />
+    <Content Include="dist\out-tsc\app\articles-component\products.service.js.map" />
+    <Content Include="dist\out-tsc\app\authors-component\author-edit.service.js" />
+    <Content Include="dist\out-tsc\app\authors-component\author-edit.service.js.map" />
+    <Content Include="dist\out-tsc\app\authors-component\author-model.js" />
+    <Content Include="dist\out-tsc\app\authors-component\author-model.js.map" />
+    <Content Include="dist\out-tsc\app\authors-component\authors-component.js" />
+    <Content Include="dist\out-tsc\app\authors-component\authors-component.js.map" />
+    <Content Include="dist\out-tsc\app\home-component\home.component.js" />
+    <Content Include="dist\out-tsc\app\home-component\home.component.js.map" />
+    <Content Include="dist\out-tsc\environments\environment.js" />
+    <Content Include="dist\out-tsc\environments\environment.js.map" />
+    <Content Include="dist\out-tsc\environments\environment.prod.js" />
+    <Content Include="dist\out-tsc\environments\environment.prod.js.map" />
+    <Content Include="dist\out-tsc\main.js" />
+    <Content Include="dist\out-tsc\main.js.map" />
+    <Content Include="dist\out-tsc\polyfills.js" />
+    <Content Include="dist\out-tsc\polyfills.js.map" />
+    <Content Include="dist\out-tsc\test.js" />
+    <Content Include="dist\out-tsc\test.js.map" />
+    <Content Include="dist\polyfills.bundle.js" />
+    <Content Include="dist\polyfills.bundle.js.map" />
+    <Content Include="dist\styles.bundle.js" />
+    <Content Include="dist\styles.bundle.js.map" />
+    <Content Include="dist\vendor.bundle.js" />
+    <Content Include="dist\vendor.bundle.js.map" />
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\articles-component\articlesView.html" />
+    <Content Include="src\app\authors-component\authorsView.html" />
+    <Content Include="src\app\books-component\booksVIew.html" />
+    <Content Include="src\app\home-component\home.component.html" />
+    <Content Include="src\app\journals-component\journalsView.html" />
+    <Content Include="src\app\layout-navbar\styles.css" />
+    <Content Include="src\app\layout.css" />
+    <Content Include="src\app\publishers-component\publishersView.html" />
+    <Content Include="src\assets\.gitkeep" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="src\styles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\app\lazy\articles\" />
+    <Folder Include="src\app\lazy\authors\" />
+    <Folder Include="src\app\lazy\books\" />
+    <Folder Include="src\app\lazy\journals\" />
+    <Folder Include="src\app\lazy\publishers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CRUD.DataAccess\CRUD.DataAccess.csproj" />
+    <ProjectReference Include="..\CRUD.Services\CRUD.Services.csproj" />
+    <ProjectReference Include="..\CRUD.Views\CRUD.Views.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\articles-component\articleModel.ts" />
+    <TypeScriptCompile Include="src\app\articles-component\articlesComponent.ts" />
+    <TypeScriptCompile Include="src\app\articles-component\articlesService.ts" />
+    <TypeScriptCompile Include="src\app\author.module.ts" />
+    <TypeScriptCompile Include="src\app\authors-component\authorModel.ts" />
+    <TypeScriptCompile Include="src\app\authors-component\authorsComponent.ts" />
+    <TypeScriptCompile Include="src\app\authors-component\authorsService.ts" />
+    <TypeScriptCompile Include="src\app\books-component\bookModel.ts" />
+    <TypeScriptCompile Include="src\app\books-component\booksComponent.ts" />
+    <TypeScriptCompile Include="src\app\books-component\booksService.ts" />
+    <TypeScriptCompile Include="src\app\home-component\home.component.ts" />
+    <TypeScriptCompile Include="src\app\journals-component\journalModel.ts" />
+    <TypeScriptCompile Include="src\app\journals-component\journalsComponent.ts" />
+    <TypeScriptCompile Include="src\app\journals-component\journalsService.ts" />
+    <TypeScriptCompile Include="src\app\publishers-component\publisherModel.ts" />
+    <TypeScriptCompile Include="src\app\publishers-component\publishersComponent.ts" />
+    <TypeScriptCompile Include="src\app\publishers-component\publishersService.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+
+</Project>

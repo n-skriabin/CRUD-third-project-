@@ -10,7 +10,7 @@ import { Author } from '../authors-component/authorModel';
 import { AuthorsService } from '../authors-component/authorsService';
 
 @Component({
-  /* selector: 'app-authors', */
+  selector: 'app-authors',
   templateUrl: './authorsView.html',
 })
 
