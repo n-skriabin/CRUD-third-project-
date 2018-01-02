@@ -21,15 +21,15 @@ var forms_2 = require("@angular/forms");
 var kendo_angular_grid_1 = require("@progress/kendo-angular-grid");
 var authorsService_1 = require("./authors-component/authorsService");
 /* import { AuthorsComponent } from './authors-component/authorsComponent'; */
-var articlesComponent_1 = require("../app/articles-component/articlesComponent");
+/* import { ArticlesComponent } from '../app/articles-component/articlesComponent'; */
 var kendo_angular_popup_1 = require("@progress/kendo-angular-popup");
 var articlesService_1 = require("../app/articles-component/articlesService");
 var kendo_angular_dropdowns_1 = require("@progress/kendo-angular-dropdowns");
-var booksComponent_1 = require("./books-component/booksComponent");
+/* import { BooksComponent } from './books-component/booksComponent'; */
 var booksService_1 = require("./books-component/booksService");
-var journalsComponent_1 = require("./journals-component/journalsComponent");
+/* import { JournalsComponent } from './journals-component/journalsComponent'; */
 var journalsService_1 = require("./journals-component/journalsService");
-var publishersComponent_1 = require("./publishers-component/publishersComponent");
+/* import { PublishersComponent } from './publishers-component/publishersComponent'; */
 var publishersService_1 = require("./publishers-component/publishersService");
 //import { AuthorsRouting } from './lazy/authors/author.routing';
 var AppModule = /** @class */ (function () {
@@ -40,11 +40,6 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                /* AuthorsComponent, */
-                articlesComponent_1.ArticlesComponent,
-                booksComponent_1.BooksComponent,
-                journalsComponent_1.JournalsComponent,
-                publishersComponent_1.PublishersComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

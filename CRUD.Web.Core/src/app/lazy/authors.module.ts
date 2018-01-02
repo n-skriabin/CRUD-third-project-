@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthorsComponent } from './authors-component/authorsComponent';
+import { AuthorsComponent } from '../authors-component/authorsComponent';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, Router } from "@angular/router";
 import { GridModule } from '@progress/kendo-angular-grid/dist/es/grid.module';
@@ -16,9 +16,4 @@ const routes: Routes = [
 })
 
 export class AuthorsModule {
-/*   private router: Router;
-
-    constructor(router: Router) {
-        this.router = router;
-    } */
 }
