@@ -20,7 +20,7 @@ var http_1 = require("@angular/common/http");
 var forms_2 = require("@angular/forms");
 var kendo_angular_grid_1 = require("@progress/kendo-angular-grid");
 var authorsService_1 = require("./authors-component/authorsService");
-var authorsComponent_1 = require("./authors-component/authorsComponent");
+/* import { AuthorsComponent } from './authors-component/authorsComponent'; */
 var articlesComponent_1 = require("../app/articles-component/articlesComponent");
 var kendo_angular_popup_1 = require("@progress/kendo-angular-popup");
 var articlesService_1 = require("../app/articles-component/articlesService");
@@ -40,7 +40,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                authorsComponent_1.AuthorsComponent,
+                /* AuthorsComponent, */
                 articlesComponent_1.ArticlesComponent,
                 booksComponent_1.BooksComponent,
                 journalsComponent_1.JournalsComponent,

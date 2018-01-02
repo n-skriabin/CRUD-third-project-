@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var authorsComponent_1 = require("./authors-component/authorsComponent");
 var common_1 = require("@angular/common");
 var router_1 = require("@angular/router");
+var grid_module_1 = require("@progress/kendo-angular-grid/dist/es/grid.module");
 var routes = [
     { path: 'load-AuthorsTable', component: authorsComponent_1.AuthorsComponent }
 ];
@@ -18,7 +19,7 @@ var AuthorsModule = /** @class */ (function () {
     }
     AuthorsModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule.forChild(routes), common_1.CommonModule],
+            imports: [router_1.RouterModule.forChild(routes), common_1.CommonModule, grid_module_1.GridModule],
             declarations: [authorsComponent_1.AuthorsComponent]
         })
     ], AuthorsModule);

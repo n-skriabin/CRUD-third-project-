@@ -9,8 +9,8 @@ import { PublishersComponent } from './publishers-component/publishersComponent'
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },
-    //{ path: 'Authors', loadChildren: './author.module#AuthorsModule' },
-    { path: 'Authors', component: AuthorsComponent }, 
+    { path: 'Authors', loadChildren: './author.module#AuthorsModule' },
+    //{ path: 'Authors', component: AuthorsComponent }, 
     { path: 'Articles', component: ArticlesComponent },
     { path: 'Books', component: BooksComponent },
     { path: 'Journals', component: JournalsComponent},

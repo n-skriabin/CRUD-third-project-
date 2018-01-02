@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { GridModule } from '@progress/kendo-angular-grid';
 import { AuthorsService } from './authors-component/authorsService';
-import { AuthorsComponent } from './authors-component/authorsComponent';
+/* import { AuthorsComponent } from './authors-component/authorsComponent'; */
 import { ArticlesComponent } from '../app/articles-component/articlesComponent';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { ArticlesService } from '../app/articles-component/articlesService';
@@ -32,7 +32,7 @@ import { PublishersService } from './publishers-component/publishersService';
   declarations: [
     AppComponent,
     HomeComponent,
-    AuthorsComponent,
+    /* AuthorsComponent, */
     ArticlesComponent,
     BooksComponent,
     JournalsComponent,

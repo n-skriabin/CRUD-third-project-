@@ -1,19 +1,27 @@
 webpackJsonp(["main"],{
 
 /***/ "../../../../../src/$$_lazy_route_resource lazy recursive":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
+var map = {
+	"./author.module": [
+		"../../../../../src/app/author.module.ts",
+		"author.module"
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
 	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy recursive";
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy recursive";
+module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -26,12 +34,10 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return panelbarRouting; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__ = __webpack_require__("../../../../../src/app/home-component/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_authors_component_authorsComponent__ = __webpack_require__("../../../../../src/app/authors-component/authorsComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_articles_component_articlesComponent__ = __webpack_require__("../../../../../src/app/articles-component/articlesComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__books_component_booksComponent__ = __webpack_require__("../../../../../src/app/books-component/booksComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__journals_component_journalsComponent__ = __webpack_require__("../../../../../src/app/journals-component/journalsComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__publishers_component_publishersComponent__ = __webpack_require__("../../../../../src/app/publishers-component/publishersComponent.ts");
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_articles_component_articlesComponent__ = __webpack_require__("../../../../../src/app/articles-component/articlesComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__books_component_booksComponent__ = __webpack_require__("../../../../../src/app/books-component/booksComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__journals_component_journalsComponent__ = __webpack_require__("../../../../../src/app/journals-component/journalsComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__publishers_component_publishersComponent__ = __webpack_require__("../../../../../src/app/publishers-component/publishersComponent.ts");
 
 
 
@@ -40,12 +46,12 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 var PanelbarRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__["a" /* HomeComponent */] },
-    //{ path: 'Authors', loadChildren: './author.module#AuthorsModule' },
-    { path: 'Authors', component: __WEBPACK_IMPORTED_MODULE_2__app_authors_component_authorsComponent__["a" /* AuthorsComponent */] },
-    { path: 'Articles', component: __WEBPACK_IMPORTED_MODULE_3__app_articles_component_articlesComponent__["a" /* ArticlesComponent */] },
-    { path: 'Books', component: __WEBPACK_IMPORTED_MODULE_4__books_component_booksComponent__["a" /* BooksComponent */] },
-    { path: 'Journals', component: __WEBPACK_IMPORTED_MODULE_5__journals_component_journalsComponent__["a" /* JournalsComponent */] },
-    { path: 'Publishers', component: __WEBPACK_IMPORTED_MODULE_6__publishers_component_publishersComponent__["a" /* PublishersComponent */] }
+    { path: 'Authors', loadChildren: './author.module#AuthorsModule' },
+    //{ path: 'Authors', component: AuthorsComponent }, 
+    { path: 'Articles', component: __WEBPACK_IMPORTED_MODULE_2__app_articles_component_articlesComponent__["a" /* ArticlesComponent */] },
+    { path: 'Books', component: __WEBPACK_IMPORTED_MODULE_3__books_component_booksComponent__["a" /* BooksComponent */] },
+    { path: 'Journals', component: __WEBPACK_IMPORTED_MODULE_4__journals_component_journalsComponent__["a" /* JournalsComponent */] },
+    { path: 'Publishers', component: __WEBPACK_IMPORTED_MODULE_5__publishers_component_publishersComponent__["a" /* PublishersComponent */] }
 ];
 var appRoutingProviders = [];
 var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(PanelbarRoutes);
@@ -56,7 +62,7 @@ var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Route
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout\">\r\n  <!-- <div class=\"navigation-pane\">\r\n    <kendo-panelbar>\r\n      <kendo-panelbar-item *ngFor=\"let route of router.config\"\r\n                           [id]=\"route.path\"\r\n                           [title]=\"route.path ? route.path : 'Home'\"\r\n                           [routerLink]=\"route.path\">\r\n      </kendo-panelbar-item>\r\n    </kendo-panelbar>\r\n  </div> -->\r\n  <ul>\r\n    <li><a routerLink=''>Home</a></li>\r\n    <li><a routerLink='Authors'>Authors</a></li>\r\n    <li><a routerLink='Articles'>Articles</a></li>\r\n    <li><a routerLink='Books'>Books</a></li>\r\n    <li><a routerLink='Journals'>Journals</a></li>\r\n    <li><a routerLink='Publishers'>Publishers</a></li>\r\n  </ul>\r\n  <!-- <div class=\"content-pane\"> -->\r\n    <router-outlet></router-outlet>\r\n  <!-- </div> -->\r\n</div>\r\n"
+module.exports = "<div class=\"layout\">\r\n  <!-- <div class=\"navigation-pane\">\r\n    <kendo-panelbar>\r\n      <kendo-panelbar-item *ngFor=\"let route of router.config\"\r\n                           [id]=\"route.path\"\r\n                           [title]=\"route.path ? route.path : 'Home'\"\r\n                           [routerLink]=\"route.path\">\r\n      </kendo-panelbar-item>\r\n    </kendo-panelbar>\r\n  </div> -->\r\n  <ul>\r\n    <li><a routerLink=''>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles'>Articles</a></li>\r\n    <li><a routerLink='Books'>Books</a></li>\r\n    <li><a routerLink='Journals'>Journals</a></li>\r\n    <li><a routerLink='Publishers'>Publishers</a></li>\r\n  </ul>\r\n  <!-- <div class=\"content-pane\"> -->\r\n    <router-outlet></router-outlet>\r\n  <!-- </div> -->\r\n</div>\r\n"
 
 /***/ }),
 
@@ -115,17 +121,16 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__ = __webpack_require__("../../../../@progress/kendo-angular-grid/dist/es/main.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__authors_component_authorsService__ = __webpack_require__("../../../../../src/app/authors-component/authorsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__authors_component_authorsComponent__ = __webpack_require__("../../../../../src/app/authors-component/authorsComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_articles_component_articlesComponent__ = __webpack_require__("../../../../../src/app/articles-component/articlesComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_popup__ = __webpack_require__("../../../../@progress/kendo-angular-popup/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/articles-component/articlesService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__progress_kendo_angular_dropdowns__ = __webpack_require__("../../../../@progress/kendo-angular-dropdowns/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__books_component_booksComponent__ = __webpack_require__("../../../../../src/app/books-component/booksComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__books_component_booksService__ = __webpack_require__("../../../../../src/app/books-component/booksService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__journals_component_journalsComponent__ = __webpack_require__("../../../../../src/app/journals-component/journalsComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__journals_component_journalsService__ = __webpack_require__("../../../../../src/app/journals-component/journalsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__publishers_component_publishersComponent__ = __webpack_require__("../../../../../src/app/publishers-component/publishersComponent.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/publishers-component/publishersService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_articles_component_articlesComponent__ = __webpack_require__("../../../../../src/app/articles-component/articlesComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__progress_kendo_angular_popup__ = __webpack_require__("../../../../@progress/kendo-angular-popup/dist/es/main.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/articles-component/articlesService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__progress_kendo_angular_dropdowns__ = __webpack_require__("../../../../@progress/kendo-angular-dropdowns/dist/es/main.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__books_component_booksComponent__ = __webpack_require__("../../../../../src/app/books-component/booksComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__books_component_booksService__ = __webpack_require__("../../../../../src/app/books-component/booksService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__journals_component_journalsComponent__ = __webpack_require__("../../../../../src/app/journals-component/journalsComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__journals_component_journalsService__ = __webpack_require__("../../../../../src/app/journals-component/journalsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__publishers_component_publishersComponent__ = __webpack_require__("../../../../../src/app/publishers-component/publishersComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/publishers-component/publishersService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -146,7 +151,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
+/* import { AuthorsComponent } from './authors-component/authorsComponent'; */
 
 
 
@@ -166,11 +171,11 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__authors_component_authorsComponent__["a" /* AuthorsComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__app_articles_component_articlesComponent__["a" /* ArticlesComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__books_component_booksComponent__["a" /* BooksComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__journals_component_journalsComponent__["a" /* JournalsComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__publishers_component_publishersComponent__["a" /* PublishersComponent */]
+                /* AuthorsComponent, */
+                __WEBPACK_IMPORTED_MODULE_13__app_articles_component_articlesComponent__["a" /* ArticlesComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__books_component_booksComponent__["a" /* BooksComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__journals_component_journalsComponent__["a" /* JournalsComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__publishers_component_publishersComponent__["a" /* PublishersComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -184,8 +189,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__angular_forms__["g" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__["a" /* GridModule */],
-                __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_popup__["a" /* PopupModule */],
-                __WEBPACK_IMPORTED_MODULE_17__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
+                __WEBPACK_IMPORTED_MODULE_14__progress_kendo_angular_popup__["a" /* PopupModule */],
+                __WEBPACK_IMPORTED_MODULE_16__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
                 __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */],
             ],
             providers: [
@@ -198,23 +203,23 @@ var AppModule = (function () {
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_16__app_articles_component_articlesService__["a" /* ArticlesService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_16__app_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_15__app_articles_component_articlesService__["a" /* ArticlesService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_15__app_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_19__books_component_booksService__["a" /* BooksService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_19__books_component_booksService__["a" /* BooksService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_18__books_component_booksService__["a" /* BooksService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_18__books_component_booksService__["a" /* BooksService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_21__journals_component_journalsService__["a" /* JournalsService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_21__journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_20__journals_component_journalsService__["a" /* JournalsService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_20__journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_23__publishers_component_publishersService__["a" /* PublishersService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_23__publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_22__publishers_component_publishersService__["a" /* PublishersService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_22__publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
                 }
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */]]
@@ -480,109 +485,6 @@ module.exports = "<h3>Articles</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | as
 
 /***/ }),
 
-/***/ "../../../../../src/app/authors-component/authorsComponent.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthorsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__progress_kendo_data_query__ = __webpack_require__("../../../../@progress/kendo-data-query/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__authors_component_authorsService__ = __webpack_require__("../../../../../src/app/authors-component/authorsService.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-
-
-var AuthorsComponent = (function () {
-    function AuthorsComponent(editServiceFactory, titleService) {
-        this.titleService = titleService;
-        this.gridState = {
-            sort: [],
-            skip: 0,
-            take: 10
-        };
-        this.editService = editServiceFactory();
-    }
-    AuthorsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.view = this.editService.map(function (data) { return Object(__WEBPACK_IMPORTED_MODULE_3__progress_kendo_data_query__["d" /* process */])(data, _this.gridState); });
-        this.titleService.setTitle('Authors Page');
-        this.editService.read();
-        console.log('data:');
-        console.log(this.view);
-    };
-    AuthorsComponent.prototype.addHandler = function (_a) {
-        var sender = _a.sender;
-        this.closeEditor(sender);
-        this.formGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            'Id': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](),
-            'FirstName': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required),
-            'LastName': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required),
-            'Patronymic': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](),
-        });
-        sender.addRow(this.formGroup);
-    };
-    AuthorsComponent.prototype.editHandler = function (_a) {
-        var sender = _a.sender, rowIndex = _a.rowIndex, dataItem = _a.dataItem;
-        this.closeEditor(sender);
-        this.formGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            'Id': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](dataItem.Id),
-            'FirstName': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](dataItem.FirstName, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required),
-            'LastName': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](dataItem.LastName, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required),
-            'Patronymic': new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](dataItem.Patronymic),
-        });
-        this.editedRowIndex = rowIndex;
-        sender.editRow(rowIndex, this.formGroup);
-    };
-    AuthorsComponent.prototype.cancelHandler = function (_a) {
-        var sender = _a.sender, rowIndex = _a.rowIndex;
-        this.closeEditor(sender, rowIndex);
-    };
-    AuthorsComponent.prototype.saveHandler = function (_a) {
-        var sender = _a.sender, rowIndex = _a.rowIndex, formGroup = _a.formGroup, isNew = _a.isNew;
-        var author = formGroup.value;
-        this.editService.save(author, isNew);
-        sender.closeRow(rowIndex);
-    };
-    AuthorsComponent.prototype.removeHandler = function (_a) {
-        var dataItem = _a.dataItem;
-        this.editService.remove(dataItem);
-    };
-    AuthorsComponent.prototype.closeEditor = function (grid, rowIndex) {
-        if (rowIndex === void 0) { rowIndex = this.editedRowIndex; }
-        grid.closeRow(rowIndex);
-        this.editedRowIndex = undefined;
-        this.formGroup = undefined;
-    };
-    AuthorsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            selector: 'app-authors',
-            template: __webpack_require__("../../../../../src/app/authors-component/authorsView.html"),
-        }),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__authors_component_authorsService__["a" /* AuthorsService */])),
-        __metadata("design:paramtypes", [Object, __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* Title */]])
-    ], AuthorsComponent);
-    return AuthorsComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/authors-component/authorsService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -712,13 +614,6 @@ var AuthorsService = (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]));
 
 
-
-/***/ }),
-
-/***/ "../../../../../src/app/authors-component/authorsView.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h3>Authors</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | async\"\r\n            [height]=\"533\"\r\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\r\n            [pageable]=\"true\" [sortable]=\"true\"\r\n            (dataStateChange)=\"onStateChange($event)\"\r\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\r\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\r\n            (add)=\"addHandler($event)\">\r\n  <ng-template kendoGridToolbarTemplate>\r\n    <button kendoGridAddCommand>Add new</button>\r\n  </ng-template>\r\n  <kendo-grid-column field=\"FirstName\" title=\"First name\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"Patronymic\" title=\"Patronymic(and/or pseudonim)\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"LastName\" title=\"Last name\"></kendo-grid-column>\r\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\r\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\r\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\r\n      <button kendoGridRemoveCommand>Remove</button>\r\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\r\n      <button kendoGridCancelCommand>Cancel</button>\r\n    </ng-template>\r\n  </kendo-grid-command-column>\r\n</kendo-grid>\r\n"
 
 /***/ }),
 
