@@ -228,9 +228,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\src\.gitignore" />
+    <Content Include="Scripts\src\dist\articles.module.chunk.js" />
+    <Content Include="Scripts\src\dist\authors.module.chunk.js" />
+    <Content Include="Scripts\src\dist\books.module.chunk.js" />
     <Content Include="Scripts\src\dist\favicon.ico" />
     <Content Include="Scripts\src\dist\index.html" />
     <Content Include="Scripts\src\dist\inline.bundle.js" />
+    <Content Include="Scripts\src\dist\journals.module.chunk.js" />
     <Content Include="Scripts\src\dist\main.bundle.js" />
     <Content Include="Scripts\src\dist\out-tsc\app\app-routing.module.js" />
     <Content Include="Scripts\src\dist\out-tsc\app\app.component.js" />
@@ -250,6 +254,7 @@
     <Content Include="Scripts\src\dist\out-tsc\polyfills.js" />
     <Content Include="Scripts\src\dist\out-tsc\test.js" />
     <Content Include="Scripts\src\dist\polyfills.bundle.js" />
+    <Content Include="Scripts\src\dist\publishers.module.chunk.js" />
     <Content Include="Scripts\src\dist\styles.bundle.js" />
     <Content Include="Scripts\src\dist\vendor.bundle.js" />
     <Content Include="Scripts\src\karma.conf.js" />
@@ -313,6 +318,11 @@
     <Content Include="Scripts\src\tslint.json" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\src\dist\articles.module.chunk.js.map" />
+    <Content Include="Scripts\src\dist\authors.module.chunk.js.map" />
+    <Content Include="Scripts\src\dist\books.module.chunk.js.map" />
+    <Content Include="Scripts\src\dist\journals.module.chunk.js.map" />
+    <Content Include="Scripts\src\dist\publishers.module.chunk.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,11 +361,6 @@
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsService.ts" />
-    <Content Include="Scripts\src\src\app\lazy\articles.module.ts" />
-    <Content Include="Scripts\src\src\app\lazy\authors.module.ts" />
-    <Content Include="Scripts\src\src\app\lazy\books.module.ts" />
-    <Content Include="Scripts\src\src\app\lazy\journals.module.ts" />
-    <Content Include="Scripts\src\src\app\lazy\publishers.module.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publisherModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersService.ts" />

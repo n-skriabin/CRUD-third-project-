@@ -19,11 +19,21 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BooksService } from './books-component/booksService';
 import { JournalsService } from './journals-component/journalsService';
 import { PublishersService } from './publishers-component/publishersService';
+import { AuthorsComponent } from './authors-component/authorsComponent';
+import { ArticlesComponent } from './articles-component/articlesComponent';
+import { BooksComponent } from './books-component/booksComponent';
+import { JournalsComponent } from './journals-component/journalsComponent';
+import { PublishersComponent } from './publishers-component/publishersComponent';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AuthorsComponent,
+    ArticlesComponent,
+    BooksComponent,
+    JournalsComponent,
+    PublishersComponent
   ],
 
   imports: [
