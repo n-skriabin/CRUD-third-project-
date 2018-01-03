@@ -317,11 +317,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\src\src\app\lazy\articles\" />
-    <Folder Include="Scripts\src\src\app\lazy\authors\" />
-    <Folder Include="Scripts\src\src\app\lazy\books\" />
-    <Folder Include="Scripts\src\src\app\lazy\journals\" />
-    <Folder Include="Scripts\src\src\app\lazy\publishers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -356,7 +351,11 @@
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\journals-component\journalsService.ts" />
-    <TypeScriptCompile Include="Scripts\src\src\app\author.module.ts" />
+    <Content Include="Scripts\src\src\app\lazy\articles.module.ts" />
+    <Content Include="Scripts\src\src\app\lazy\authors.module.ts" />
+    <Content Include="Scripts\src\src\app\lazy\books.module.ts" />
+    <Content Include="Scripts\src\src\app\lazy\journals.module.ts" />
+    <Content Include="Scripts\src\src\app\lazy\publishers.module.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publisherModel.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersComponent.ts" />
     <TypeScriptCompile Include="Scripts\src\src\app\publishers-component\publishersService.ts" />

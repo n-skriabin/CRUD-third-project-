@@ -8,10 +8,11 @@ import { State, process } from '@progress/kendo-data-query';
 
 import { Author } from '../authors-component/authorModel';
 import { AuthorsService } from '../authors-component/authorsService';
+import { GridModule } from '@progress/kendo-angular-grid/dist/es/grid.module';
 
 @Component({
-  selector: 'app-authors',
-  templateUrl: './authorsView.html',
+    selector: 'app-authors',
+    templateUrl: './authorsView.html',
 })
 
 export class AuthorsComponent implements OnInit {
@@ -33,7 +34,7 @@ export class AuthorsComponent implements OnInit {
   public ngOnInit(): void {
     this.view = this.editService.map(data => process(data, this.gridState));
     this.titleService.setTitle('Authors Page');
-    this.editService.read();
+      this.editService.read();
   }
 
   public addHandler({ sender }) {

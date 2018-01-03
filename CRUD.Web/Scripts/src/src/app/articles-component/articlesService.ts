@@ -32,7 +32,6 @@ export class ArticlesService extends BehaviorSubject<any[]> {
         this.fetch(READ_ACTION)
           .do(data => {
             this.data = data;
-            console.log(data);
           })
           .subscribe(data => {
             super.next(data);

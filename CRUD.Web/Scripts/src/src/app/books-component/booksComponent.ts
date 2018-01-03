@@ -110,7 +110,6 @@ export class BooksComponent implements OnInit {
 
   public saveHandler({ sender, rowIndex, formGroup, isNew }) {
     const book: Book = formGroup.value;
-    console.log(this.selectedItems);
     book.AuthorIds = [];
     if(this.selectedItems !== undefined){
       for(let i = 0;i < this.selectedItems.length; i++){

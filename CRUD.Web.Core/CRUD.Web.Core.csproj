@@ -6,6 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="src\app\lazy\articles\**" />
+    <Compile Remove="src\app\lazy\authors\**" />
+    <Compile Remove="src\app\lazy\books\**" />
+    <Compile Remove="src\app\lazy\journals\**" />
+    <Compile Remove="src\app\lazy\publishers\**" />
+    <Content Remove="src\app\lazy\articles\**" />
+    <Content Remove="src\app\lazy\authors\**" />
+    <Content Remove="src\app\lazy\books\**" />
+    <Content Remove="src\app\lazy\journals\**" />
+    <Content Remove="src\app\lazy\publishers\**" />
+    <EmbeddedResource Remove="src\app\lazy\articles\**" />
+    <EmbeddedResource Remove="src\app\lazy\authors\**" />
+    <EmbeddedResource Remove="src\app\lazy\books\**" />
+    <EmbeddedResource Remove="src\app\lazy\journals\**" />
+    <EmbeddedResource Remove="src\app\lazy\publishers\**" />
+    <None Remove="src\app\lazy\articles\**" />
+    <None Remove="src\app\lazy\authors\**" />
+    <None Remove="src\app\lazy\books\**" />
+    <None Remove="src\app\lazy\journals\**" />
+    <None Remove="src\app\lazy\publishers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="dist\favicon.ico" />
     <Content Include="dist\index.html" />
     <Content Include="dist\inline.bundle.js" />
@@ -80,14 +103,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\app\lazy\articles\" />
-    <Folder Include="src\app\lazy\authors\" />
-    <Folder Include="src\app\lazy\books\" />
-    <Folder Include="src\app\lazy\journals\" />
-    <Folder Include="src\app\lazy\publishers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CRUD.Services\CRUD.Services.csproj" />
     <ProjectReference Include="..\CRUD.Views\CRUD.Views.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
@@ -100,7 +115,6 @@
     <TypeScriptCompile Include="src\app\articles-component\articleModel.ts" />
     <TypeScriptCompile Include="src\app\articles-component\articlesComponent.ts" />
     <TypeScriptCompile Include="src\app\articles-component\articlesService.ts" />
-    <TypeScriptCompile Include="src\app\author.module.ts" />
     <TypeScriptCompile Include="src\app\authors-component\authorModel.ts" />
     <TypeScriptCompile Include="src\app\authors-component\authorsComponent.ts" />
     <TypeScriptCompile Include="src\app\authors-component\authorsService.ts" />
