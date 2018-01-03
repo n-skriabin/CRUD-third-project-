@@ -9,5 +9,10 @@ namespace CRUD.Views
     public class BaseEntityViewModel
     {
         public string Id { get; set; }
+
+        public string GetId()
+        {
+            return Guid.NewGuid().ToString();
+        }
     }
 }

@@ -23,7 +23,8 @@ namespace CRUD.Services
 
         public void Create(AuthorViewModel authorViewModel)
         {
-            authorViewModel.Id = Guid.NewGuid().ToString();
+
+            authorViewModel.Id = authorViewModel.GetId();
             Author author = new Author
             {
                 Id = Guid.Parse(authorViewModel.Id),

@@ -40,7 +40,7 @@ namespace CRUD.Services
 
         public void Create(ArticleViewModel articleViewModel)
         {
-            articleViewModel.Id = Guid.NewGuid().ToString();
+            articleViewModel.Id = articleViewModel.GetId();
             articleViewModel.Abbreviated = _authorRepository.GetAuthor(Guid.Parse(articleViewModel.AuthorId)).Abbreviated;
             var article = ViewModelToDomain(articleViewModel);
             _articleRepository.Create(article);

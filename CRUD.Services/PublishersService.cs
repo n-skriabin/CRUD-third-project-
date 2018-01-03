@@ -49,7 +49,7 @@ namespace CRUD.Services
 
         public PublisherViewModel Create(PostPublisherViewModel postPublisherViewModel)
         {
-            postPublisherViewModel.Id = Guid.NewGuid().ToString();
+            postPublisherViewModel.Id = postPublisherViewModel.GetId();
 
             var publisher = ViewModelToDomain(postPublisherViewModel);
             _publisherRepository.Create(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
