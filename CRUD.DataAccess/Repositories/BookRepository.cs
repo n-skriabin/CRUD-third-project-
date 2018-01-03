@@ -27,7 +27,7 @@ namespace CRUD.DataAccess.Repositories
             return books;
         }
 
-        public void Create(Book book, List<Guid> authorsListIds)
+        public void Create(Book book, List<string> authorsListIds)
         {
             AddBookInBooksAuthors(book, authorsListIds);
 
@@ -35,7 +35,7 @@ namespace CRUD.DataAccess.Repositories
             _db.Query(query, new { Id = book.Id, Name = book.Name, Year = book.Year });
         }
 
-        public void Update(Book newRecord, List<Guid> authorsListIds)
+        public void Update(Book newRecord, List<string> authorsListIds)
         {
             DeleteBook(newRecord.Id);
 
@@ -78,7 +78,7 @@ namespace CRUD.DataAccess.Repositories
             return booksList;
         }
 
-        public void AddBookInBooksAuthors(Book book, List<Guid> authorsListId)
+        public void AddBookInBooksAuthors(Book book, List<string> authorsListId)
         {
             foreach (var authorID in authorsListId)
             {
@@ -86,7 +86,7 @@ namespace CRUD.DataAccess.Repositories
                 {
                     Id = Guid.NewGuid(),
                     BookId = book.Id,
-                    AuthorId = authorID,
+                    AuthorId = Guid.Parse(authorID),
                 };
 
                 string query = "INSERT INTO BooksAuthors (Id, BookId, AuthorId) VALUES (@Id, @BookId, @AuthorId)";

@@ -40,15 +40,15 @@ namespace CRUD.Services
 
         public void Create(ArticleViewModel articleViewModel)
         {
-            articleViewModel.Id = Guid.NewGuid();
-            articleViewModel.Abbreviated = _authorRepository.GetAuthor(articleViewModel.AuthorId).Abbreviated;
+            articleViewModel.Id = Guid.NewGuid().ToString();
+            articleViewModel.Abbreviated = _authorRepository.GetAuthor(Guid.Parse(articleViewModel.AuthorId)).Abbreviated;
             var article = ViewModelToDomain(articleViewModel);
             _articleRepository.Create(article);
         }
 
         public void Update(ArticleViewModel articleViewModel)
         {
-            articleViewModel.Abbreviated = _authorRepository.GetAuthor(articleViewModel.AuthorId).Abbreviated;
+            articleViewModel.Abbreviated = _authorRepository.GetAuthor(Guid.Parse(articleViewModel.AuthorId)).Abbreviated;
             var article = ViewModelToDomain(articleViewModel);
             _articleRepository.Update(article);
         }
@@ -70,7 +70,7 @@ namespace CRUD.Services
 
         public void Delete(ArticleViewModel articleViewModel)
         {
-            _articleRepository.Delete(articleViewModel.Id);
+            _articleRepository.Delete(Guid.Parse(articleViewModel.Id));
         }
 
         public Guid ToGuid(Guid? source)
@@ -82,10 +82,10 @@ namespace CRUD.Services
         {
             Article article = new Article()
             {
-                Id = articleViewModel.Id,
+                Id = Guid.Parse(articleViewModel.Id),
                 Name = articleViewModel.Name,
                 Year = articleViewModel.Year,
-                AuthorId = articleViewModel.AuthorId,
+                AuthorId = Guid.Parse(articleViewModel.AuthorId),
             };
 
             return article;
@@ -95,8 +95,8 @@ namespace CRUD.Services
         {
             ArticleViewModel articleViewModel = new ArticleViewModel
             {
-                Id = article.Id,
-                AuthorId = ToGuid(article.AuthorId),
+                Id = article.Id.ToString(),
+                AuthorId = article.AuthorId.ToString(),
                 Name = article.Name,
                 Year = article.Year,
                 Abbreviated = Abbreviated,

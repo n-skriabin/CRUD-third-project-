@@ -38,7 +38,10 @@ namespace CRUD.Web.Core
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "api/{controller}/{action}/{id?}");
+            });
         }
     }
 }

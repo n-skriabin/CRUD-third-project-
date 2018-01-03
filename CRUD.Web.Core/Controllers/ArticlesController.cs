@@ -8,26 +8,23 @@ using CRUD.Services;
 using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
+using CRUD.Web.Core;
 
 namespace CRUD.Web.Controllers
 {
-    [Route("api/[controller]/[action]")]
     public class ArticlesController : Controller
     {
-        ArticlesService articlesService;
-        private readonly IConfiguration _configuration;
+        private ArticlesService _articlesService;
 
         public ArticlesController(IConfiguration configuration)
         {
-            _configuration = configuration;
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            articlesService = new ArticlesService(connectionString);
+            _articlesService = new ArticlesService(ConnectionString.GetConnectionString(configuration));
         }
 
         [HttpGet]
         public List<ArticleViewModel> Read()
         {
-            var articles = articlesService.Read();
+            var articles = _articlesService.Read();
             if (articles == null)
             {
                 return null;
@@ -36,21 +33,24 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public void Create(ArticleViewModel articleViewModel)
+        public IActionResult Create([FromBody]ArticleViewModel articleViewModel)
         {
-            articlesService.Create(articleViewModel);
+            _articlesService.Create(articleViewModel);
+            return Ok(articleViewModel);
         }
 
         [HttpPost]
-        public void Update(ArticleViewModel articleViewModel)
+        public IActionResult Update([FromBody]ArticleViewModel articleViewModel)
         {
-            articlesService.Update(articleViewModel);
+            _articlesService.Update(articleViewModel);
+            return Ok(articleViewModel);
         }
 
         [HttpPost]
-        public void Delete(ArticleViewModel articleViewModel)
+        public IActionResult Delete([FromBody]ArticleViewModel articleViewModel)
         {
-            articlesService.Delete(articleViewModel);
+            _articlesService.Delete(articleViewModel);
+            return Ok();
         }
     }
 }

@@ -23,10 +23,10 @@ namespace CRUD.Services
 
         public void Create(AuthorViewModel authorViewModel)
         {
-            authorViewModel.Id = Guid.NewGuid();
+            authorViewModel.Id = Guid.NewGuid().ToString();
             Author author = new Author
             {
-                Id = authorViewModel.Id,
+                Id = Guid.Parse(authorViewModel.Id),
                 FirstName = authorViewModel.FirstName,
                 LastName = authorViewModel.LastName,
                 Patronymic = authorViewModel.Patronymic,
@@ -39,7 +39,7 @@ namespace CRUD.Services
         {
             Author newRecord = new Author
             {
-                Id = authorViewModel.Id,
+                Id = Guid.Parse(authorViewModel.Id),
                 FirstName = authorViewModel.FirstName,
                 LastName = authorViewModel.LastName,
                 Patronymic = authorViewModel.Patronymic,

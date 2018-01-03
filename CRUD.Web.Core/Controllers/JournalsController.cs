@@ -8,55 +8,55 @@ using CRUD.Services;
 using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
+using CRUD.Web.Core;
 
 namespace CRUD.Web.Controllers
 {
-    [Route("api/[controller]/[action]")]
     public class JournalsController : Controller
     {
-        JournalsService journalsService;
-        private readonly IConfiguration _configuration;
+        private JournalsService _journalsService;
 
         public JournalsController(IConfiguration configuration)
         {
-            _configuration = configuration;
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            journalsService = new JournalsService(connectionString);
+            _journalsService = new JournalsService(ConnectionString.GetConnectionString(configuration));
         }
 
         [HttpGet]
-        public List<JournalViewModel> Read()
+        public IActionResult Read()
         {
-            var journals = journalsService.Read();
+            var journals = _journalsService.Read();
             if (journals == null)
             {
                 return null;
             }
-            return journals;
+            return Ok(journals);
         }
 
         [HttpPost]
-        public void Create(PostJournalViewModel postJournalViewModel)
+        public IActionResult Create([FromBody]PostJournalViewModel postJournalViewModel)
         {
-            journalsService.Create(postJournalViewModel);
+            _journalsService.Create(postJournalViewModel);
+            return Ok(postJournalViewModel);
         }
 
         [HttpPost]
-        public void Update(PostJournalViewModel postJournalViewModel)
+        public IActionResult Update([FromBody]PostJournalViewModel postJournalViewModel)
         {
-            journalsService.Update(postJournalViewModel);
+            _journalsService.Update(postJournalViewModel);
+            return Ok(postJournalViewModel);
         }
 
         [HttpPost]
-        public void Delete(JournalViewModel journalViewModel)
+        public IActionResult Delete([FromBody]JournalViewModel journalViewModel)
         {
-            journalsService.Delete(journalViewModel);
+            _journalsService.Delete(journalViewModel);
+            return Ok();
         }
 
         [HttpPost]
-        public List<JournalViewModel> ReadJournalsForMultiselect(JournalViewModel journalViewModel)
+        public IActionResult ReadJournalsForMultiselect([FromBody]JournalViewModel journalViewModel)
         {
-            return journalsService.Read();
+            return Ok(_journalsService.Read());
         }
     }
 }

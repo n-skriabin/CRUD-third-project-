@@ -45,9 +45,9 @@ namespace CRUD.Web.Controllers
     [HttpPost]
     public IHttpActionResult Delete(AuthorViewModel authorViewModel)
     {
-      var Id = authorViewModel.Id;
-      _authorsService.Delete(authorViewModel.Id);
-      return Ok(Id);
+        var Id = Guid.Parse(authorViewModel.Id);
+        _authorsService.Delete(Id);
+        return Ok(Id);
     }
   }
 }

@@ -53,7 +53,7 @@ namespace CRUD.DataAccess.Repositories
             return article;
         }
 
-        public List<Article> GetArticles(List<Guid> articlesIds)
+        public List<Article> GetArticles(List<string> articlesIds)
         {
             string query = "SELECT * FROM Articles WHERE Id IN @arrayIds";
             var arrayIds = articlesIds.ToArray();

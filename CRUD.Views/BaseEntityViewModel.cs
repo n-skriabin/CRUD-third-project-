@@ -8,6 +8,6 @@ namespace CRUD.Views
 {
     public class BaseEntityViewModel
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
     }
 }

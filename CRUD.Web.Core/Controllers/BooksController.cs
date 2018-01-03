@@ -9,57 +9,55 @@ using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
+using CRUD.Web.Core;
 
 namespace CRUD.Web.Controllers
 {
-    [Route("api/[controller]/[action]")]
     public class BooksController : Controller
     {
-        BooksService booksService;
-        private readonly IConfiguration _configuration;
+        private BooksService _booksService;
 
         public BooksController(IConfiguration configuration)
         {
-            _configuration = configuration;
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            booksService = new BooksService(connectionString);
+            _booksService = new BooksService(ConnectionString.GetConnectionString(configuration));
         }
 
         [HttpGet]
-        public List<BookViewModel> Read()
+        public IActionResult Read()
         {
-            var books = booksService.Read();
+            var books = _booksService.Read();
             if (books == null)
             {
                 return null;
             }
-            return books;
+            return Ok(books);
         }
 
         [HttpPost]
-        public BookViewModel Create(PostBookViewModel postBookViewModel)
+        public IActionResult Create([FromBody]PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = booksService.Create(postBookViewModel);
-            return bookViewModel;
+            var bookViewModel = _booksService.Create(postBookViewModel);
+            return Ok(bookViewModel);
         }
 
         [HttpPost]
-        public BookViewModel Update(PostBookViewModel postBookViewModel)
+        public IActionResult Update([FromBody]PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = booksService.Update(postBookViewModel);
-            return bookViewModel;
+            var bookViewModel = _booksService.Update(postBookViewModel);
+            return Ok(bookViewModel);
         }
 
         [HttpPost]
-        public void Delete(BookViewModel bookViewModel)
+        public IActionResult Delete([FromBody]BookViewModel bookViewModel)
         {
-            booksService.Delete(bookViewModel);
+            _booksService.Delete(bookViewModel);
+            return Ok();
         }
 
         [HttpPost]
-        public List<BookViewModel> ReadBooksForMultiselect(BookViewModel bookViewModel)
+        public IActionResult ReadBooksForMultiselect([FromBody]BookViewModel bookViewModel)
         {
-            return booksService.Read();
+            return Ok(_booksService.Read());
         }
     }
 }

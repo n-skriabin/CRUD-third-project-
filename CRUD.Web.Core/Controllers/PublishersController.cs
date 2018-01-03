@@ -9,49 +9,49 @@ using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
+using CRUD.Web.Core;
 
 namespace CRUD.Web.Controllers
 {
-    [Route("api/[controller]/[action]")]
     public class PublishersController : Controller
     {
-        PublishersService publishersService;
-        private readonly IConfiguration _configuration;
+        private PublishersService _publishersService;
 
         public PublishersController(IConfiguration configuration)
         {
-            _configuration = configuration;
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            publishersService = new PublishersService(connectionString);
+            _publishersService = new PublishersService(ConnectionString.GetConnectionString(configuration));
         }
 
         [HttpGet]
-        public List<PublisherViewModel> Read()
+        public IActionResult Read()
         {
-            var publishers = publishersService.Read();
+            var publishers = _publishersService.Read();
             if (publishers == null)
             {
                 return null;
             }
-            return publishers;
+            return Ok(publishers);
         }
 
         [HttpPost]
-        public void Create(PostPublisherViewModel postPublisherViewModel)
+        public IActionResult Create([FromBody]PostPublisherViewModel postPublisherViewModel)
         {
-            publishersService.Create(postPublisherViewModel);
+            _publishersService.Create(postPublisherViewModel);
+            return Ok(postPublisherViewModel);
         }
 
         [HttpPost]
-        public void Update(PostPublisherViewModel postPublisherViewModel)
+        public IActionResult Update([FromBody]PostPublisherViewModel postPublisherViewModel)
         {
-            publishersService.Update(postPublisherViewModel);
+            _publishersService.Update(postPublisherViewModel);
+            return Ok(postPublisherViewModel);
         }
 
         [HttpPost]
-        public void Delete(PublisherViewModel publisherViewModel)
+        public IActionResult Delete([FromBody]PublisherViewModel publisherViewModel)
         {
-            publishersService.Delete(publisherViewModel);
+            _publishersService.Delete(publisherViewModel);
+            return Ok(publisherViewModel);
         }
     }
 }

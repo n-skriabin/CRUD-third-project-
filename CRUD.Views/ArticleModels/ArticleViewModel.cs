@@ -12,7 +12,7 @@ namespace CRUD.Views
         
         public string Year { get; set; }
         
-        public Guid AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         public string Abbreviated { get; set; }
     }

@@ -32,7 +32,7 @@ namespace CRUD.Services
                 var articles = GetArticlesList(journal.Id);
                 JournalViewModel journalViewModel = new JournalViewModel
                 {
-                    Id = journal.Id,
+                    Id = journal.Id.ToString(),
                     Name = journal.Name,
                     Date = journal.Date,
                     ArticlesList = articles,
@@ -45,7 +45,7 @@ namespace CRUD.Services
 
         public JournalViewModel Create(PostJournalViewModel postJournalViewModel)
         {
-            postJournalViewModel.Id = Guid.NewGuid();
+            postJournalViewModel.Id = Guid.NewGuid().ToString();
             var articlesIdList = postJournalViewModel.ArticleIds;
 
             var journal = ViewModelToDomain(postJournalViewModel);
@@ -68,7 +68,7 @@ namespace CRUD.Services
 
         public void Delete(JournalViewModel journalViewModel)
         {
-            _journalRepository.Delete(journalViewModel.Id);
+            _journalRepository.Delete(Guid.Parse(journalViewModel.Id));
         }
 
         public List<Article> GetArticlesList(Guid? JournalId)
@@ -81,7 +81,7 @@ namespace CRUD.Services
         {
             Journal journal = new Journal()
             {
-                Id = postJournalViewModel.Id,
+                Id = Guid.Parse(postJournalViewModel.Id),
                 Name = postJournalViewModel.Name,
                 Date = postJournalViewModel.Date,
             };
@@ -102,12 +102,12 @@ namespace CRUD.Services
             return journalViewModel;
         }
 
-        public List<Guid> GetArticleIds(List<Article> articles)
+        public List<string> GetArticleIds(List<Article> articles)
         {
-            var articleIds = new List<Guid>();
+            var articleIds = new List<string>();
             foreach (var article in articles)
             {
-                articleIds.Add(article.Id);
+                articleIds.Add(article.Id.ToString());
             }
 
             return articleIds;

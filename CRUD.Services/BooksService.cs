@@ -40,7 +40,7 @@ namespace CRUD.Services
                 }
                 BookViewModel bookViewModel = new BookViewModel
                 {
-                    Id = book.Id,
+                    Id = book.Id.ToString(),
                     Name = book.Name,
                     Year = book.Year,
                     AuthorsList = authors,
@@ -53,7 +53,7 @@ namespace CRUD.Services
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
-            postBookViewModel.Id = Guid.NewGuid();
+            postBookViewModel.Id = Guid.NewGuid().ToString();
 
             var book = ViewModelToDomain(postBookViewModel);
             var bookViewModel = DomainToViewModel(postBookViewModel);
@@ -75,14 +75,14 @@ namespace CRUD.Services
 
         public void Delete(BookViewModel bookViewModel)
         {
-            _bookRepository.Delete(bookViewModel.Id);
+            _bookRepository.Delete(Guid.Parse(bookViewModel.Id));
         }
 
         public Book ViewModelToDomain(PostBookViewModel postBookViewModel)
         {
             Book book = new Book()
             {
-                Id = postBookViewModel.Id,
+                Id = Guid.Parse(postBookViewModel.Id),
                 Name = postBookViewModel.Name,
                 Year = postBookViewModel.Year,
             };
@@ -97,18 +97,18 @@ namespace CRUD.Services
                 Id = postBookViewModel.Id,
                 Name = postBookViewModel.Name,
                 Year = postBookViewModel.Year,
-                AuthorsList = _authorRepository.GetAuthors(postBookViewModel.Id),
+                AuthorsList = _authorRepository.GetAuthors(Guid.Parse(postBookViewModel.Id)),
             };
 
             return bookViewModel;
         }
 
-        public List<Guid> GetAuthorIdsArray(List<Author> authors)
+        public List<string> GetAuthorIdsArray(List<Author> authors)
         {    
-            var authorIds = new List<Guid>();
+            var authorIds = new List<string>();
             foreach (var author in authors)
             {
-                authorIds.Add(author.Id);
+                authorIds.Add(author.Id.ToString());
             }
             return authorIds; 
         }

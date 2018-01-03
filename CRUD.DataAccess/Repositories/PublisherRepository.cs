@@ -27,7 +27,7 @@ namespace CRUD.DataAccess.Repositories
             return publishers;
         }
 
-        public void Create(Publisher publisher, List<Guid> journalsId, List<Guid> booksId)
+        public void Create(Publisher publisher, List<string> journalsId, List<string> booksId)
         {
             string query = "UPDATE Books SET PublisherId = @Id WHERE Id IN @arrayBooksIds";
             var arrayBooksIds = booksId.ToArray();
@@ -41,7 +41,7 @@ namespace CRUD.DataAccess.Repositories
             _db.Query(query, publisher);
         }
 
-        public void Update(Publisher newRecord, List<Guid> journalsId, List<Guid> booksId)
+        public void Update(Publisher newRecord, List<string> journalsId, List<string> booksId)
         {
             PublisherIdNull(newRecord.Id);
 

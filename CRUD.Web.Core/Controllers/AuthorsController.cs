@@ -11,45 +11,42 @@ using Microsoft.Extensions.Configuration;
 
 namespace CRUD.Web.Core.Controllers
 {
-  [Route("api/[controller]/[action]")]
   public class AuthorsController : Controller
   {
     private AuthorsService _authorsService;
-    private readonly IConfiguration _configuration;
 
     public AuthorsController(IConfiguration configuration)
     {
-      _configuration = configuration;
-      string connectionString = _configuration.GetConnectionString("DefaultConnection");
-      _authorsService = new AuthorsService(connectionString);
+        _authorsService = new AuthorsService(ConnectionString.GetConnectionString(configuration));
     }
 
     [HttpGet]
-    public List<Author> Read()
+    public IActionResult Read()
     {
       var authorViewModel = _authorsService.Read();
-      return authorViewModel;
+      return Ok(authorViewModel);
     }
 
     [HttpPost]
-    public AuthorViewModel Create(AuthorViewModel authorViewModel)
+    public IActionResult Create([FromBody]AuthorViewModel authorViewModel)
     {
       _authorsService.Create(authorViewModel);
-      return authorViewModel;
+      return Ok(authorViewModel);
     }
 
     [HttpPost]
-    public AuthorViewModel Update(AuthorViewModel authorViewModel)
+    public IActionResult Update([FromBody]AuthorViewModel authorViewModel)
     {
       _authorsService.Update(authorViewModel);
-      return authorViewModel;
+      return Ok(authorViewModel);
     }
 
     [HttpPost]
-    public void Delete(AuthorViewModel authorViewModel)
+    public IActionResult Delete([FromBody]AuthorViewModel authorViewModel)
     {
-      var Id = authorViewModel.Id;
-      _authorsService.Delete(authorViewModel.Id);
+      var Id = Guid.Parse(authorViewModel.Id);
+      _authorsService.Delete(Id);
+      return Ok();
     }
   }
 }

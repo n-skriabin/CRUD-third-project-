@@ -35,7 +35,7 @@ namespace CRUD.Services
                 var books = _bookRepository.GetBooks(publisher.Id); 
                 PublisherViewModel publisherViewModel = new PublisherViewModel
                 {
-                    Id = publisher.Id,
+                    Id = publisher.Id.ToString(),
                     Name = publisher.Name,
                     BooksList = _bookRepository.GetBooks(publisher.Id),
                     JournalsList = _journalRepository.GetJournals(publisher.Id),
@@ -49,7 +49,7 @@ namespace CRUD.Services
 
         public PublisherViewModel Create(PostPublisherViewModel postPublisherViewModel)
         {
-            postPublisherViewModel.Id = Guid.NewGuid();
+            postPublisherViewModel.Id = Guid.NewGuid().ToString();
 
             var publisher = ViewModelToDomain(postPublisherViewModel);
             _publisherRepository.Create(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
@@ -71,14 +71,14 @@ namespace CRUD.Services
 
         public void Delete(PublisherViewModel publisherViewModel)
         {
-            _publisherRepository.Delete(publisherViewModel.Id);
+            _publisherRepository.Delete(Guid.Parse(publisherViewModel.Id));
         }     
         
         public Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)
         {
             Publisher publisher = new Publisher
             {
-                Id = postPublisherViewModel.Id,
+                Id = Guid.Parse(postPublisherViewModel.Id),
                 Name = postPublisherViewModel.Name,
             };
 
@@ -98,23 +98,23 @@ namespace CRUD.Services
             return publisherViewModel;
         }
 
-        public List<Guid> GetBookIdList(List<Book> booksList)
+        public List<string> GetBookIdList(List<Book> booksList)
         {
-            var ids = new List<Guid>();
+            var ids = new List<string>();
             foreach (var book in booksList)
             {
-                ids.Add(book.Id);
+                ids.Add(book.Id.ToString());
             }
 
             return ids;
         }
 
-        public List<Guid> GetJournalIdList(List<Journal> journalsList)
+        public List<string> GetJournalIdList(List<Journal> journalsList)
         {
-            var ids = new List<Guid>();
+            var ids = new List<string>();
             foreach (var book in journalsList)
             {
-                ids.Add(book.Id);
+                ids.Add(book.Id.ToString());
             }
 
             return ids;

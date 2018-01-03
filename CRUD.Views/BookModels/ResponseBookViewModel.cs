@@ -10,6 +10,6 @@ namespace CRUD.Views.ResponseModels
     {
         public string Name { get; set; }
         public string Year { get; set; }
-        public List<Guid> AuthorIds { get; set; }
+        public List<string> AuthorIds { get; set; }
     }
 }

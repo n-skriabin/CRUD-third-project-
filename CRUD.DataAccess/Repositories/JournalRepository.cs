@@ -27,7 +27,7 @@ namespace CRUD.DataAccess.Repositories
             return journals;
         }
 
-        public void Create(Journal journal, List<Guid> articlesIds)
+        public void Create(Journal journal, List<string> articlesIds)
         {
             UpdateArticles(journal.Id, articlesIds);
 
@@ -35,7 +35,7 @@ namespace CRUD.DataAccess.Repositories
             _db.Query(query, journal);
         }
 
-        public void Update(Journal journal, List<Guid> articlesId)
+        public void Update(Journal journal, List<string> articlesId)
         {
             var arrayArticlesIds = articlesId.ToArray();
             var emptyGuid = Guid.Empty;
@@ -78,7 +78,7 @@ namespace CRUD.DataAccess.Repositories
             return journalsList;
         }
 
-        public void UpdateArticles(Guid id, List<Guid> articlesIds)
+        public void UpdateArticles(Guid id, List<string> articlesIds)
         {
             var arrayArticlesIds = articlesIds.ToArray();
             string query;
