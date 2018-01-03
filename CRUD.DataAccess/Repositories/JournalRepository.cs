@@ -31,7 +31,8 @@ namespace CRUD.DataAccess.Repositories
         {
             UpdateArticles(journal.Id, articlesIds);
 
-            string query = "INSERT INTO Journals (Id, Name, Date) VALUES (@Id, @Name, @Date)";
+            string query = "INSERT INTO Journals (Id, Name, Date, DateTime) VALUES (@Id, @Name, @Date, @DateTime)";
+            journal.DateTime = journal.GetDateTime();
             _db.Query(query, journal);
         }
 
@@ -47,7 +48,8 @@ namespace CRUD.DataAccess.Repositories
             query = "UPDATE Articles SET JournalId = @Id WHERE Id IN @arrayArticlesIds";
             _db.Query(query, new { arrayArticlesIds, Id = journal.Id });
 
-            query = "UPDATE Journals SET Name = @Name, Date = @Date WHERE Id = @Id";
+            query = "UPDATE Journals SET Name = @Name, Date = @Date, DateTime = @DateTime WHERE Id = @Id";
+            journal.DateTime = journal.GetDateTime();
             _db.Execute(query, journal);
         }
 

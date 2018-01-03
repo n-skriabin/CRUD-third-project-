@@ -37,7 +37,8 @@ namespace CRUD.DataAccess.Repositories
             var arrayJournalsIds = journalsId.ToArray();
             _db.Execute(query, new { arrayJournalsIds, Id = publisher.Id });
 
-            query = "INSERT INTO Publishers (Id, Name) VALUES (@Id, @Name)";
+            query = "INSERT INTO Publishers (Id, Name, DateTime) VALUES (@Id, @Name, @DateTime)";
+            publisher.DateTime = publisher.GetDateTime();
             _db.Query(query, publisher);
         }
 
@@ -53,8 +54,9 @@ namespace CRUD.DataAccess.Repositories
             var arrayJournalsIds = journalsId.ToArray();
             _db.Execute(query, new { arrayJournalsIds, Id = newRecord.Id });
 
-            query = "UPDATE Publishers SET Name = @Name WHERE Id = @Id";
-            _db.Execute(query, new { Name = newRecord.Name, Id = newRecord.Id });
+            query = "UPDATE Publishers SET Name = @Name, DateTime = @DateTime WHERE Id = @Id";
+            newRecord.DateTime = newRecord.GetDateTime();
+            _db.Execute(query, newRecord);
         }
 
         public void Delete(Guid publisherId)

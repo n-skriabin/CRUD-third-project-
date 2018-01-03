@@ -31,8 +31,9 @@ namespace CRUD.DataAccess.Repositories
         {
             AddBookInBooksAuthors(book, authorsListIds);
 
-            string query = "INSERT INTO Books (Id, Name, Year) VALUES (@Id, @Name, @Year)";
-            _db.Query(query, new { Id = book.Id, Name = book.Name, Year = book.Year });
+            string query = "INSERT INTO Books (Id, Name, Year, DateTime) VALUES (@Id, @Name, @Year, @DateTime)";
+            book.DateTime = book.GetDateTime();
+            _db.Query(query, book);
         }
 
         public void Update(Book newRecord, List<string> authorsListIds)
@@ -41,7 +42,8 @@ namespace CRUD.DataAccess.Repositories
 
             AddBookInBooksAuthors(newRecord, authorsListIds);
 
-            string query = "UPDATE Books SET Name = @Name, Year = @Year WHERE Id = @Id";
+            string query = "UPDATE Books SET Name = @Name, Year = @Year, DateTime = @DateTime WHERE Id = @Id";
+            newRecord.DateTime = newRecord.GetDateTime();
             _db.Execute(query, newRecord);
         }
 

@@ -11,5 +11,12 @@ namespace CRUD.Domain
     {
         [Key]
         public Guid Id { get; set; }
+        public DateTime DateTime { get; set; }
+
+        public DateTime GetDateTime()
+        {
+            var date = DateTime.UtcNow;
+            return date;
+        }
     }
 }
