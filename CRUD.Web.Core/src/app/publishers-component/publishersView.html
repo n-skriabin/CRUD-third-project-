@@ -13,7 +13,7 @@
   </ng-template>
   <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
 
-  <kendo-grid-column field="BookIds" title="Books" width="200">
+  <kendo-grid-column field="BookIds" title="Books" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
       {{booksView(dataItem.BookIds)}}     
     </ng-template>
@@ -30,7 +30,7 @@
     </ng-template>
   </kendo-grid-column>
 
-  <kendo-grid-column field="JournalIds" title="Journals" width="200">
+  <kendo-grid-column field="JournalIds" title="Journals" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
       {{journalsView(dataItem.JournalIds)}}     
     </ng-template>

@@ -85,7 +85,6 @@
     <Folder Include="src\app\lazy\books\" />
     <Folder Include="src\app\lazy\journals\" />
     <Folder Include="src\app\lazy\publishers\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
