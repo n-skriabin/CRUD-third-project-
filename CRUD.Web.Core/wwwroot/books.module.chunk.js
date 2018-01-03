@@ -115,7 +115,6 @@ var BooksComponent = (function () {
     BooksComponent.prototype.saveHandler = function (_a) {
         var sender = _a.sender, rowIndex = _a.rowIndex, formGroup = _a.formGroup, isNew = _a.isNew;
         var book = formGroup.value;
-        console.log(this.selectedItems);
         book.AuthorIds = [];
         if (this.selectedItems !== undefined) {
             for (var i = 0; i < this.selectedItems.length; i++) {

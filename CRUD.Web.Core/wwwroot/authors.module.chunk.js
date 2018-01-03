@@ -42,8 +42,6 @@ var AuthorsComponent = (function () {
         this.view = this.editService.map(function (data) { return Object(__WEBPACK_IMPORTED_MODULE_3__progress_kendo_data_query__["d" /* process */])(data, _this.gridState); });
         this.titleService.setTitle('Authors Page');
         this.editService.read();
-        console.log('data:');
-        console.log(this.view);
     };
     AuthorsComponent.prototype.addHandler = function (_a) {
         var sender = _a.sender;

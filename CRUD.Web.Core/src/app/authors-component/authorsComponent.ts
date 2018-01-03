@@ -35,8 +35,6 @@ export class AuthorsComponent implements OnInit {
     this.view = this.editService.map(data => process(data, this.gridState));
     this.titleService.setTitle('Authors Page');
       this.editService.read();
-      console.log('data:');
-      console.log(this.view);
   }
 
   public addHandler({ sender }) {

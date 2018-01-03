@@ -32,7 +32,6 @@ export class PublishersComponent implements OnInit {
   public journalsForDefaultValue: Journal[] = [];
   public books: Book[] = [];
   public journals: Journal[] = [];
-  //public publishers: Publisher[] = [];
   bookNames: string = '';
   journalNames: string = '';
 

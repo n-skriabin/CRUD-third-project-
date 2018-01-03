@@ -87,7 +87,6 @@ var PublishersComponent = (function () {
         this.journalsForDefaultValue = [];
         this.books = [];
         this.journals = [];
-        //public publishers: Publisher[] = [];
         this.bookNames = '';
         this.journalNames = '';
         this.gridState = {

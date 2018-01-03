@@ -55,8 +55,6 @@ var BooksService = /** @class */ (function (_super) {
     BooksService.prototype.save = function (data, isNew) {
         var _this = this;
         var action = isNew ? CREATE_ACTION : UPDATE_ACTION;
-        console.log('check_SaveData:');
-        console.log(data);
         this.reset();
         this.fetch(action, data)
             .subscribe(function () { return _this.read(); }, function () { return _this.read(); });

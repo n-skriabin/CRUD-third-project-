@@ -20,18 +20,12 @@ var http_1 = require("@angular/common/http");
 var forms_2 = require("@angular/forms");
 var kendo_angular_grid_1 = require("@progress/kendo-angular-grid");
 var authorsService_1 = require("./authors-component/authorsService");
-/* import { AuthorsComponent } from './authors-component/authorsComponent'; */
-/* import { ArticlesComponent } from '../app/articles-component/articlesComponent'; */
 var kendo_angular_popup_1 = require("@progress/kendo-angular-popup");
 var articlesService_1 = require("../app/articles-component/articlesService");
 var kendo_angular_dropdowns_1 = require("@progress/kendo-angular-dropdowns");
-/* import { BooksComponent } from './books-component/booksComponent'; */
 var booksService_1 = require("./books-component/booksService");
-/* import { JournalsComponent } from './journals-component/journalsComponent'; */
 var journalsService_1 = require("./journals-component/journalsService");
-/* import { PublishersComponent } from './publishers-component/publishersComponent'; */
 var publishersService_1 = require("./publishers-component/publishersService");
-//import { AuthorsRouting } from './lazy/authors/author.routing';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -39,7 +33,7 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent,
+                home_component_1.HomeComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -55,7 +49,7 @@ var AppModule = /** @class */ (function () {
                 kendo_angular_grid_1.GridModule,
                 kendo_angular_popup_1.PopupModule,
                 kendo_angular_dropdowns_1.DropDownsModule,
-                http_1.HttpClientModule,
+                http_1.HttpClientModule
             ],
             providers: [
                 app_routing_module_1.appRoutingProviders,

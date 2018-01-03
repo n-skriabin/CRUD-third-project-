@@ -47,7 +47,6 @@ var ArticlesService = /** @class */ (function (_super) {
         this.fetch(READ_ACTION)
             .do(function (data) {
             _this.data = data;
-            console.log(data);
         })
             .subscribe(function (data) {
             _super.prototype.next.call(_this, data);

@@ -154,18 +154,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-/* import { AuthorsComponent } from './authors-component/authorsComponent'; */
-/* import { ArticlesComponent } from '../app/articles-component/articlesComponent'; */
 
 
 
-/* import { BooksComponent } from './books-component/booksComponent'; */
 
-/* import { JournalsComponent } from './journals-component/journalsComponent'; */
 
-/* import { PublishersComponent } from './publishers-component/publishersComponent'; */
 
-//import { AuthorsRouting } from './lazy/authors/author.routing';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -173,7 +167,7 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["K" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__["a" /* HomeComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -189,7 +183,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__["a" /* GridModule */],
                 __WEBPACK_IMPORTED_MODULE_13__progress_kendo_angular_popup__["a" /* PopupModule */],
                 __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
-                __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["a" /* appRoutingProviders */],
@@ -285,7 +279,6 @@ var ArticlesService = (function (_super) {
         this.fetch(READ_ACTION)
             .do(function (data) {
             _this.data = data;
-            console.log(data);
         })
             .subscribe(function (data) {
             _super.prototype.next.call(_this, data);
@@ -549,8 +542,6 @@ var BooksService = (function (_super) {
     BooksService.prototype.save = function (data, isNew) {
         var _this = this;
         var action = isNew ? CREATE_ACTION : UPDATE_ACTION;
-        console.log('check_SaveData:');
-        console.log(data);
         this.reset();
         this.fetch(action, data)
             .subscribe(function () { return _this.read(); }, function () { return _this.read(); });

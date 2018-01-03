@@ -41,10 +41,7 @@ export class BooksService extends BehaviorSubject<any[]> {
 
   public save(data: any, isNew?: boolean) {
     const action = isNew ? CREATE_ACTION : UPDATE_ACTION;
-
-    console.log('check_SaveData:');
-    console.log(data);
-
+    
     this.reset();
 
     this.fetch(action, data)

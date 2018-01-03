@@ -32,8 +32,6 @@ var AuthorsComponent = /** @class */ (function () {
         this.view = this.editService.map(function (data) { return kendo_data_query_1.process(data, _this.gridState); });
         this.titleService.setTitle('Authors Page');
         this.editService.read();
-        console.log('data:');
-        console.log(this.view);
     };
     AuthorsComponent.prototype.addHandler = function (_a) {
         var sender = _a.sender;
