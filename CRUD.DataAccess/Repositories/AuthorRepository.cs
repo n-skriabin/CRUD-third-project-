@@ -27,7 +27,8 @@ namespace CRUD.DataAccess.Repositories
 
         public void Create(Author author)
         {
-            string query = "INSERT INTO Authors (Id, FirstName, LastName, Patronymic, Abbreviated, DateTime) VALUES(@Id, @FirstName, @LastName, @Patronymic, @Abbreviated, @DateTime)";
+            string query = @"INSERT INTO Authors (Id, FirstName, LastName, Patronymic, Abbreviated, DateTime) 
+                             VALUES(@Id, @FirstName, @LastName, @Patronymic, @Abbreviated, @DateTime)";
             _db.Query(query, author);
         }
 
@@ -60,7 +61,8 @@ namespace CRUD.DataAccess.Repositories
 
         public void Update(Author newRecord)
         {
-            string query = "UPDATE Authors SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, DateTime = @DateTime WHERE Id = @Id";
+            string query = @"UPDATE Authors 
+                             SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, DateTime = @DateTime WHERE Id = @Id";
             newRecord.DateTime = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
@@ -74,9 +76,13 @@ namespace CRUD.DataAccess.Repositories
 
         public List<Author> GetAuthors(Guid bookId)
         {
-            string query = "SELECT Authors.* FROM Authors LEFT JOIN BooksAuthors  ON Authors.Id = BooksAuthors.AuthorId WHERE BooksAuthors.BookId = @Id";
-            var authors = _db.Query<Author>(query, new { Id = bookId }).ToList();
+            string query = @"SELECT Authors.* 
+                             FROM Authors 
+                             LEFT JOIN BooksAuthors 
+                             ON Authors.Id = BooksAuthors.AuthorId 
+                             WHERE BooksAuthors.BookId = @Id";
 
+            var authors = _db.Query<Author>(query, new { Id = bookId }).ToList();
             return authors;
         }
     }
