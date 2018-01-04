@@ -35,7 +35,6 @@ namespace CRUD.DataAccess.Repositories
             _db.Execute(query, new { arrayJournalsIds, Id = publisher.Id });
 
             query = "INSERT INTO Publishers (Id, Name, DateTime) VALUES (@Id, @Name, @DateTime)";
-            publisher.DateTime = publisher.GetDateTime();
             _db.Query(query, publisher);
         }
 
@@ -52,7 +51,7 @@ namespace CRUD.DataAccess.Repositories
             _db.Execute(query, new { arrayJournalsIds, Id = newRecord.Id });
 
             query = "UPDATE Publishers SET Name = @Name, DateTime = @DateTime WHERE Id = @Id";
-            newRecord.DateTime = newRecord.GetDateTime();
+            newRecord.DateTime = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
 

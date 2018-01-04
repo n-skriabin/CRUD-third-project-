@@ -27,14 +27,13 @@ namespace CRUD.DataAccess.Repositories
         public void Create(Article article)
         {
             string query = "INSERT INTO Articles (Id, Name, Year, AuthorId, DateTime) VALUES(@Id, @Name, @Year, @AuthorId, @DateTime);";
-            article.DateTime = article.GetDateTime();
             _db.Query(query, article);
         }
 
         public void Update(Article newRecord)
         {
             string query = "UPDATE Articles SET Name = @Name, Year = @Year, AuthorId = @AuthorId, DateTime = @DateTime WHERE Id = @Id";
-            newRecord.DateTime = newRecord.GetDateTime();
+            newRecord.DateTime = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
 

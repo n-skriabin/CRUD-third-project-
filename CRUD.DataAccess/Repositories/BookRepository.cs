@@ -29,7 +29,6 @@ namespace CRUD.DataAccess.Repositories
             AddBookInBooksAuthors(book, authorsListIds);
 
             string query = "INSERT INTO Books (Id, Name, Year, DateTime) VALUES (@Id, @Name, @Year, @DateTime)";
-            book.DateTime = book.GetDateTime();
             _db.Query(query, book);
         }
 
@@ -40,7 +39,7 @@ namespace CRUD.DataAccess.Repositories
             AddBookInBooksAuthors(newRecord, authorsListIds);
 
             string query = "UPDATE Books SET Name = @Name, Year = @Year, DateTime = @DateTime WHERE Id = @Id";
-            newRecord.DateTime = newRecord.GetDateTime();
+            newRecord.DateTime = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
 

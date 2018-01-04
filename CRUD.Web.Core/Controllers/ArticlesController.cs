@@ -1,24 +1,19 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CRUD.Services;
-using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
-using CRUD.Web.Core;
+using CRUD.Web.Core.Controllers;
 
 namespace CRUD.Web.Controllers
 {
-    public class ArticlesController : Controller
+    public class ArticlesController : BaseController
     {
         private ArticlesService _articlesService;
 
-        public ArticlesController(IConfiguration configuration)
+        public ArticlesController(IConfiguration configuration) : base(configuration)
         {
-            _articlesService = new ArticlesService(ConnectionString.GetConnectionString(configuration));
+            _articlesService = new ArticlesService(ConnectionString);
         }
 
         [HttpGet]

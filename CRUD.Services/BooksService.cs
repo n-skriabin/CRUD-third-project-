@@ -52,7 +52,7 @@ namespace CRUD.Services
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
-            postBookViewModel.Id = postBookViewModel.GetId();
+            //postBookViewModel.Id = postBookViewModel.GetId();
 
             var book = ViewModelToDomain(postBookViewModel);
             var bookViewModel = DomainToViewModel(postBookViewModel);
@@ -81,11 +81,9 @@ namespace CRUD.Services
         {
             Book book = new Book()
             {
-                Id = Guid.Parse(postBookViewModel.Id),
                 Name = postBookViewModel.Name,
                 Year = postBookViewModel.Year,
             };
-
             return book;
         }
 

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CRUD.Services;
-using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
-using CRUD.Web.Core;
+using CRUD.Web.Core.Controllers;
 
 namespace CRUD.Web.Controllers
 {
-    public class BooksController : Controller
+    public class BooksController : BaseController
     {
         private BooksService _booksService;
 
-        public BooksController(IConfiguration configuration)
+        public BooksController(IConfiguration configuration) : base(configuration)
         {
-            _booksService = new BooksService(ConnectionString.GetConnectionString(configuration));
+            _booksService = new BooksService(ConnectionString);
         }
 
         [HttpGet]

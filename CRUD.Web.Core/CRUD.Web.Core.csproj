@@ -6,25 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="dist\**" />
     <Compile Remove="src\app\lazy-components-modules\articles\**" />
     <Compile Remove="src\app\lazy-components-modules\authors\**" />
     <Compile Remove="src\app\lazy-components-modules\books\**" />
     <Compile Remove="src\app\lazy-components-modules\journals\**" />
     <Compile Remove="src\app\lazy-components-modules\publishers\**" />
-    <Content Remove="dist\**" />
     <Content Remove="src\app\lazy-components-modules\articles\**" />
     <Content Remove="src\app\lazy-components-modules\authors\**" />
     <Content Remove="src\app\lazy-components-modules\books\**" />
     <Content Remove="src\app\lazy-components-modules\journals\**" />
     <Content Remove="src\app\lazy-components-modules\publishers\**" />
-    <EmbeddedResource Remove="dist\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\articles\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\authors\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\books\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\journals\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\publishers\**" />
-    <None Remove="dist\**" />
     <None Remove="src\app\lazy-components-modules\articles\**" />
     <None Remove="src\app\lazy-components-modules\authors\**" />
     <None Remove="src\app\lazy-components-modules\books\**" />
@@ -54,6 +50,11 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

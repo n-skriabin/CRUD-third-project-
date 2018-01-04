@@ -45,8 +45,6 @@ namespace CRUD.Services
 
         public PublisherViewModel Create(PostPublisherViewModel postPublisherViewModel)
         {
-            postPublisherViewModel.Id = postPublisherViewModel.GetId();
-
             var publisher = ViewModelToDomain(postPublisherViewModel);
             _publisherRepository.Create(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
 
@@ -74,10 +72,8 @@ namespace CRUD.Services
         {
             Publisher publisher = new Publisher
             {
-                Id = Guid.Parse(postPublisherViewModel.Id),
                 Name = postPublisherViewModel.Name,
             };
-
             return publisher;
         }
 
@@ -90,7 +86,6 @@ namespace CRUD.Services
                 BooksList = _bookRepository.GetBooks(publisherId),
                 JournalsList = _journalRepository.GetJournals(publisherId),
             };
-
             return publisherViewModel;
         }
 
@@ -101,7 +96,6 @@ namespace CRUD.Services
             {
                 ids.Add(book.Id.ToString());
             }
-
             return ids;
         }
 
@@ -112,7 +106,6 @@ namespace CRUD.Services
             {
                 ids.Add(book.Id.ToString());
             }
-
             return ids;
         }
     }

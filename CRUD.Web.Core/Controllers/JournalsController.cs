@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CRUD.Services;
-using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
-using CRUD.Web.Core;
+using CRUD.Web.Core.Controllers;
 
 namespace CRUD.Web.Controllers
 {
-    public class JournalsController : Controller
+    public class JournalsController : BaseController
     {
         private JournalsService _journalsService;
 
-        public JournalsController(IConfiguration configuration)
+        public JournalsController(IConfiguration configuration) : base(configuration)
         {
-            _journalsService = new JournalsService(ConnectionString.GetConnectionString(configuration));
+            _journalsService = new JournalsService(ConnectionString);
         }
 
         [HttpGet]

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CRUD.Services;
-using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
-using CRUD.Web.Core;
+using CRUD.Web.Core.Controllers;
 
 namespace CRUD.Web.Controllers
 {
-    public class PublishersController : Controller
+    public class PublishersController : BaseController
     {
         private PublishersService _publishersService;
 
-        public PublishersController(IConfiguration configuration)
+        public PublishersController(IConfiguration configuration) : base(configuration)
         {
-            _publishersService = new PublishersService(ConnectionString.GetConnectionString(configuration));
+            _publishersService = new PublishersService(ConnectionString);
         }
 
         [HttpGet]

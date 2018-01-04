@@ -13,10 +13,22 @@ namespace CRUD.Domain
         public Guid Id { get; set; }
         public DateTime DateTime { get; set; }
 
-        public DateTime GetDateTime()
+        public BaseEntity()
         {
-            var date = DateTime.UtcNow;
-            return date;
+            Id = Guid.NewGuid();
+            DateTime = DateTime.UtcNow;
         }
+
+        //public Guid GetId()
+        //{
+        //    Id = Guid.NewGuid();
+        //    return Id;
+        //}
+
+        //public DateTime GetDateTime()
+        //{
+        //    var date = DateTime.UtcNow;
+        //    return date;
+        //}
     }
 }

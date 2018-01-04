@@ -22,16 +22,14 @@ namespace CRUD.Services
 
         public void Create(AuthorViewModel authorViewModel)
         {
-
-            authorViewModel.Id = authorViewModel.GetId();
             Author author = new Author
             {
-                Id = Guid.Parse(authorViewModel.Id),
                 FirstName = authorViewModel.FirstName,
                 LastName = authorViewModel.LastName,
                 Patronymic = authorViewModel.Patronymic,
                 Abbreviated = GenerateAbbreviated(authorViewModel)
             };
+            authorViewModel.Id = author.Id.ToString();
             _authorRepository.Create(author);
         }
 

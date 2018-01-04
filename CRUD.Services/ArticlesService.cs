@@ -36,7 +36,7 @@ namespace CRUD.Services
 
         public void Create(ArticleViewModel articleViewModel)
         {
-            articleViewModel.Id = articleViewModel.GetId();
+            //articleViewModel.Id = articleViewModel.GetId();
             articleViewModel.Abbreviated = _authorRepository.GetAuthor(Guid.Parse(articleViewModel.AuthorId)).Abbreviated;
             var article = ViewModelToDomain(articleViewModel);
             _articleRepository.Create(article);
@@ -83,7 +83,7 @@ namespace CRUD.Services
                 Year = articleViewModel.Year,
                 AuthorId = Guid.Parse(articleViewModel.AuthorId),
             };
-
+            articleViewModel.Id = article.Id.ToString();
             return article;
         }
 
@@ -97,7 +97,6 @@ namespace CRUD.Services
                 Year = article.Year,
                 Abbreviated = Abbreviated,
             };
-
             return articleViewModel;
         }
     }

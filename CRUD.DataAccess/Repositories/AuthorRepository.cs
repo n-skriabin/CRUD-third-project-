@@ -28,7 +28,6 @@ namespace CRUD.DataAccess.Repositories
         public void Create(Author author)
         {
             string query = "INSERT INTO Authors (Id, FirstName, LastName, Patronymic, Abbreviated, DateTime) VALUES(@Id, @FirstName, @LastName, @Patronymic, @Abbreviated, @DateTime)";
-            author.DateTime = author.GetDateTime();
             _db.Query(query, author);
         }
 
@@ -62,7 +61,7 @@ namespace CRUD.DataAccess.Repositories
         public void Update(Author newRecord)
         {
             string query = "UPDATE Authors SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, DateTime = @DateTime WHERE Id = @Id";
-            newRecord.DateTime = newRecord.GetDateTime();
+            newRecord.DateTime = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
 

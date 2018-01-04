@@ -1,23 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CRUD.Services;
-using CRUD.DataAccess;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 
 namespace CRUD.Web.Core.Controllers
 {
-  public class AuthorsController : Controller
+    public class AuthorsController : BaseController
   {
     private AuthorsService _authorsService;
 
-    public AuthorsController(IConfiguration configuration)
+    public AuthorsController(IConfiguration configuration) : base(configuration)
     {
-        _authorsService = new AuthorsService(ConnectionString.GetConnectionString(configuration));
+        _authorsService = new AuthorsService(ConnectionString);
     }
 
     [HttpGet]
