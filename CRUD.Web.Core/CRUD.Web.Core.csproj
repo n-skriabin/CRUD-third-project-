@@ -6,21 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="dist\**" />
     <Compile Remove="src\app\lazy\articles\**" />
     <Compile Remove="src\app\lazy\authors\**" />
     <Compile Remove="src\app\lazy\books\**" />
     <Compile Remove="src\app\lazy\journals\**" />
     <Compile Remove="src\app\lazy\publishers\**" />
+    <Content Remove="dist\**" />
     <Content Remove="src\app\lazy\articles\**" />
     <Content Remove="src\app\lazy\authors\**" />
     <Content Remove="src\app\lazy\books\**" />
     <Content Remove="src\app\lazy\journals\**" />
     <Content Remove="src\app\lazy\publishers\**" />
+    <EmbeddedResource Remove="dist\**" />
     <EmbeddedResource Remove="src\app\lazy\articles\**" />
     <EmbeddedResource Remove="src\app\lazy\authors\**" />
     <EmbeddedResource Remove="src\app\lazy\books\**" />
     <EmbeddedResource Remove="src\app\lazy\journals\**" />
     <EmbeddedResource Remove="src\app\lazy\publishers\**" />
+    <None Remove="dist\**" />
     <None Remove="src\app\lazy\articles\**" />
     <None Remove="src\app\lazy\authors\**" />
     <None Remove="src\app\lazy\books\**" />
@@ -29,52 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="dist\favicon.ico" />
-    <Content Include="dist\index.html" />
-    <Content Include="dist\inline.bundle.js" />
-    <Content Include="dist\inline.bundle.js.map" />
-    <Content Include="dist\main.bundle.js" />
-    <Content Include="dist\main.bundle.js.map" />
-    <Content Include="dist\out-tsc\app\app-routing.module.js" />
-    <Content Include="dist\out-tsc\app\app-routing.module.js.map" />
-    <Content Include="dist\out-tsc\app\app.component.js" />
-    <Content Include="dist\out-tsc\app\app.component.js.map" />
-    <Content Include="dist\out-tsc\app\app.module.js" />
-    <Content Include="dist\out-tsc\app\app.module.js.map" />
-    <Content Include="dist\out-tsc\app\articles-component\article-model.js" />
-    <Content Include="dist\out-tsc\app\articles-component\article-model.js.map" />
-    <Content Include="dist\out-tsc\app\articles-component\categories.js" />
-    <Content Include="dist\out-tsc\app\articles-component\categories.js.map" />
-    <Content Include="dist\out-tsc\app\articles-component\products.component.js" />
-    <Content Include="dist\out-tsc\app\articles-component\products.component.js.map" />
-    <Content Include="dist\out-tsc\app\articles-component\products.js" />
-    <Content Include="dist\out-tsc\app\articles-component\products.js.map" />
-    <Content Include="dist\out-tsc\app\articles-component\products.service.js" />
-    <Content Include="dist\out-tsc\app\articles-component\products.service.js.map" />
-    <Content Include="dist\out-tsc\app\authors-component\author-edit.service.js" />
-    <Content Include="dist\out-tsc\app\authors-component\author-edit.service.js.map" />
-    <Content Include="dist\out-tsc\app\authors-component\author-model.js" />
-    <Content Include="dist\out-tsc\app\authors-component\author-model.js.map" />
-    <Content Include="dist\out-tsc\app\authors-component\authors-component.js" />
-    <Content Include="dist\out-tsc\app\authors-component\authors-component.js.map" />
-    <Content Include="dist\out-tsc\app\home-component\home.component.js" />
-    <Content Include="dist\out-tsc\app\home-component\home.component.js.map" />
-    <Content Include="dist\out-tsc\environments\environment.js" />
-    <Content Include="dist\out-tsc\environments\environment.js.map" />
-    <Content Include="dist\out-tsc\environments\environment.prod.js" />
-    <Content Include="dist\out-tsc\environments\environment.prod.js.map" />
-    <Content Include="dist\out-tsc\main.js" />
-    <Content Include="dist\out-tsc\main.js.map" />
-    <Content Include="dist\out-tsc\polyfills.js" />
-    <Content Include="dist\out-tsc\polyfills.js.map" />
-    <Content Include="dist\out-tsc\test.js" />
-    <Content Include="dist\out-tsc\test.js.map" />
-    <Content Include="dist\polyfills.bundle.js" />
-    <Content Include="dist\polyfills.bundle.js.map" />
-    <Content Include="dist\styles.bundle.js" />
-    <Content Include="dist\styles.bundle.js.map" />
-    <Content Include="dist\vendor.bundle.js" />
-    <Content Include="dist\vendor.bundle.js.map" />
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.html" />
