@@ -11,26 +11,28 @@
     <Compile Remove="src\app\lazy-components-modules\books\**" />
     <Compile Remove="src\app\lazy-components-modules\journals\**" />
     <Compile Remove="src\app\lazy-components-modules\publishers\**" />
+    <Compile Remove="src\assets\**" />
     <Content Remove="src\app\lazy-components-modules\articles\**" />
     <Content Remove="src\app\lazy-components-modules\authors\**" />
     <Content Remove="src\app\lazy-components-modules\books\**" />
     <Content Remove="src\app\lazy-components-modules\journals\**" />
     <Content Remove="src\app\lazy-components-modules\publishers\**" />
+    <Content Remove="src\assets\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\articles\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\authors\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\books\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\journals\**" />
     <EmbeddedResource Remove="src\app\lazy-components-modules\publishers\**" />
+    <EmbeddedResource Remove="src\assets\**" />
     <None Remove="src\app\lazy-components-modules\articles\**" />
     <None Remove="src\app\lazy-components-modules\authors\**" />
     <None Remove="src\app\lazy-components-modules\books\**" />
     <None Remove="src\app\lazy-components-modules\journals\**" />
     <None Remove="src\app\lazy-components-modules\publishers\**" />
+    <None Remove="src\assets\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="karma.conf.js" />
-    <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\articles-component\articlesView.html" />
     <Content Include="src\app\authors-component\authorsView.html" />
@@ -40,7 +42,6 @@
     <Content Include="src\app\layout-navbar\styles.css" />
     <Content Include="src\app\layout.css" />
     <Content Include="src\app\publishers-component\publishersView.html" />
-    <Content Include="src\assets\.gitkeep" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.scss" />
@@ -93,6 +94,10 @@
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\test.ts" />
     <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\dist\" />
   </ItemGroup>
 
 </Project>
