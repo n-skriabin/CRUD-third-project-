@@ -20,19 +20,19 @@ namespace CRUD.Web.Controllers
         [HttpGet]
         public IActionResult Read()
         {
-            try
-            {
+            //try
+            //{
                 var books = _booksService.Read();
                 if (books == null)
                 {
                     return null;
                 }
                 return Ok(books);
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception);
-            }
+            //}
+            //catch (Exception exception)
+            //{
+            //    return BadRequest(exception);
+            //}
         }
 
         [HttpPost]

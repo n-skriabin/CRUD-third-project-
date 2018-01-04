@@ -21,33 +21,33 @@ namespace CRUD.Services
 
         public List<BookViewModel> Read()
         {
-            var books = _bookRepository.Read();
-            var booksListForViewModel = new List<BookViewModel>();
+            List<BookViewModel> books = _bookRepository.Read();
+            //var booksListForViewModel = new List<BookViewModel>();
 
-            if (books == null || books.Count == 0)
-            {
-                return booksListForViewModel;
-            }
+            //if (books == null || books.Count == 0)
+            //{
+            //    return booksListForViewModel;
+            //}
 
-            foreach (var book in books)
-            {
-                var authors = _authorRepository.GetAuthors(book.Id);
-                if (authors.Count == 0)
-                {
-                    _bookRepository.Delete(book.Id);
-                    continue;
-                }
-                BookViewModel bookViewModel = new BookViewModel
-                {
-                    Id = book.Id.ToString(),
-                    Name = book.Name,
-                    Year = book.Year,
-                    AuthorsList = authors,
-                };
-                bookViewModel.AuthorIds = GetAuthorIdsArray(bookViewModel.AuthorsList);
-                booksListForViewModel.Add(bookViewModel);
-            }
-            return booksListForViewModel;
+            //foreach (var book in books)
+            //{
+            //    var authors = _authorRepository.GetAuthors(book.Id);
+            //    if (authors.Count == 0)
+            //    {
+            //        _bookRepository.Delete(book.Id);
+            //        continue;
+            //    }
+            //    BookViewModel bookViewModel = new BookViewModel
+            //    {
+            //        Id = book.Id.ToString(),
+            //        Name = book.Name,
+            //        Year = book.Year,
+            //        AuthorsList = authors,
+            //    };
+            //    bookViewModel.AuthorIds = GetAuthorIdsArray(bookViewModel.AuthorsList);
+            //    booksListForViewModel.Add(bookViewModel);
+            //}
+            return books;
         }
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using CRUD.Views;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -17,11 +18,40 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Book> Read()
+        public List<BookViewModel> Read()
         {
-            string query = "SELECT * FROM Books";
-            var books = _db.Query<Book>(query).ToList();
-            return books;
+            string query = @"SELECT Authors.*, Books.*
+                             FROM Authors 
+                             INNER JOIN BooksAuthors on BooksAuthors.AuthorId = Authors.Id
+                             INNER JOIN Books on BooksAuthors.BookId = Books.Id";
+            //var books = _db.Query<Book>(query).ToList();
+            //return books;
+            var booksDictionary = new Dictionary<string, BookViewModel>();
+
+            _db.Query<Author, Book, BookViewModel>(query, (author, book) =>
+            {
+                BookViewModel bookViewModel;
+                if (!booksDictionary.TryGetValue(author.Id.ToString(), out bookViewModel))
+                {
+                    bookViewModel = new BookViewModel
+                    {
+                        Id = book.Id.ToString(),
+                        Name = book.Name,
+                        Year = book.Year
+                    };
+                    booksDictionary.Add(author.Id.ToString(), bookViewModel);
+                }
+
+                if (bookViewModel.AuthorsList == null)
+                    bookViewModel.AuthorsList = new List<Author>();
+
+                bookViewModel.AuthorsList.Add(author);
+
+                return bookViewModel;
+            }).AsQueryable();
+
+            var bookViewModelList = booksDictionary.Values.ToList();
+            return bookViewModelList;
         }
 
         public void Create(Book book, List<string> authorsListIds)
