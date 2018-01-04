@@ -52,8 +52,6 @@ namespace CRUD.Services
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
-            //postBookViewModel.Id = postBookViewModel.GetId();
-
             var book = ViewModelToDomain(postBookViewModel);
             var bookViewModel = DomainToViewModel(postBookViewModel);
 
@@ -66,6 +64,7 @@ namespace CRUD.Services
         {
             var book = ViewModelToDomain(postBookViewModel);
             var bookViewModel = DomainToViewModel(postBookViewModel);
+            book.Id = Guid.Parse(postBookViewModel.Id);
 
             _bookRepository.Update(book, postBookViewModel.AuthorIds);
 

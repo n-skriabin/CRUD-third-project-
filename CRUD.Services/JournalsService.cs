@@ -45,9 +45,7 @@ namespace CRUD.Services
 
         public JournalViewModel Create(PostJournalViewModel postJournalViewModel)
         {
-            //postJournalViewModel.Id = postJournalViewModel.GetId();
             var articlesIdList = postJournalViewModel.ArticleIds;
-
             var journal = ViewModelToDomain(postJournalViewModel);
             var journalViewModel = DomainToViewModel(postJournalViewModel);
 
@@ -60,6 +58,7 @@ namespace CRUD.Services
         {
             var journal = ViewModelToDomain(postJournalViewModel);
             var journalViewModel = DomainToViewModel(postJournalViewModel);
+            journal.Id = Guid.Parse(postJournalViewModel.Id);
 
             _journalRepository.Update(journal, postJournalViewModel.ArticleIds);
 

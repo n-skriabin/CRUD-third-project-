@@ -57,6 +57,7 @@ namespace CRUD.Services
         {
             var publisher = ViewModelToDomain(postPublisherViewModel);
             _publisherRepository.Update(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
+            publisher.Id = Guid.Parse(postPublisherViewModel.Id);
 
             var publisherViewModel = DomainToViewModel(postPublisherViewModel, publisher.Id);
 
