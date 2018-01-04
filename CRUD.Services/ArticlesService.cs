@@ -1,12 +1,8 @@
-﻿using CRUD.DataAccess;
-using CRUD.DataAccess.Repositories;
+﻿using CRUD.DataAccess.Repositories;
 using CRUD.Domain;
 using CRUD.Views;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRUD.Services
 {

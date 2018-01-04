@@ -5,7 +5,6 @@ using CRUD.Views;
 using CRUD.Views.ResponseModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CRUD.Services
 {
