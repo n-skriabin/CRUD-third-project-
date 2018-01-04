@@ -4,6 +4,7 @@ using CRUD.Services;
 using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Web.Core.Controllers;
+using System;
 
 namespace CRUD.Web.Controllers
 {
@@ -17,35 +18,63 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpGet]
-        public List<ArticleViewModel> Read()
+        public IActionResult Read()
         {
-            var articles = _articlesService.Read();
-            if (articles == null)
+            try
             {
-                return null;
+                List<ArticleViewModel> articles = _articlesService.Read();
+                if (articles == null)
+                {
+                    return null;
+                }
+                return Ok(articles);
             }
-            return articles;
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Create([FromBody]ArticleViewModel articleViewModel)
         {
-            _articlesService.Create(articleViewModel);
-            return Ok(articleViewModel);
+            try
+            {
+                _articlesService.Create(articleViewModel);
+                return Ok(articleViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Update([FromBody]ArticleViewModel articleViewModel)
         {
-            _articlesService.Update(articleViewModel);
-            return Ok(articleViewModel);
+            try
+            {
+                _articlesService.Update(articleViewModel);
+                return Ok(articleViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Delete([FromBody]ArticleViewModel articleViewModel)
         {
-            _articlesService.Delete(articleViewModel);
-            return Ok();
+            try
+            {
+                _articlesService.Delete(articleViewModel);
+                return Ok();
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
     }
 }

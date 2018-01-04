@@ -4,6 +4,7 @@ using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
 using CRUD.Web.Core.Controllers;
+using System;
 
 namespace CRUD.Web.Controllers
 {
@@ -19,33 +20,61 @@ namespace CRUD.Web.Controllers
         [HttpGet]
         public IActionResult Read()
         {
-            var publishers = _publishersService.Read();
-            if (publishers == null)
+            try
             {
-                return null;
+                var publishers = _publishersService.Read();
+                if (publishers == null)
+                {
+                    return null;
+                }
+                return Ok(publishers);
             }
-            return Ok(publishers);
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Create([FromBody]PostPublisherViewModel postPublisherViewModel)
         {
-            _publishersService.Create(postPublisherViewModel);
-            return Ok(postPublisherViewModel);
+            try
+            {
+                _publishersService.Create(postPublisherViewModel);
+                return Ok(postPublisherViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Update([FromBody]PostPublisherViewModel postPublisherViewModel)
         {
-            _publishersService.Update(postPublisherViewModel);
-            return Ok(postPublisherViewModel);
+            try
+            {
+                _publishersService.Update(postPublisherViewModel);
+                return Ok(postPublisherViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Delete([FromBody]PublisherViewModel publisherViewModel)
         {
-            _publishersService.Delete(publisherViewModel);
-            return Ok(publisherViewModel);
+            try
+            {
+                _publishersService.Delete(publisherViewModel);
+                return Ok(publisherViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
     }
 }

@@ -7,41 +7,69 @@ using Microsoft.Extensions.Configuration;
 namespace CRUD.Web.Core.Controllers
 {
     public class AuthorsController : BaseController
-  {
-    private AuthorsService _authorsService;
-
-    public AuthorsController(IConfiguration configuration) : base(configuration)
     {
-        _authorsService = new AuthorsService(ConnectionString);
-    }
+        private AuthorsService _authorsService;
 
-    [HttpGet]
-    public IActionResult Read()
-    {
-      var authorViewModel = _authorsService.Read();
-      return Ok(authorViewModel);
-    }
+        public AuthorsController(IConfiguration configuration) : base(configuration)
+        {
+            _authorsService = new AuthorsService(ConnectionString);
+        }
 
-    [HttpPost]
-    public IActionResult Create([FromBody]AuthorViewModel authorViewModel)
-    {
-      _authorsService.Create(authorViewModel);
-      return Ok(authorViewModel);
-    }
+        [HttpGet]
+        public IActionResult Read()
+        {
+            try
+            {
+                var authorViewModel = _authorsService.Read();
+                return Ok(authorViewModel);
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
 
-    [HttpPost]
-    public IActionResult Update([FromBody]AuthorViewModel authorViewModel)
-    {
-      _authorsService.Update(authorViewModel);
-      return Ok(authorViewModel);
-    }
+        [HttpPost]
+        public IActionResult Create([FromBody]AuthorViewModel authorViewModel)
+        {
+            try
+            {
+                _authorsService.Create(authorViewModel);
+                return Ok(authorViewModel);
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
 
-    [HttpPost]
-    public IActionResult Delete([FromBody]AuthorViewModel authorViewModel)
-    {
-      var Id = Guid.Parse(authorViewModel.Id);
-      _authorsService.Delete(Id);
-      return Ok();
+        [HttpPost]
+        public IActionResult Update([FromBody]AuthorViewModel authorViewModel)
+        {
+            try
+            {
+                _authorsService.Update(authorViewModel);
+                return Ok(authorViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Delete([FromBody]AuthorViewModel authorViewModel)
+        {
+            try
+            {
+                var Id = Guid.Parse(authorViewModel.Id);
+                _authorsService.Delete(Id);
+                return Ok();
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
     }
-  }
 }

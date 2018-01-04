@@ -4,6 +4,7 @@ using CRUD.Views;
 using Microsoft.Extensions.Configuration;
 using CRUD.Views.ResponseModels;
 using CRUD.Web.Core.Controllers;
+using System;
 
 namespace CRUD.Web.Controllers
 {
@@ -19,39 +20,74 @@ namespace CRUD.Web.Controllers
         [HttpGet]
         public IActionResult Read()
         {
-            var books = _booksService.Read();
-            if (books == null)
+            try
             {
-                return null;
+                var books = _booksService.Read();
+                if (books == null)
+                {
+                    return null;
+                }
+                return Ok(books);
             }
-            return Ok(books);
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Create([FromBody]PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = _booksService.Create(postBookViewModel);
-            return Ok(bookViewModel);
+            try
+            {
+                var bookViewModel = _booksService.Create(postBookViewModel);
+                return Ok(bookViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Update([FromBody]PostBookViewModel postBookViewModel)
         {
-            var bookViewModel = _booksService.Update(postBookViewModel);
-            return Ok(bookViewModel);
+            try
+            {
+                var bookViewModel = _booksService.Update(postBookViewModel);
+                return Ok(bookViewModel);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult Delete([FromBody]BookViewModel bookViewModel)
         {
-            _booksService.Delete(bookViewModel);
-            return Ok();
+            try
+            {
+                _booksService.Delete(bookViewModel);
+                return Ok();
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
 
         [HttpPost]
         public IActionResult ReadBooksForMultiselect([FromBody]BookViewModel bookViewModel)
         {
-            return Ok(_booksService.Read());
+            try
+            {
+                return Ok(_booksService.Read());
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
         }
     }
 }
