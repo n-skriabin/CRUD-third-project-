@@ -7,29 +7,29 @@
 
   <ItemGroup>
     <Compile Remove="dist\**" />
-    <Compile Remove="src\app\lazy\articles\**" />
-    <Compile Remove="src\app\lazy\authors\**" />
-    <Compile Remove="src\app\lazy\books\**" />
-    <Compile Remove="src\app\lazy\journals\**" />
-    <Compile Remove="src\app\lazy\publishers\**" />
+    <Compile Remove="src\app\lazy-components-modules\articles\**" />
+    <Compile Remove="src\app\lazy-components-modules\authors\**" />
+    <Compile Remove="src\app\lazy-components-modules\books\**" />
+    <Compile Remove="src\app\lazy-components-modules\journals\**" />
+    <Compile Remove="src\app\lazy-components-modules\publishers\**" />
     <Content Remove="dist\**" />
-    <Content Remove="src\app\lazy\articles\**" />
-    <Content Remove="src\app\lazy\authors\**" />
-    <Content Remove="src\app\lazy\books\**" />
-    <Content Remove="src\app\lazy\journals\**" />
-    <Content Remove="src\app\lazy\publishers\**" />
+    <Content Remove="src\app\lazy-components-modules\articles\**" />
+    <Content Remove="src\app\lazy-components-modules\authors\**" />
+    <Content Remove="src\app\lazy-components-modules\books\**" />
+    <Content Remove="src\app\lazy-components-modules\journals\**" />
+    <Content Remove="src\app\lazy-components-modules\publishers\**" />
     <EmbeddedResource Remove="dist\**" />
-    <EmbeddedResource Remove="src\app\lazy\articles\**" />
-    <EmbeddedResource Remove="src\app\lazy\authors\**" />
-    <EmbeddedResource Remove="src\app\lazy\books\**" />
-    <EmbeddedResource Remove="src\app\lazy\journals\**" />
-    <EmbeddedResource Remove="src\app\lazy\publishers\**" />
+    <EmbeddedResource Remove="src\app\lazy-components-modules\articles\**" />
+    <EmbeddedResource Remove="src\app\lazy-components-modules\authors\**" />
+    <EmbeddedResource Remove="src\app\lazy-components-modules\books\**" />
+    <EmbeddedResource Remove="src\app\lazy-components-modules\journals\**" />
+    <EmbeddedResource Remove="src\app\lazy-components-modules\publishers\**" />
     <None Remove="dist\**" />
-    <None Remove="src\app\lazy\articles\**" />
-    <None Remove="src\app\lazy\authors\**" />
-    <None Remove="src\app\lazy\books\**" />
-    <None Remove="src\app\lazy\journals\**" />
-    <None Remove="src\app\lazy\publishers\**" />
+    <None Remove="src\app\lazy-components-modules\articles\**" />
+    <None Remove="src\app\lazy-components-modules\authors\**" />
+    <None Remove="src\app\lazy-components-modules\books\**" />
+    <None Remove="src\app\lazy-components-modules\journals\**" />
+    <None Remove="src\app\lazy-components-modules\publishers\**" />
   </ItemGroup>
 
   <ItemGroup>

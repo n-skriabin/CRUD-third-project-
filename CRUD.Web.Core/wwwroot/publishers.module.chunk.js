@@ -1,6 +1,6 @@
 webpackJsonp(["publishers.module"],{
 
-/***/ "../../../../../src/app/lazy/publishers.module.ts":
+/***/ "../../../../../src/app/lazy-components-modules/publishers.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

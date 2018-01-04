@@ -162,7 +162,7 @@ module.exports = "<h3>Books</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n
 
 /***/ }),
 
-/***/ "../../../../../src/app/lazy/books.module.ts":
+/***/ "../../../../../src/app/lazy-components-modules/books.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

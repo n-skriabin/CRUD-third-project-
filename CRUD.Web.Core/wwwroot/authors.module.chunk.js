@@ -108,7 +108,7 @@ module.exports = "<h3>Authors</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | asy
 
 /***/ }),
 
-/***/ "../../../../../src/app/lazy/authors.module.ts":
+/***/ "../../../../../src/app/lazy-components-modules/authors.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -129,7 +129,7 @@ module.exports = "<h3>Articles</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | as
 
 /***/ }),
 
-/***/ "../../../../../src/app/lazy/articles.module.ts":
+/***/ "../../../../../src/app/lazy-components-modules/articles.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
