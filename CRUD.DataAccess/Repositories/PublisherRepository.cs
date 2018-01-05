@@ -5,6 +5,7 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using CRUD.Views;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -17,11 +18,40 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Publisher> Read()
+        public List<PublisherViewModel> Read()
         {
-            string query = "SELECT * FROM Publishers";
-            var publishers = _db.Query<Publisher>(query).ToList();
-            return publishers;
+            string query = @"SELECT Books.*, Journals.*, Publishers.*
+                             FROM Publishers 
+                             INNER JOIN Journals ON Journals.PublisherId = Publishers.Id
+                             INNER JOIN Books ON Books.PublisherId = Publishers.Id";
+            var publishersDictionary = new Dictionary<string, PublisherViewModel>();
+            _db.Query<Book, Journal, Publisher, PublisherViewModel>(query, (book, journal, publisher) =>
+            {
+                PublisherViewModel publisherViewModel = new PublisherViewModel();
+                if (!publishersDictionary.TryGetValue(publisher.Id.ToString(), out publisherViewModel))
+                {
+                    publisherViewModel = new PublisherViewModel
+                    {
+                        Id = publisher.Id.ToString(),
+                        Name = publisher.Name,
+                    };
+                    publishersDictionary.Add(publisher.Id.ToString(), publisherViewModel);
+                }
+
+                if (publisherViewModel.BookIds == null)
+                    publisherViewModel.BookIds = new HashSet<string>();
+
+                if (publisherViewModel.JournalIds == null)
+                    publisherViewModel.JournalIds = new HashSet<string>();
+
+                publisherViewModel.BookIds.Add(book.Id.ToString());
+                publisherViewModel.JournalIds.Add(journal.Id.ToString());
+
+                return publisherViewModel;
+            }).AsQueryable();
+
+            var publisherlViewModelList = publishersDictionary.Values.ToList();
+            return publisherlViewModelList;
         }
 
         public void Create(Publisher publisher, List<string> journalsId, List<string> booksId)
@@ -72,17 +102,6 @@ namespace CRUD.DataAccess.Repositories
 
             query = "UPDATE Journals SET PublisherId = @emptyGuid WHERE PublisherId = @publisherId";
             _db.Query(query, new { publisherId, emptyGuid });
-        }
-
-        public void AddBooksJournals(string publisherId, List<Guid> journalsId, List<Guid> booksId)
-        {
-            string query = "UPDATE Books SET PublisherId = @publisherId WHERE Id IN @arrayBooksIds";
-            var arrayBooksIds = booksId.ToArray();
-            _db.Execute(query, new { arrayBooksIds, publisherId });
-
-            query = "UPDATE Journals SET PublisherId = @publisherId WHERE Id IN @arrayJournalsIds";
-            var arrayJournalsIds = journalsId.ToArray();
-            _db.Execute(query, new { arrayJournalsIds, publisherId });
-        }
+        }  
     }
 }
