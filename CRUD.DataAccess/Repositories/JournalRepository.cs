@@ -5,6 +5,7 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using CRUD.Views;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -17,11 +18,40 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Journal> Read()
+        public List<JournalViewModel> Read()
         {
-            string query = "SELECT * FROM Journals";
-            var journals = _db.Query<Journal>(query).ToList();
-            return journals;
+            string query = @"SELECT Articles.*, Journals.*
+                             FROM Articles 
+                             INNER JOIN Journals on Articles.JournalId = Journals.Id";
+            var journalsDictionary = new Dictionary<string, JournalViewModel>();
+            _db.Query<Article, Journal, JournalViewModel>(query, (article, journal) =>
+            {
+                JournalViewModel journalViewModel = new JournalViewModel();
+                if (!journalsDictionary.TryGetValue(journal.Id.ToString(), out journalViewModel))
+                {
+                    journalViewModel = new JournalViewModel
+                    {
+                        Id = journal.Id.ToString(),
+                        Name = journal.Name,
+                        Date = journal.Date
+                    };
+                    journalsDictionary.Add(journal.Id.ToString(), journalViewModel);
+                }
+
+                if (journalViewModel.ArticlesList == null)
+                    journalViewModel.ArticlesList = new List<Article>();
+
+                if (journalViewModel.ArticleIds == null)
+                    journalViewModel.ArticleIds = new List<string>();
+
+                journalViewModel.ArticlesList.Add(article);
+                journalViewModel.ArticleIds.Add(article.Id.ToString());
+
+                return journalViewModel;
+            }).AsQueryable();
+
+            var journalViewModelList = journalsDictionary.Values.ToList();
+            return journalViewModelList;
         }
 
         public void Create(Journal journal, List<string> articlesIds)
