@@ -22,42 +22,16 @@ namespace CRUD.Services
         public List<BookViewModel> Read()
         {
             List<BookViewModel> books = _bookRepository.Read();
-            //var booksListForViewModel = new List<BookViewModel>();
-
-            //if (books == null || books.Count == 0)
-            //{
-            //    return booksListForViewModel;
-            //}
-
-            //foreach (var book in books)
-            //{
-            //    var authors = _authorRepository.GetAuthors(book.Id);
-            //    if (authors.Count == 0)
-            //    {
-            //        _bookRepository.Delete(book.Id);
-            //        continue;
-            //    }
-            //    BookViewModel bookViewModel = new BookViewModel
-            //    {
-            //        Id = book.Id.ToString(),
-            //        Name = book.Name,
-            //        Year = book.Year,
-            //        AuthorsList = authors,
-            //    };
-            //    bookViewModel.AuthorIds = GetAuthorIdsArray(bookViewModel.AuthorsList);
-            //    booksListForViewModel.Add(bookViewModel);
-            //}
             return books;
         }
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
             var book = ViewModelToDomain(postBookViewModel);
-            var bookViewModel = DomainToViewModel(postBookViewModel);
 
             _bookRepository.Create(book, postBookViewModel.AuthorIds);
 
-            return bookViewModel;
+            return null;
         }
 
         public BookViewModel Update(PostBookViewModel postBookViewModel)
@@ -97,16 +71,6 @@ namespace CRUD.Services
             };
 
             return bookViewModel;
-        }
-
-        public List<string> GetAuthorIdsArray(List<Author> authors)
-        {    
-            var authorIds = new List<string>();
-            foreach (var author in authors)
-            {
-                authorIds.Add(author.Id.ToString());
-            }
-            return authorIds; 
         }
     }
 }

@@ -28,8 +28,8 @@ namespace CRUD.DataAccess.Repositories
 
             _db.Query<Author, Book, BookViewModel>(query, (author, book) =>
             {
-                BookViewModel bookViewModel;
-                if (!booksDictionary.TryGetValue(author.Id.ToString(), out bookViewModel))
+                BookViewModel bookViewModel = new BookViewModel();
+                if (!booksDictionary.TryGetValue(book.Id.ToString(), out bookViewModel))
                 {
                     bookViewModel = new BookViewModel
                     {
@@ -37,7 +37,7 @@ namespace CRUD.DataAccess.Repositories
                         Name = book.Name,
                         Year = book.Year
                     };
-                    booksDictionary.Add(author.Id.ToString(), bookViewModel);
+                    booksDictionary.Add(book.Id.ToString(), bookViewModel);
                 }
 
                 if (bookViewModel.AuthorsList == null)
