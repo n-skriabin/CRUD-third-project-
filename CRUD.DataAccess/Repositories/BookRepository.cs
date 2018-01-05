@@ -24,8 +24,6 @@ namespace CRUD.DataAccess.Repositories
                              FROM Authors 
                              INNER JOIN BooksAuthors on BooksAuthors.AuthorId = Authors.Id
                              INNER JOIN Books on BooksAuthors.BookId = Books.Id";
-            //var books = _db.Query<Book>(query).ToList();
-            //return books;
             var booksDictionary = new Dictionary<string, BookViewModel>();
 
             _db.Query<Author, Book, BookViewModel>(query, (author, book) =>
@@ -45,7 +43,11 @@ namespace CRUD.DataAccess.Repositories
                 if (bookViewModel.AuthorsList == null)
                     bookViewModel.AuthorsList = new List<Author>();
 
+                if (bookViewModel.AuthorIds == null)
+                    bookViewModel.AuthorIds = new List<string>();
+
                 bookViewModel.AuthorsList.Add(author);
+                bookViewModel.AuthorIds.Add(author.Id.ToString());
 
                 return bookViewModel;
             }).AsQueryable();
