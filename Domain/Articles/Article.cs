@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CRUD.Domain
 {
+    [Table("Articles")]
     public class Article : BaseEntity
     {
         [StringLength(50)]

@@ -5,7 +5,9 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using Dapper.Contrib;
 using CRUD.Views;
+using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -61,15 +63,11 @@ namespace CRUD.DataAccess.Repositories
 
         public void Delete(Guid id)
         {
-            string query = "DELETE FROM Articles WHERE Id = @id";
-            _db.Query(query, new { id });
-        }
-
-        public Article GetArticle(Guid id)
-        {
-            string query = "SELECT * FROM Articles WHERE Id = @id";
-            var article = _db.Query<Article>(query, id).FirstOrDefault();
-            return article;
+            Article article = new Article
+            {
+                Id = id
+            };
+            _db.Delete(article);
         }
 
         public List<Article> GetArticles(List<string> articlesIds)
@@ -77,13 +75,6 @@ namespace CRUD.DataAccess.Repositories
             string query = "SELECT * FROM Articles WHERE Id IN @arrayIds";
             var arrayIds = articlesIds.ToArray();
             var articles = _db.Query<Article>(query, new { arrayIds }).ToList();
-            return articles;
-        }
-
-        public List<Article> GetArticles(Guid? journalId)
-        {
-            string query = "SElECT * FROM Articles WHERE JournalId = @journalId";
-            var articles = _db.Query<Article>(query, new { journalId }).ToList();
             return articles;
         }
     }

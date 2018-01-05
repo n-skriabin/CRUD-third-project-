@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using CRUD.Views;
+using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -78,10 +79,12 @@ namespace CRUD.DataAccess.Repositories
         public void Delete(Guid bookId)
         {
             DeleteBook(bookId);
-            string stringBookId = bookId.ToString();
 
-            string query = "DELETE FROM Books WHERE Id = @stringBookId";
-            _db.Query(query, new { stringBookId });
+            Book book = new Book
+            {
+                Id = bookId
+            };
+            _db.Delete(book);
         }
 
         public void DeleteBook(Guid bookId)

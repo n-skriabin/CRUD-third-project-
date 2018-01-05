@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using CRUD.Views;
+using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -89,8 +90,11 @@ namespace CRUD.DataAccess.Repositories
         {
             PublisherIdNull(publisherId);
 
-            string query = "DELETE FROM Publishers WHERE Id = @publisherId";
-            _db.Query(query, new { publisherId });
+            Publisher publisher = new Publisher
+            {
+                Id = publisherId
+            };
+            _db.Delete(publisher);
         }
 
         public void PublisherIdNull(Guid publisherId)

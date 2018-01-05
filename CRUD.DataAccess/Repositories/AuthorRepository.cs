@@ -1,5 +1,6 @@
 ﻿using CRUD.Domain;
 using Dapper;
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,13 +48,18 @@ namespace CRUD.DataAccess.Repositories
 
                 if (list.Count == 0)
                 {
-                    query = "DELETE FROM Books WHERE Id = @BookId";
-                    _db.Query(query, new { BookId = bookAuthor.BookId });
+                    Book book = new Book
+                    {
+                        Id = bookAuthor.BookId
+                    };
+                    _db.Delete(book);
                 }
             }
-
-            query = "DELETE FROM Authors WHERE Id = @AuthorId";
-            _db.Query(query, new { AuthorId });
+            Author author = new Author
+            {
+                Id = AuthorId
+            };
+            _db.Delete(author);
 
             query = "DELETE FROM Articles WHERE AuthorId = @AuthorId";
             _db.Query(query, new { AuthorId });

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using CRUD.Views;
+using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -42,7 +43,7 @@ namespace CRUD.DataAccess.Repositories
                     journalViewModel.ArticlesList = new List<Article>();
 
                 if (journalViewModel.ArticleIds == null)
-                    journalViewModel.ArticleIds = new List<string>();
+                    journalViewModel.ArticleIds = new HashSet<string>();
 
                 journalViewModel.ArticlesList.Add(article);
                 journalViewModel.ArticleIds.Add(article.Id.ToString());
@@ -86,17 +87,12 @@ namespace CRUD.DataAccess.Repositories
             string query = "UPDATE Articles SET JournalId = @emptyGuid WHERE JournalId = @journalId";
             _db.Query(query, new { journalId, emptyGuid });
 
-            query = "DELETE FROM Journals WHERE Id = @journalId";
-            _db.Query(query, new { journalId });
-        }
+            Journal journal = new Journal
+            {
+                Id = journalId
+            };
+            _db.Delete(journal);
 
-        public List<Journal> GetJournals(List<Guid> journalsListId)
-        {
-            var arrayJournalsIds = journalsListId.ToArray();
-
-            string query = "SELECT * FROM Journals WHERE Id IN @arrayJournalsIds";
-            var journals = _db.Query<Journal>(query, new { arrayJournalsIds }).ToList();
-            return journals;
         }
 
         public List<Journal> GetJournals(Guid publisherId)

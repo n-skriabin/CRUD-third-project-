@@ -4,7 +4,9 @@ namespace CRUD.DataAccess
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("Authors")]
     public partial class Author : BaseEntity
     {
         [StringLength(50)]
