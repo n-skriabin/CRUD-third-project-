@@ -17,7 +17,8 @@ namespace CRUD.Services
 
         public List<Author> GetAll()
         {
-            return _authorRepository.GetAll();
+            var authors = _authorRepository.GetAll();
+            return authors;
         }
 
         public void Create(AuthorViewModel authorViewModel)
@@ -53,7 +54,7 @@ namespace CRUD.Services
 
         public string GenerateAbbreviated(AuthorViewModel authorViewModel)
         {
-            string abbreviated = "";
+            string abbreviated = String.Empty;
 
             if (authorViewModel.Patronymic != null)
             {

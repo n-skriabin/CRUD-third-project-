@@ -21,7 +21,7 @@ namespace CRUD.Services
 
         public List<BookViewModel> GetAll()
         {
-            List<BookViewModel> books = _bookRepository.GetAll();
+            var books = _bookRepository.GetAll();
             return books;
         }
 
@@ -69,7 +69,6 @@ namespace CRUD.Services
                 Year = postBookViewModel.Year,
                 AuthorsList = _authorRepository.GetAuthors(Guid.Parse(postBookViewModel.Id)),
             };
-
             return bookViewModel;
         }
     }

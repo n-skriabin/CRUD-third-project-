@@ -52,7 +52,8 @@ namespace CRUD.Services
 
         public void Delete(JournalViewModel journalViewModel)
         {
-            _journalRepository.Delete(Guid.Parse(journalViewModel.Id));
+            var id = Guid.Parse(journalViewModel.Id);
+            _journalRepository.Delete(id);
         }
 
         private Journal ViewModelToDomain(PostJournalViewModel postJournalViewModel)
@@ -74,7 +75,6 @@ namespace CRUD.Services
                 Date = postJournalViewModel.Date,
                 ArticlesList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds),
             };
-
             return journalViewModel;
         }
     }
