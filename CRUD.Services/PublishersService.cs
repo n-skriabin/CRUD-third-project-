@@ -50,7 +50,8 @@ namespace CRUD.Services
 
         public void Delete(PublisherViewModel publisherViewModel)
         {
-            _publisherRepository.Delete(Guid.Parse(publisherViewModel.Id));
+            var id = Guid.Parse(publisherViewModel.Id);
+            _publisherRepository.Delete(id);
         }
 
         private Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)

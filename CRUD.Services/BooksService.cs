@@ -47,7 +47,8 @@ namespace CRUD.Services
 
         public void Delete(BookViewModel bookViewModel)
         {
-            _bookRepository.Delete(Guid.Parse(bookViewModel.Id));
+            var id = Guid.Parse(bookViewModel.Id);
+            _bookRepository.Delete(id);
         }
 
         public Book ViewModelToDomain(PostBookViewModel postBookViewModel)
