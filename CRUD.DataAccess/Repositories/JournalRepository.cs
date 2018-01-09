@@ -104,14 +104,14 @@ namespace CRUD.DataAccess.Repositories
 
         public void UpdateArticles(Guid id, List<string> articlesIds)
         {
-            var arrayArticlesIds = articlesIds.ToArray();
-            string query;
-
-            foreach (var articleId in arrayArticlesIds)
-            {
-                query = "UPDATE Articles SET JournalId = @id WHERE Id = @articleId";
-                _db.Query(query, new { articleId, id });
-            }
+            //var arrayArticlesIds = articlesIds.ToArray();
+            string query = "UPDATE Articles SET JournalId = @id WHERE Id IN @articlesIds";
+            _db.Query(query, new { id, articlesIds });
+            //foreach (var articleId in arrayArticlesIds)
+            //{
+            //    query = "UPDATE Articles SET JournalId = @id WHERE Id = @articleId";
+            //    _db.Query(query, new { articleId, id });
+            //}
         }
     }
 }

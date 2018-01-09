@@ -33,33 +33,14 @@ namespace CRUD.DataAccess.Repositories
 
         public void Delete(Guid authorId)
         {
-            string query = "SELECT * FROM BooksAuthors WHERE AuthorId = @AuthorId";
-            var deletingAuthorBooks = _db.Query<BooksAuthors>(query, new { authorId }).ToArray();
-
-            query = "DELETE FROM BooksAuthors WHERE AuthorId = @AuthorId";
-            _db.Query(query, new { authorId });
-
-            foreach (var bookAuthor in deletingAuthorBooks) 
-            {
-                query = "SELECT * FROM BooksAuthors WHERE BookId = @BookId";
-                var list = _db.Query<BooksAuthors>(query, new { BookId = bookAuthor.BookId }).ToList();
-
-                if (list.Count == 0)
-                {
-                    Book book = new Book
-                    {
-                        Id = bookAuthor.BookId
-                    };
-                    _db.Delete(book);
-                }
-            }
+            DeleteRelationships(authorId);
             Author author = new Author
             {
                 Id = authorId
             };
             _db.Delete(author);
 
-            query = "DELETE FROM Articles WHERE AuthorId = @AuthorId";
+            string query = "DELETE FROM Articles WHERE AuthorId = @AuthorId";
             _db.Query(query, new { authorId });
         }
 
@@ -88,6 +69,33 @@ namespace CRUD.DataAccess.Repositories
 
             var authors = _db.Query<Author>(query, new { Id = bookId }).ToList();
             return authors;
+        }
+
+        private void DeleteRelationships(Guid authorId)
+        {
+            string query = "SELECT BookId FROM BooksAuthors WHERE AuthorId = @authorId";
+            var deletingAuthorBooks = _db.Query<Guid>(query, new { authorId }).ToList();
+
+            query = "DELETE FROM BooksAuthors WHERE AuthorId = @authorId";
+            _db.Query(query, new { authorId });
+
+            query = "DELETE FROM Books WHERE Id IN @deletingAuthorBooks";
+            _db.Query(query, new { deletingAuthorBooks });
+
+            //foreach (var bookAuthor in deletingAuthorBooks)
+            //{
+            //    query = "SELECT * FROM BooksAuthors WHERE BookId = @BookId";
+            //    var list = _db.Query<BooksAuthors>(query, new { BookId = bookAuthor.BookId }).ToList();
+
+            //    if (list.Count == 0)
+            //    {
+            //        Book book = new Book
+            //        {
+            //            Id = bookAuthor.BookId
+            //        };
+            //        _db.Delete(book);
+            //    }
+            //}
         }
     }
 }

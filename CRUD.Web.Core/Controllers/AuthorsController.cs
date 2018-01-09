@@ -60,16 +60,16 @@ namespace CRUD.Web.Core.Controllers
         [HttpPost]
         public IActionResult Delete([FromBody]AuthorViewModel authorViewModel)
         {
-            try
-            {
+            //try
+            //{
                 var Id = Guid.Parse(authorViewModel.Id);
                 _authorsService.Delete(Id);
                 return Ok();
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception);
-            }
+            //}
+            //catch (Exception exception)
+            //{
+            //    return BadRequest(exception);
+            //}
         }
     }
 }

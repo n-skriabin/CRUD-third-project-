@@ -117,13 +117,12 @@ namespace CRUD.DataAccess.Repositories
             {
                 var bookAuthor = new BooksAuthors
                 {
-                    Id = Guid.NewGuid(),
                     BookId = book.Id,
                     AuthorId = Guid.Parse(authorID),
                 };
 
-                string query = "INSERT INTO BooksAuthors (Id, BookId, AuthorId) VALUES (@Id, @BookId, @AuthorId)";
-                _db.Query(query, bookAuthor);
+                //string query = "INSERT INTO BooksAuthors (Id, BookId, AuthorId) VALUES (@Id, @BookId, @AuthorId)";
+                _db.Insert(bookAuthor);
             }
         }
     }
