@@ -11,24 +11,12 @@ namespace CRUD.Domain
     {
         [Key]
         public Guid Id { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime LastUpdateDate { get; set; }
 
         public BaseEntity()
         {
             Id = Guid.NewGuid();
-            DateTime = DateTime.UtcNow;
+            LastUpdateDate = DateTime.UtcNow;
         }
-
-        //public Guid GetId()
-        //{
-        //    Id = Guid.NewGuid();
-        //    return Id;
-        //}
-
-        //public DateTime GetDateTime()
-        //{
-        //    var date = DateTime.UtcNow;
-        //    return date;
-        //}
     }
 }

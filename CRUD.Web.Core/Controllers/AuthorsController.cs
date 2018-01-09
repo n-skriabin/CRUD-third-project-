@@ -32,15 +32,15 @@ namespace CRUD.Web.Core.Controllers
         [HttpPost]
         public IActionResult Create([FromBody]AuthorViewModel authorViewModel)
         {
-            try
-            {
+            //try
+            //{
                 _authorsService.Create(authorViewModel);
                 return Ok(authorViewModel);
-            }
-            catch(Exception exception)
-            {
-                return BadRequest(exception);
-            }
+            //}
+            //catch(Exception exception)
+            //{
+            //    return BadRequest(exception);
+            //}
         }
 
         [HttpPost]

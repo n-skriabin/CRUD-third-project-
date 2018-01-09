@@ -49,14 +49,14 @@ namespace CRUD.DataAccess.Repositories
 
         public void Create(Article article)
         {
-            string query = "INSERT INTO Articles (Id, Name, Year, AuthorId, DateTime) VALUES(@Id, @Name, @Year, @AuthorId, @DateTime);";
+            string query = "INSERT INTO Articles (Id, Name, Year, AuthorId, LastUpdateDate) VALUES(@Id, @Name, @Year, @AuthorId, @LastUpdateDate);";
             _db.Query(query, article);
         }
 
         public void Update(Article newRecord)
         {
-            string query = "UPDATE Articles SET Name = @Name, Year = @Year, AuthorId = @AuthorId, DateTime = @DateTime WHERE Id = @Id";
-            newRecord.DateTime = DateTime.UtcNow;
+            string query = "UPDATE Articles SET Name = @Name, Year = @Year, AuthorId = @AuthorId, LastUpdateDate = @LastUpdateDate WHERE Id = @Id";
+            newRecord.LastUpdateDate = DateTime.UtcNow;
             _db.Execute(query, newRecord);
         }
 
