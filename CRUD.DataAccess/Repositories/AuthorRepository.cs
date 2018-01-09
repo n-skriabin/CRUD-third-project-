@@ -21,8 +21,8 @@ namespace CRUD.DataAccess.Repositories
         public List<Author> Read()
         {
             string query = "SELECT * FROM Authors";
-            //var authors = new List<Author>();
-            authors = _db.Read;
+            var authors = new List<Author>();
+            authors = _db.Query<Author>(query).ToList();
             return authors;
         }
 
