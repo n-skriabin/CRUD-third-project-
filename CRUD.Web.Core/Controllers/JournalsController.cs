@@ -76,7 +76,7 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult ReadJournalsForMultiselect([FromBody]JournalViewModel journalViewModel)
+        public IActionResult GetJournalsForMultiselect([FromBody]JournalViewModel journalViewModel)
         {
             try
             {

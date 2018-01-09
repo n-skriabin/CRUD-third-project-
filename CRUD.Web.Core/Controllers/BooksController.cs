@@ -78,7 +78,7 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult ReadBooksForMultiselect([FromBody]BookViewModel bookViewModel)
+        public IActionResult GetBooksForMultiselect([FromBody]BookViewModel bookViewModel)
         {
             try
             {
