@@ -91,7 +91,6 @@ namespace CRUD.DataAccess.Repositories
                 Id = journalId
             };
             _db.Delete(journal);
-
         }
 
         public List<Journal> GetJournals(Guid publisherId)
