@@ -77,28 +77,28 @@ export class AuthorsService extends BehaviorSubject<any[]> {
   }
 
   private fetch(action: string = '', data?: any): Observable<any[]> {
-      if (action == 'GetAll') {
+      if (action == READ_ACTION) {
       var url = baseUrl + 'api/' + controller + READ_ACTION;
       return this.http
         .get(url)
         .map(res => <any[]>res);
     }
 
-    if (action == 'Create') {
+    if (action == CREATE_ACTION) {
       var url = baseUrl + 'api/' + controller + CREATE_ACTION;
       return this.http
         .post(url, data)
         .map(res => <any[]>res);
     }
 
-    if (action == 'Update') {
+    if (action == UPDATE_ACTION) {
       var url = baseUrl + 'api/' + controller + UPDATE_ACTION;
       return this.http
         .post(url, data)
         .map(res => <any[]>res);
     }
 
-    if (action == 'Delete') {
+    if (action == DELETE_ACTION) {
       var url = baseUrl + 'api/' + controller + DELETE_ACTION;
       var id = data.Id;
       return this.http
