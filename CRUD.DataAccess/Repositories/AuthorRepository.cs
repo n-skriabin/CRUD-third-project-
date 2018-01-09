@@ -81,21 +81,6 @@ namespace CRUD.DataAccess.Repositories
 
             query = "DELETE FROM Books WHERE Id IN @deletingAuthorBooks";
             _db.Query(query, new { deletingAuthorBooks });
-
-            //foreach (var bookAuthor in deletingAuthorBooks)
-            //{
-            //    query = "SELECT * FROM BooksAuthors WHERE BookId = @BookId";
-            //    var list = _db.Query<BooksAuthors>(query, new { BookId = bookAuthor.BookId }).ToList();
-
-            //    if (list.Count == 0)
-            //    {
-            //        Book book = new Book
-            //        {
-            //            Id = bookAuthor.BookId
-            //        };
-            //        _db.Delete(book);
-            //    }
-            //}
         }
     }
 }
