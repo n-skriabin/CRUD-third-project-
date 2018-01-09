@@ -46,10 +46,8 @@ namespace CRUD.DataAccess.Repositories
 
         public void Update(Author newRecord)
         {
-            string query = @"UPDATE Authors 
-                             SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, LastUpdateDate = @LastUpdateDate WHERE Id = @Id";
             newRecord.LastUpdateDate = DateTime.UtcNow;
-            _db.Execute(query, newRecord);
+            _db.Update(newRecord);
         }
 
         public Author GetAuthor(Guid authorId)

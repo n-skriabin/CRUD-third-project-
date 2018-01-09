@@ -71,9 +71,8 @@ namespace CRUD.DataAccess.Repositories
 
             AddBookInBooksAuthors(newRecord, authorsListIds);
 
-            string query = "UPDATE Books SET Name = @Name, Year = @Year, LastUpdateDate = @LastUpdateDate WHERE Id = @Id";
             newRecord.LastUpdateDate = DateTime.UtcNow;
-            _db.Execute(query, newRecord);
+            _db.Update(newRecord);
         }
 
         public void Delete(Guid bookId)

@@ -55,9 +55,8 @@ namespace CRUD.DataAccess.Repositories
 
         public void Update(Article newRecord)
         {
-            string query = "UPDATE Articles SET Name = @Name, Year = @Year, AuthorId = @AuthorId, LastUpdateDate = @LastUpdateDate WHERE Id = @Id";
             newRecord.LastUpdateDate = DateTime.UtcNow;
-            _db.Execute(query, newRecord);
+            _db.Update(newRecord);
         }
 
         public void Delete(Guid id)
