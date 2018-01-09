@@ -18,11 +18,9 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Author> Read()
+        public List<Author> GetAll()
         {
-            string query = "SELECT * FROM Authors";
-            var authors = new List<Author>();
-            authors = _db.Query<Author>(query).ToList();
+            var authors = _db.GetAll<Author>().ToList();
             return authors;
         }
 
@@ -33,13 +31,13 @@ namespace CRUD.DataAccess.Repositories
             _db.Query(query, author);
         }
 
-        public void Delete(Guid AuthorId)
+        public void Delete(Guid authorId)
         {
             string query = "SELECT * FROM BooksAuthors WHERE AuthorId = @AuthorId";
-            var deletingAuthorBooks = _db.Query<BooksAuthors>(query, new { AuthorId }).ToArray();
+            var deletingAuthorBooks = _db.Query<BooksAuthors>(query, new { authorId }).ToArray();
 
             query = "DELETE FROM BooksAuthors WHERE AuthorId = @AuthorId";
-            _db.Query(query, new { AuthorId });
+            _db.Query(query, new { authorId });
 
             foreach (var bookAuthor in deletingAuthorBooks) 
             {
@@ -57,12 +55,12 @@ namespace CRUD.DataAccess.Repositories
             }
             Author author = new Author
             {
-                Id = AuthorId
+                Id = authorId
             };
             _db.Delete(author);
 
             query = "DELETE FROM Articles WHERE AuthorId = @AuthorId";
-            _db.Query(query, new { AuthorId });
+            _db.Query(query, new { authorId });
         }
 
         public void Update(Author newRecord)
@@ -73,10 +71,10 @@ namespace CRUD.DataAccess.Repositories
             _db.Execute(query, newRecord);
         }
 
-        public Author GetAuthor(Guid AuthorId)
+        public Author GetAuthor(Guid authorId)
         {
             string query = "SELECT * FROM Authors WHERE Id = @AuthorId";
-            var author = _db.Query<Author>(query, new { AuthorId }).FirstOrDefault();
+            var author = _db.Query<Author>(query, new { authorId }).FirstOrDefault();
             return author;
         }
 

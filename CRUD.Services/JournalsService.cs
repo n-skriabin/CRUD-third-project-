@@ -15,16 +15,16 @@ namespace CRUD.Services
         private ArticleRepository _articleRepository;
         private AuthorRepository _authorRepository;
 
-        public JournalsService(string ConnectionString)
+        public JournalsService(string connectionString)
         {
-            _journalRepository = new JournalRepository(ConnectionString);
-            _articleRepository = new ArticleRepository(ConnectionString);
-            _authorRepository = new AuthorRepository(ConnectionString);
+            _journalRepository = new JournalRepository(connectionString);
+            _articleRepository = new ArticleRepository(connectionString);
+            _authorRepository = new AuthorRepository(connectionString);
         }
 
-        public List<JournalViewModel> Read()
+        public List<JournalViewModel> GetAll()
         {
-            var journals = _journalRepository.Read();         
+            var journals = _journalRepository.GetAll();         
             return journals;
         }
 
@@ -55,7 +55,7 @@ namespace CRUD.Services
             _journalRepository.Delete(Guid.Parse(journalViewModel.Id));
         }
 
-        public Journal ViewModelToDomain(PostJournalViewModel postJournalViewModel)
+        private Journal ViewModelToDomain(PostJournalViewModel postJournalViewModel)
         {
             Journal journal = new Journal()
             {
@@ -65,7 +65,7 @@ namespace CRUD.Services
             return journal;
         }
 
-        public JournalViewModel DomainToViewModel(PostJournalViewModel postJournalViewModel)
+        private JournalViewModel DomainToViewModel(PostJournalViewModel postJournalViewModel)
         {
             var journalViewModel = new JournalViewModel
             {

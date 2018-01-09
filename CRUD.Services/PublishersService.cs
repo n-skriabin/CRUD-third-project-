@@ -13,16 +13,16 @@ namespace CRUD.Services
         private JournalRepository _journalRepository;
         private PublisherRepository _publisherRepository;
 
-        public PublishersService(string ConnectionString)
+        public PublishersService(string connectionString)
         {
-            _bookRepository = new BookRepository(ConnectionString);
-            _journalRepository = new JournalRepository(ConnectionString);
-            _publisherRepository = new PublisherRepository(ConnectionString);
+            _bookRepository = new BookRepository(connectionString);
+            _journalRepository = new JournalRepository(connectionString);
+            _publisherRepository = new PublisherRepository(connectionString);
         }
 
-        public List<PublisherViewModel> Read()
+        public List<PublisherViewModel> GetAll()
         {
-            var publishers = _publisherRepository.Read();
+            var publishers = _publisherRepository.GetAll();
             return publishers;
         }
 
@@ -51,9 +51,9 @@ namespace CRUD.Services
         public void Delete(PublisherViewModel publisherViewModel)
         {
             _publisherRepository.Delete(Guid.Parse(publisherViewModel.Id));
-        }     
-        
-        public Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)
+        }
+
+        private Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)
         {
             Publisher publisher = new Publisher
             {
@@ -62,7 +62,7 @@ namespace CRUD.Services
             return publisher;
         }
 
-        public PublisherViewModel DomainToViewModel(PostPublisherViewModel postPublisherViewModel, Guid publisherId)
+        private PublisherViewModel DomainToViewModel(PostPublisherViewModel postPublisherViewModel, Guid publisherId)
         {
             PublisherViewModel publisherViewModel = new PublisherViewModel
             {

@@ -11,15 +11,15 @@ namespace CRUD.Services
         private ArticleRepository _articleRepository;
         private AuthorRepository _authorRepository;
 
-        public ArticlesService(string ConnectionString)
+        public ArticlesService(string connectionString)
         {
-            _articleRepository = new ArticleRepository(ConnectionString);
-            _authorRepository = new AuthorRepository(ConnectionString);
+            _articleRepository = new ArticleRepository(connectionString);
+            _authorRepository = new AuthorRepository(connectionString);
         }
 
-        public List<ArticleViewModel> Read()
+        public List<ArticleViewModel> GetAll()
         {
-            var articlesList = _articleRepository.Read();
+            var articlesList = _articleRepository.GetAll();
             return articlesList;
         }
 
@@ -43,7 +43,7 @@ namespace CRUD.Services
             _articleRepository.Delete(Guid.Parse(articleViewModel.Id));
         }
 
-        public Article ViewModelToDomain(ArticleViewModel articleViewModel)
+        private Article ViewModelToDomain(ArticleViewModel articleViewModel)
         {
             Article article = new Article()
             {

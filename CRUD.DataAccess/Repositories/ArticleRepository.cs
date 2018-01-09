@@ -15,15 +15,14 @@ namespace CRUD.DataAccess.Repositories
     {
         private IDbConnection _db;
 
-        private string _connectionString = null;
+        private string _connectionString;
         public ArticleRepository(string connectionString)
         {
             _db = new SqlConnection(connectionString);
             _connectionString = connectionString;
-
         }
 
-        public List<ArticleViewModel> Read()
+        public List<ArticleViewModel> GetAll()
         {
             string query = @"SELECT Articles.* , Authors.* 
                              FROM Articles 

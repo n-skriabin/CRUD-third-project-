@@ -13,15 +13,15 @@ namespace CRUD.Services
         private BookRepository _bookRepository;
         private AuthorRepository _authorRepository;
 
-        public BooksService(string ConnectionString)
+        public BooksService(string connectionString)
         {
-            _bookRepository = new BookRepository(ConnectionString);
-            _authorRepository = new AuthorRepository(ConnectionString);
+            _bookRepository = new BookRepository(connectionString);
+            _authorRepository = new AuthorRepository(connectionString);
         }
 
-        public List<BookViewModel> Read()
+        public List<BookViewModel> GetAll()
         {
-            List<BookViewModel> books = _bookRepository.Read();
+            List<BookViewModel> books = _bookRepository.GetAll();
             return books;
         }
 
@@ -60,7 +60,7 @@ namespace CRUD.Services
             return book;
         }
 
-        public BookViewModel DomainToViewModel(PostBookViewModel postBookViewModel)
+        private BookViewModel DomainToViewModel(PostBookViewModel postBookViewModel)
         {
             BookViewModel bookViewModel = new BookViewModel
             {

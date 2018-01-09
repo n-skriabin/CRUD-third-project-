@@ -17,10 +17,10 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Read()
+        public IActionResult GetAll()
         {
             try { 
-            var journals = _journalsService.Read();
+            var journals = _journalsService.GetAll();
             if (journals == null)
             {
                 return null;
@@ -80,7 +80,7 @@ namespace CRUD.Web.Controllers
         {
             try
             {
-                return Ok(_journalsService.Read());
+                return Ok(_journalsService.GetAll());
             }
             catch (Exception exception)
             {

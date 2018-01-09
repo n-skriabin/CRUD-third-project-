@@ -22,7 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -81,7 +81,7 @@ var PublishersService = /** @class */ (function (_super) {
     };
     PublishersService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)

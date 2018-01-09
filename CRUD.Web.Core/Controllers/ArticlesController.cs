@@ -18,11 +18,11 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Read()
+        public IActionResult GetAll()
         {
             try
             {
-                List<ArticleViewModel> articles = _articlesService.Read();
+                List<ArticleViewModel> articles = _articlesService.GetAll();
                 if (articles == null)
                 {
                     return null;

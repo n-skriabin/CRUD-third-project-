@@ -254,7 +254,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -310,7 +310,7 @@ var ArticlesService = (function (_super) {
     };
     ArticlesService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)
@@ -377,7 +377,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -442,7 +442,7 @@ var AuthorsService = (function (_super) {
     };
     AuthorsService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)
@@ -509,7 +509,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -565,7 +565,7 @@ var BooksService = (function (_super) {
     };
     BooksService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)
@@ -678,7 +678,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -734,7 +734,7 @@ var JournalsService = (function (_super) {
     };
     JournalsService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)
@@ -819,7 +819,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var READ_ACTION = 'Read';
+var READ_ACTION = 'GetAll';
 var CREATE_ACTION = 'Create';
 var UPDATE_ACTION = 'Update';
 var DELETE_ACTION = 'Delete';
@@ -878,7 +878,7 @@ var PublishersService = (function (_super) {
     };
     PublishersService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'Read') {
+        if (action == 'GetAll') {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)

@@ -4,7 +4,7 @@ import { Author } from '../authors-component/authorModel';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-const READ_ACTION = 'Read';
+const READ_ACTION = 'GetAll';
 const CREATE_ACTION = 'Create';
 const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
@@ -68,7 +68,7 @@ export class ArticlesService extends BehaviorSubject<any[]> {
       }
     
       private fetch(action: string = '', data?: any): Observable<any[]> {
-        if (action == 'Read') {
+          if (action == 'GetAll') {
           var url = baseUrl + 'api/' + controller + READ_ACTION;
           return this.http
             .get(url)

@@ -18,11 +18,11 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Read()
+        public IActionResult GetAll()
         {
             try
             {
-                var books = _booksService.Read();
+                var books = _booksService.GetAll();
                 if (books == null)
                 {
                     return null;
@@ -82,7 +82,7 @@ namespace CRUD.Web.Controllers
         {
             try
             {
-                return Ok(_booksService.Read());
+                return Ok(_booksService.GetAll());
             }
             catch (Exception exception)
             {

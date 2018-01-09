@@ -18,11 +18,11 @@ namespace CRUD.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Read()
+        public IActionResult GetAll()
         {
             try
             {
-                var publishers = _publishersService.Read();
+                var publishers = _publishersService.GetAll();
                 if (publishers == null)
                 {
                     return null;

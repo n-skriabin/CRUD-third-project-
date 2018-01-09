@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Author} from './authorModel';
 
-const READ_ACTION = 'Read';
+const READ_ACTION = 'GetAll';
 const CREATE_ACTION = 'Create';
 const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
@@ -77,7 +77,7 @@ export class AuthorsService extends BehaviorSubject<any[]> {
   }
 
   private fetch(action: string = '', data?: any): Observable<any[]> {
-    if (action == 'Read') {
+      if (action == 'GetAll') {
       var url = baseUrl + 'api/' + controller + READ_ACTION;
       return this.http
         .get(url)

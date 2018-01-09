@@ -19,7 +19,7 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<PublisherViewModel> Read()
+        public List<PublisherViewModel> GetAll()
         {
             string query = @"SELECT Books.*, Journals.*, Publishers.*
                              FROM Publishers 

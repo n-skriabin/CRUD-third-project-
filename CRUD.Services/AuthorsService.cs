@@ -10,14 +10,14 @@ namespace CRUD.Services
     {
         private AuthorRepository _authorRepository;
 
-        public AuthorsService(string ConnectionString)
+        public AuthorsService(string connectionString)
         {
-            _authorRepository = new AuthorRepository(ConnectionString);
+            _authorRepository = new AuthorRepository(connectionString);
         }
 
-        public List<Author> Read()
+        public List<Author> GetAll()
         {
-            return _authorRepository.Read();
+            return _authorRepository.GetAll();
         }
 
         public void Create(AuthorViewModel authorViewModel)

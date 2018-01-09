@@ -7,7 +7,7 @@ import { Publisher } from './publisherModel';
 import { Book } from '../books-component/bookModel';
 import { Journal } from '../journals-component/journalModel';
 
-const READ_ACTION = 'Read';
+const READ_ACTION = 'GetAll';
 const CREATE_ACTION = 'Create';
 const UPDATE_ACTION = 'Update';
 const DELETE_ACTION = 'Delete';
@@ -76,7 +76,7 @@ export class PublishersService extends BehaviorSubject<any[]> {
   }
 
   private fetch(action: string = '', data?: any): Observable<any[]> {
-    if (action == 'Read') {
+      if (action == 'GetAll') {
       var url = baseUrl + 'api/' + controller + READ_ACTION;
       return this.http
         .get(url)
