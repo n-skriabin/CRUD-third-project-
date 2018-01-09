@@ -9,11 +9,11 @@ import { PublishersComponent } from './publishers-component/publishersComponent'
 
 export const PanelbarRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'Authors', loadChildren: './lazy-components-modules/authors.module#AuthorsModule' },
-    { path: 'Articles', loadChildren: './lazy-components-modules/articles.module#ArticlesModule' },
-    { path: 'Books', loadChildren: './lazy-components-modules/books.module#BooksModule' },
-    { path: 'Journals', loadChildren: './lazy-components-modules/journals.module#JournalsModule' },
-    { path: 'Publishers', loadChildren: './lazy-components-modules/publishers.module#PublishersModule' }
+    { path: 'Authors', loadChildren: './authors-component/authors.module#AuthorsModule' },
+    { path: 'Articles', loadChildren: './articles-component/articles.module#ArticlesModule' },
+    { path: 'Books', loadChildren: './books-component/books.module#BooksModule' },
+    { path: 'Journals', loadChildren: './journals-component/journals.module#JournalsModule' },
+    { path: 'Publishers', loadChildren: './publishers-component/publishers.module#PublishersModule' }
 ];
 
 export const appRoutingProviders: any[] = [];

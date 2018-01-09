@@ -4,24 +4,24 @@ webpackJsonp(["main"],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./lazy-components-modules/articles.module": [
-		"../../../../../src/app/lazy-components-modules/articles.module.ts",
+	"./articles-component/articles.module": [
+		"../../../../../src/app/articles-component/articles.module.ts",
 		"articles.module"
 	],
-	"./lazy-components-modules/authors.module": [
-		"../../../../../src/app/lazy-components-modules/authors.module.ts",
+	"./authors-component/authors.module": [
+		"../../../../../src/app/authors-component/authors.module.ts",
 		"authors.module"
 	],
-	"./lazy-components-modules/books.module": [
-		"../../../../../src/app/lazy-components-modules/books.module.ts",
+	"./books-component/books.module": [
+		"../../../../../src/app/books-component/books.module.ts",
 		"books.module"
 	],
-	"./lazy-components-modules/journals.module": [
-		"../../../../../src/app/lazy-components-modules/journals.module.ts",
+	"./journals-component/journals.module": [
+		"../../../../../src/app/journals-component/journals.module.ts",
 		"journals.module"
 	],
-	"./lazy-components-modules/publishers.module": [
-		"../../../../../src/app/lazy-components-modules/publishers.module.ts",
+	"./publishers-component/publishers.module": [
+		"../../../../../src/app/publishers-component/publishers.module.ts",
 		"publishers.module"
 	]
 };
@@ -54,11 +54,11 @@ module.exports = webpackAsyncContext;
 
 var PanelbarRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__["a" /* HomeComponent */] },
-    { path: 'Authors', loadChildren: './lazy-components-modules/authors.module#AuthorsModule' },
-    { path: 'Articles', loadChildren: './lazy-components-modules/articles.module#ArticlesModule' },
-    { path: 'Books', loadChildren: './lazy-components-modules/books.module#BooksModule' },
-    { path: 'Journals', loadChildren: './lazy-components-modules/journals.module#JournalsModule' },
-    { path: 'Publishers', loadChildren: './lazy-components-modules/publishers.module#PublishersModule' }
+    { path: 'Authors', loadChildren: './authors-component/authors.module#AuthorsModule' },
+    { path: 'Articles', loadChildren: './articles-component/articles.module#ArticlesModule' },
+    { path: 'Books', loadChildren: './books-component/books.module#BooksModule' },
+    { path: 'Journals', loadChildren: './journals-component/journals.module#JournalsModule' },
+    { path: 'Publishers', loadChildren: './publishers-component/publishers.module#PublishersModule' }
 ];
 var appRoutingProviders = [];
 var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(PanelbarRoutes);
