@@ -47,9 +47,9 @@
     <Compile Include="JournalModels\JournalViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublisherModels\PublisherViewModel.cs" />
-    <Compile Include="BookModels\ResponseBookViewModel.cs" />
-    <Compile Include="JournalModels\ResponseJournalViewModel.cs" />
-    <Compile Include="PublisherModels\ResponsePublisherViewModel.cs" />
+    <Compile Include="BookModels\PostBookViewModel.cs" />
+    <Compile Include="JournalModels\PostJournalViewModel.cs" />
+    <Compile Include="PublisherModels\PostPublisherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
