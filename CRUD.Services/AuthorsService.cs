@@ -47,9 +47,9 @@ namespace CRUD.Services
             _authorRepository.Update(newRecord);
         }
 
-        public void Delete(Guid Id)
+        public void Delete(Guid id)
         {
-            _authorRepository.Delete(Id);
+            _authorRepository.Delete(id);
         }
 
         public string GenerateAbbreviated(AuthorViewModel authorViewModel)

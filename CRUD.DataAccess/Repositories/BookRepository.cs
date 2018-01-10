@@ -67,7 +67,7 @@ namespace CRUD.DataAccess.Repositories
 
         public void Update(Book newRecord, List<string> authorsListIds)
         {
-            DeleteBook(newRecord.Id);
+            DeleteRelationships(newRecord.Id);
 
             AddBookInBooksAuthors(newRecord, authorsListIds);
 
@@ -77,7 +77,7 @@ namespace CRUD.DataAccess.Repositories
 
         public void Delete(Guid bookId)
         {
-            DeleteBook(bookId);
+            DeleteRelationships(bookId);
 
             Book book = new Book
             {
@@ -86,21 +86,12 @@ namespace CRUD.DataAccess.Repositories
             _db.Delete(book);
         }
 
-        public void DeleteBook(Guid bookId)
+        public void DeleteRelationships(Guid bookId)
         {
             var stringBookId = bookId.ToString();
 
             string query = "DELETE FROM BooksAuthors WHERE BookId = @stringBookId";
             _db.Query(query, new { stringBookId });
-        }
-
-        public List<Book> GetBooks(List<Guid> booksListIds)
-        {
-            var arrayIds = booksListIds.ToArray();
-
-            string query = "SELECT * FROM Books WHERE Id IN @arrayIds";
-            var booksList = _db.Query<Book>(query, arrayIds).ToList();
-            return booksList;
         }
 
         public List<Book> GetBooks(Guid publisherId)

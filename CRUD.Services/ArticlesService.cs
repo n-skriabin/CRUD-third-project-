@@ -40,7 +40,8 @@ namespace CRUD.Services
 
         public void Delete(ArticleViewModel articleViewModel)
         {
-            _articleRepository.Delete(Guid.Parse(articleViewModel.Id));
+            Guid id = Guid.Parse(articleViewModel.Id);
+            _articleRepository.Delete(id);
         }
 
         private Article ViewModelToDomain(ArticleViewModel articleViewModel)

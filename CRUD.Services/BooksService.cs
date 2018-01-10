@@ -28,10 +28,11 @@ namespace CRUD.Services
         public BookViewModel Create(PostBookViewModel postBookViewModel)
         {
             var book = ViewModelToDomain(postBookViewModel);
+            var bookViewModel = DomainToViewModel(postBookViewModel);
 
             _bookRepository.Create(book, postBookViewModel.AuthorIds);
 
-            return null;
+            return bookViewModel;
         }
 
         public BookViewModel Update(PostBookViewModel postBookViewModel)

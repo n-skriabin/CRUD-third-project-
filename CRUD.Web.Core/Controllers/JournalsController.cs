@@ -29,7 +29,7 @@ namespace CRUD.Web.Controllers
             }
             catch(Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -43,7 +43,7 @@ namespace CRUD.Web.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -57,7 +57,7 @@ namespace CRUD.Web.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -71,20 +71,7 @@ namespace CRUD.Web.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
-            }
-        }
-
-        [HttpPost]
-        public IActionResult GetJournalsForMultiselect([FromBody]JournalViewModel journalViewModel)
-        {
-            try
-            {
-                return Ok(_journalsService.GetAll());
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
     }

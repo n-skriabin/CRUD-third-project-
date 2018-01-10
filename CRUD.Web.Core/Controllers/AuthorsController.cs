@@ -25,7 +25,7 @@ namespace CRUD.Web.Core.Controllers
             }
             catch(Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -39,7 +39,7 @@ namespace CRUD.Web.Core.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -53,7 +53,7 @@ namespace CRUD.Web.Core.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
 
@@ -68,7 +68,7 @@ namespace CRUD.Web.Core.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception);
+                return BadRequest(exception.HResult);
             }
         }
     }
