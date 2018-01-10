@@ -81,25 +81,25 @@ var PublishersService = /** @class */ (function (_super) {
     };
     PublishersService.prototype.fetch = function (action, data) {
         if (action === void 0) { action = ''; }
-        if (action == 'GetAll') {
+        if (action == READ_ACTION) {
             var url = baseUrl + 'api/' + controller + READ_ACTION;
             return this.http
                 .get(url)
                 .map(function (res) { return res; });
         }
-        if (action == 'Create') {
+        if (action == CREATE_ACTION) {
             var url = baseUrl + '/api/' + controller + CREATE_ACTION;
             return this.http
                 .post(url, data)
                 .map(function (res) { return res; });
         }
-        if (action == 'Update') {
+        if (action == UPDATE_ACTION) {
             var url = baseUrl + '/api/' + controller + UPDATE_ACTION;
             return this.http
                 .post(url, data)
                 .map(function (res) { return res; });
         }
-        if (action == 'Delete') {
+        if (action == DELETE_ACTION) {
             var url = baseUrl + '/api/' + controller + DELETE_ACTION;
             var id = data.Id;
             return this.http
