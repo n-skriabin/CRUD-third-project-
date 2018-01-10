@@ -14,6 +14,5 @@ namespace CRUD.Views
         public string Articles { get; set; }
         public HashSet<string> ArticleIds { get; set; }
         public List<Article> ArticlesList { get; set; }
-        public List<string> List { get; set; }
     }
 }
