@@ -1,5 +1,4 @@
-﻿using CRUD.Domain;
-using Dapper;
+﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
