@@ -76,7 +76,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CRUD.Services\CRUD.Services.csproj" />
     <ProjectReference Include="..\CRUD.Views\CRUD.Views.csproj" />
-    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

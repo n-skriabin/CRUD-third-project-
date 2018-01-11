@@ -18,6 +18,8 @@ namespace CRUD.Domain
         public string Year { get; set; }
 
         public Guid? AuthorId { get; set; }
+        [ForeignKey("AuthorId")]
+        public virtual Author Author { get; set; }
         public Guid? JournalId { get; set; }
     }
 }
