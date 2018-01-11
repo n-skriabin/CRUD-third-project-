@@ -9,6 +9,6 @@ namespace CRUD.DataAccess.ReponseModels
     class ArticleResponseModel : BaseResponseModel
     {
         public string Name { get; set; }
-        public string 
+        public string Year { get; set; }
     }
 }

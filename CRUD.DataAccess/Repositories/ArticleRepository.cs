@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using CRUD.DataAccess.ReponseModels;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -21,25 +22,27 @@ namespace CRUD.DataAccess.Repositories
             _connectionString = connectionString;
         }
 
-        public List<ArticleViewModel> GetAll()
+        public List<Article> GetAll()
         {
             string query = @"SELECT Articles.* , Authors.* 
                              FROM Articles 
                              INNER JOIN Authors ON Articles.AuthorId = Authors.Id";
 
-            var articleDictionary = new Dictionary<Guid, ArticleViewModel>();
-            _db.Query<Article, Author, Article>(query, (article, author) =>
+            var articleDictionary = new Dictionary<Guid, Article>();
+
+            _db.Query<ArticleResponseModel, Author, Article>(query, (articleResponseModel, author) =>
             {
-                var articleViewModel = new ArticleViewModel
+                var article = new Article
                 {
-                    Id = article.Id.ToString(),
-                    Name = article.Name,
-                    Year = article.Year,
-                    AuthorId = author.Id.ToString(),
-                    Abbreviated = author.Abbreviated
+                    Id = articleResponseModel.Id,
+                    Name = articleResponseModel.Name,
+                    Year = articleResponseModel.Year,
+                    AuthorId = author.Id,
+                    Author = author
                 };
-                articleDictionary.Add(article.Id, articleViewModel);
-                return articleViewModel;
+                articleDictionary.Add(article.Id, article);
+
+                return article;
             }).AsQueryable();
 
             var articleViewModelsList = articleDictionary.Values.ToList();

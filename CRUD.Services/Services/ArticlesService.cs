@@ -19,8 +19,24 @@ namespace CRUD.Services
 
         public List<ArticleViewModel> GetAll()
         {
-            var articlesList = _articleRepository.GetAll();
-            return articlesList;
+            var articleList = _articleRepository.GetAll();
+            var articleViewModelList = new List<ArticleViewModel>();
+
+            foreach (var article in articleList)
+            {
+                var articleViewModel = new ArticleViewModel
+                {
+                    Id = article.Id.ToString(),
+                    Name = article.Name,
+                    Year = article.Year,
+                    AuthorId = article.Author.Id.ToString(),
+                    Abbreviated = article.Author.Abbreviated
+                };
+
+                articleViewModelList.Add(articleViewModel);
+            }
+                
+            return articleViewModelList;
         }
 
         public void Create(ArticleViewModel articleViewModel)

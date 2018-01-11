@@ -8,6 +8,6 @@ namespace CRUD.DataAccess.ReponseModels
 {
     class BaseResponseModel
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }
