@@ -28,7 +28,7 @@ namespace CRUD.DataAccess.Repositories
                              INNER JOIN Authors ON Articles.AuthorId = Authors.Id";
 
             var articleDictionary = new Dictionary<Guid, ArticleViewModel>();
-            _db.Query<Article, Author, ArticleViewModel>(query, (article, author) =>
+            _db.Query<Article, Author, Article>(query, (article, author) =>
             {
                 var articleViewModel = new ArticleViewModel
                 {

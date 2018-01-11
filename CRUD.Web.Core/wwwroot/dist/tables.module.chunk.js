@@ -816,8 +816,22 @@ var TablesModule = (function () {
     }
     TablesModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forChild(routes), __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_3__progress_kendo_angular_grid_dist_es_grid_module__["a" /* GridModule */], __WEBPACK_IMPORTED_MODULE_5__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */], __WEBPACK_IMPORTED_MODULE_5__progress_kendo_angular_dropdowns__["b" /* DropDownListModule */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["g" /* ReactiveFormsModule */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* FormsModule */]],
-            declarations: [__WEBPACK_IMPORTED_MODULE_10__publishers_component_publishersComponent__["a" /* PublishersComponent */]]
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forChild(routes),
+                __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_3__progress_kendo_angular_grid_dist_es_grid_module__["a" /* GridModule */],
+                __WEBPACK_IMPORTED_MODULE_5__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__progress_kendo_angular_dropdowns__["b" /* DropDownListModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_forms__["g" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* FormsModule */]
+            ],
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_7__authors_component_authorsComponent__["a" /* AuthorsComponent */],
+                __WEBPACK_IMPORTED_MODULE_4__articles_component_articlesComponent__["a" /* ArticlesComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__["a" /* BooksComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__journals_component_journalsComponent__["a" /* JournalsComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__publishers_component_publishersComponent__["a" /* PublishersComponent */]
+            ]
         })
     ], TablesModule);
     return TablesModule;

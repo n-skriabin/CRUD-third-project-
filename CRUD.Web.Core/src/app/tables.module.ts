@@ -20,9 +20,23 @@ const routes: Routes = [
 
 @NgModule({
     imports:
-      [RouterModule.forChild(routes), CommonModule, GridModule, DropDownsModule, DropDownListModule, ReactiveFormsModule, FormsModule],
+    [
+          RouterModule.forChild(routes), 
+          CommonModule, 
+          GridModule, 
+          DropDownsModule, 
+          DropDownListModule, 
+          ReactiveFormsModule, 
+          FormsModule
+    ],
     declarations:
-      [PublishersComponent]
+    [
+          AuthorsComponent,
+          ArticlesComponent,
+          BooksComponent,
+          JournalsComponent,
+          PublishersComponent
+    ]
   })
 
 export class TablesModule {
