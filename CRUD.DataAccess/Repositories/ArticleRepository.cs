@@ -5,8 +5,6 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using Dapper.Contrib;
-using CRUD.Views;
 using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
@@ -18,6 +16,7 @@ namespace CRUD.DataAccess.Repositories
         private string _connectionString;
         public ArticleRepository(string connectionString)
         {
+            Context context = new Context(connectionString);
             _db = new SqlConnection(connectionString);
             _connectionString = connectionString;
         }

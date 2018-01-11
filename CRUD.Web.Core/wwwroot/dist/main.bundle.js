@@ -4,25 +4,9 @@ webpackJsonp(["main"],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./articles-component/articles.module": [
-		"../../../../../src/app/articles-component/articles.module.ts",
-		"articles.module"
-	],
-	"./authors-component/authors.module": [
-		"../../../../../src/app/authors-component/authors.module.ts",
-		"authors.module"
-	],
-	"./books-component/books.module": [
-		"../../../../../src/app/books-component/books.module.ts",
-		"books.module"
-	],
-	"./journals-component/journals.module": [
-		"../../../../../src/app/journals-component/journals.module.ts",
-		"journals.module"
-	],
-	"./publishers-component/publishers.module": [
-		"../../../../../src/app/publishers-component/publishers.module.ts",
-		"publishers.module"
+	"./tables.module": [
+		"../../../../../src/app/tables.module.ts",
+		"tables.module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -54,11 +38,11 @@ module.exports = webpackAsyncContext;
 
 var PanelbarRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__["a" /* HomeComponent */] },
-    { path: 'Authors', loadChildren: './authors-component/authors.module#AuthorsModule' },
-    { path: 'Articles', loadChildren: './articles-component/articles.module#ArticlesModule' },
-    { path: 'Books', loadChildren: './books-component/books.module#BooksModule' },
-    { path: 'Journals', loadChildren: './journals-component/journals.module#JournalsModule' },
-    { path: 'Publishers', loadChildren: './publishers-component/publishers.module#PublishersModule' }
+    { path: 'Authors', loadChildren: './tables.module#TablesModule' },
+    { path: 'Articles', loadChildren: './tables.module#TablesModule' },
+    { path: 'Books', loadChildren: './tables.module#TablesModule' },
+    { path: 'Journals', loadChildren: './tables.module#TablesModule' },
+    { path: 'Publishers', loadChildren: './tables.module#TablesModule' }
 ];
 var appRoutingProviders = [];
 var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(PanelbarRoutes);
