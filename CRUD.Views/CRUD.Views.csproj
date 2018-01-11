@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JournalModels\ArticleJournalViewModel.cs" />
     <Compile Include="ArticleModels\ArticleViewModel.cs" />
     <Compile Include="AuthorModels\AuthorViewModel.cs" />
     <Compile Include="BaseEntityViewModel.cs" />
