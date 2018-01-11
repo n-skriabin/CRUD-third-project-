@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using CRUD.DataAccess.Repositories;
 using CRUD.Views;
+using CRUD.Domain;
 
 namespace CRUD.Services
 {

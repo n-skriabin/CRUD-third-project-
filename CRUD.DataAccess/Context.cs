@@ -9,7 +9,7 @@ namespace CRUD.DataAccess
     public partial class Context : DbContext
     {
         public Context()
-            : base("data source=DESKTOP-N6ABU8B;initial catalog=CRUD;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base("name=Context")
         {
         }
 
