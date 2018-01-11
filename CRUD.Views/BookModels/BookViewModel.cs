@@ -9,6 +9,6 @@ namespace CRUD.Views
         public string Year { get; set; }
         public string Author { get; set; }
         public List<string> AuthorIds { get; set; }
-        public List<Author> AuthorsList { get; set; }
+        public List<Author> AuthorList { get; set; }
     }
 }

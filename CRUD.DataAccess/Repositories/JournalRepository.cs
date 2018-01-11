@@ -5,8 +5,8 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using CRUD.Views;
 using Dapper.Contrib.Extensions;
+using CRUD.DataAccess.ReponseModels;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -20,40 +20,36 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<JournalViewModel> GetAll()
+        public List<Journal> GetAll()
         {
             string query = @"SELECT Articles.*, Journals.*
                              FROM Articles 
                              INNER JOIN Journals on Articles.JournalId = Journals.Id";
-            var journalsDictionary = new Dictionary<string, JournalViewModel>();
-            _db.Query<Article, Journal, JournalViewModel>(query, (article, journal) =>
+            var journalsDictionary = new Dictionary<string, Journal>();
+            _db.Query<Article, JournalResponseModel, Journal>(query, (article, journalResponseModel) =>
             {
-                JournalViewModel journalViewModel = new JournalViewModel();
-                if (!journalsDictionary.TryGetValue(journal.Id.ToString(), out journalViewModel))
+                var journal = new Journal();
+                if (!journalsDictionary.TryGetValue(journal.Id.ToString(), out journal))
                 {
-                    journalViewModel = new JournalViewModel
+                    journal = new Journal
                     {
-                        Id = journal.Id.ToString(),
-                        Name = journal.Name,
-                        Date = journal.Date
+                        Id = journalResponseModel.Id,
+                        Name = journalResponseModel.Name,
+                        Date = journalResponseModel.Date
                     };
-                    journalsDictionary.Add(journal.Id.ToString(), journalViewModel);
+                    journalsDictionary.Add(journal.Id.ToString(), journal);
                 }
 
-                if (journalViewModel.ArticlesList == null)
-                    journalViewModel.ArticlesList = new List<Article>();
+                if (journal.Articles == null)
+                    journal.Articles = new List<Article>();
 
-                if (journalViewModel.ArticleIds == null)
-                    journalViewModel.ArticleIds = new HashSet<string>();
+                journal.Articles.Add(article);
 
-                journalViewModel.ArticlesList.Add(article);
-                journalViewModel.ArticleIds.Add(article.Id.ToString());
-
-                return journalViewModel;
+                return journal;
             }).AsQueryable();
 
-            var journalViewModelList = journalsDictionary.Values.ToList();
-            return journalViewModelList;
+            var journalList = journalsDictionary.Values.ToList();
+            return journalList;
         }
 
         public void Create(Journal journal, List<string> articlesIds)

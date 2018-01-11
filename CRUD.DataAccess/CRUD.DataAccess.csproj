@@ -59,6 +59,8 @@
     <Compile Include="ReponseModels\ArticleResponseModel.cs" />
     <Compile Include="ReponseModels\BaseResponseModel.cs" />
     <Compile Include="ReponseModels\BookResponseModel.cs" />
+    <Compile Include="ReponseModels\JournalResponseModel.cs" />
+    <Compile Include="ReponseModels\PublisherResponseModel.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />

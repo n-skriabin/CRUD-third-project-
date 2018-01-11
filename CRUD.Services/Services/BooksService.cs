@@ -32,7 +32,7 @@ namespace CRUD.Services
                     Name = book.Name,
                     Year = book.Year,
                     AuthorIds = GetAuthorIds(book.Authors),
-                    AuthorsList = book.Authors
+                    AuthorList = book.Authors
                 };
 
                 bookViewModelList.Add(bookViewModel);
@@ -85,7 +85,7 @@ namespace CRUD.Services
                 Id = postBookViewModel.Id,
                 Name = postBookViewModel.Name,
                 Year = postBookViewModel.Year,
-                AuthorsList = _authorRepository.GetAuthors(Guid.Parse(postBookViewModel.Id)),
+                AuthorList = _authorRepository.GetAuthors(Guid.Parse(postBookViewModel.Id)),
             };
             return bookViewModel;
         }

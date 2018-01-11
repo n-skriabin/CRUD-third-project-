@@ -24,8 +24,24 @@ namespace CRUD.Services
 
         public List<JournalViewModel> GetAll()
         {
-            var journals = _journalRepository.GetAll();         
-            return journals;
+            var journalList = _journalRepository.GetAll();
+            var journalsViewModelList = new List<JournalViewModel>();
+
+            foreach (var journal in journalList)
+            {
+                var journalViewModel = new JournalViewModel
+                {
+                    Id = journal.Id.ToString(),
+                    Name = journal.Name,
+                    Date = journal.Date,
+                    ArticleList = journal.Articles,
+                    ArticleIds = GetArticleIds(journal.Articles)
+                };
+
+                journalsViewModelList.Add(journalViewModel);
+            }
+
+            return journalsViewModelList;
         }
 
         public JournalViewModel Create(PostJournalViewModel postJournalViewModel)
@@ -73,9 +89,21 @@ namespace CRUD.Services
                 Id = postJournalViewModel.Id,
                 Name = postJournalViewModel.Name,
                 Date = postJournalViewModel.Date,
-                ArticlesList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds),
+                ArticleList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds)
             };
             return journalViewModel;
+        }
+
+        private List<string> GetArticleIds(List<Article> articles)
+        {
+            var articleIds = new List<string>();
+
+            foreach (var article in articles)
+            {
+                articleIds.Add(article.Id.ToString());
+            }
+
+            return articleIds;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using CRUD.DataAccess.ReponseModels;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -19,36 +20,36 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<PublisherViewModel> GetAll()
+        public List<Publisher> GetAll()
         {
             string query = @"SELECT Books.*, Journals.*, Publishers.*
                              FROM Publishers 
                              INNER JOIN Journals ON Journals.PublisherId = Publishers.Id
                              INNER JOIN Books ON Books.PublisherId = Publishers.Id";
-            var publishersDictionary = new Dictionary<string, PublisherViewModel>();
-            _db.Query<Book, Journal, Publisher, PublisherViewModel>(query, (book, journal, publisher) =>
+            var publishersDictionary = new Dictionary<string, Publisher>();
+            _db.Query<Book, Journal, PublisherResponseModel, Publisher>(query, (book, journal, publisherResponseModel) =>
             {
-                PublisherViewModel publisherViewModel = new PublisherViewModel();
-                if (!publishersDictionary.TryGetValue(publisher.Id.ToString(), out publisherViewModel))
+                var publisher = new Publisher();
+                if (!publishersDictionary.TryGetValue(publisher.Id.ToString(), out publisher))
                 {
-                    publisherViewModel = new PublisherViewModel
+                    publisher = new Publisher
                     {
-                        Id = publisher.Id.ToString(),
-                        Name = publisher.Name,
+                        Id = publisherResponseModel.Id,
+                        Name = publisherResponseModel.Name,
                     };
-                    publishersDictionary.Add(publisher.Id.ToString(), publisherViewModel);
+                    publishersDictionary.Add(publisher.Id.ToString(), publisher);
                 }
 
-                if (publisherViewModel.BookIds == null)
-                    publisherViewModel.BookIds = new HashSet<string>();
+                if (publisher.Books == null)
+                    publisher.Books = new List<Book>();
 
-                if (publisherViewModel.JournalIds == null)
-                    publisherViewModel.JournalIds = new HashSet<string>();
+                if (publisher.Journals == null)
+                    publisher.Journals = new List<Journal>();
 
-                publisherViewModel.BookIds.Add(book.Id.ToString());
-                publisherViewModel.JournalIds.Add(journal.Id.ToString());
+                publisher.Books.Add(book);
+                publisher.Journals.Add(journal);
 
-                return publisherViewModel;
+                return publisher;
             }).AsQueryable();
 
             var publisherlViewModelList = publishersDictionary.Values.ToList();

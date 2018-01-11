@@ -22,8 +22,23 @@ namespace CRUD.Services
 
         public List<PublisherViewModel> GetAll()
         {
-            var publishers = _publisherRepository.GetAll();
-            return publishers;
+            var publisherList = _publisherRepository.GetAll();
+            var publisherViewModelList = new List<PublisherViewModel>();
+
+            foreach (var publisher in publisherList)
+            {
+                var publisherViewModel = new PublisherViewModel
+                {
+                    Id = publisher.Id.ToString(),
+                    Name = publisher.Name,
+                    BookList = publisher.Books,
+                    JournalList = publisher.Journals,
+                    BookIds = GetBookIds(publisher.Books),
+                    JournalIds = GetJournalIds(publisher.Journals)
+                };
+            }
+
+            return publisherViewModelList;
         }
 
         public PublisherViewModel Create(PostPublisherViewModel postPublisherViewModel)
@@ -69,10 +84,34 @@ namespace CRUD.Services
             {
                 Id = postPublisherViewModel.Id,
                 Name = postPublisherViewModel.Name,
-                BooksList = _bookRepository.GetBooks(publisherId),
-                JournalsList = _journalRepository.GetJournals(publisherId),
+                BookList = _bookRepository.GetBooks(publisherId),
+                JournalList = _journalRepository.GetJournals(publisherId),
             };
             return publisherViewModel;
+        }
+
+        private HashSet<string> GetBookIds(List<Book> books)
+        {
+            var bookIds = new HashSet<string>();
+
+            foreach (var book in books)
+            {
+                bookIds.Add(book.Id.ToString());
+            }
+
+            return bookIds;
+        }
+
+        private HashSet<string> GetJournalIds(List<Journal> journals)
+        {
+            var journalIds = new HashSet<string>();
+
+            foreach (var journal in journals)
+            {
+                journalIds.Add(journal.Id.ToString());
+            }
+
+            return journalIds;
         }
     }
 }

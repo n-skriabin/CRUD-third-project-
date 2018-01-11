@@ -5,7 +5,6 @@ using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using CRUD.Views;
 using Dapper.Contrib.Extensions;
 using CRUD.DataAccess.ReponseModels;
 

@@ -11,7 +11,7 @@ namespace CRUD.Views
         public HashSet<string> BookIds { get; set; }
         public HashSet<string> JournalIds { get; set; }
 
-        public List<Book> BooksList { get; set; }
-        public List<Journal> JournalsList { get; set; }
+        public List<Book> BookList { get; set; }
+        public List<Journal> JournalList { get; set; }
     }
 }
