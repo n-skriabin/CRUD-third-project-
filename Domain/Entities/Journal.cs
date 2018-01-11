@@ -13,6 +13,7 @@ namespace CRUD.Domain
     {
         public string Name { get; set; }
         public string Date { get; set; }
+        public List<Article> Articles { get; set; }
         public Guid? PublisherId { get; set; }
     }
 }

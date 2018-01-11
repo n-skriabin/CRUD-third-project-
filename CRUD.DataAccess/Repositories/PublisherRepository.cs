@@ -5,7 +5,6 @@ using CRUD.Domain;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using CRUD.Views;
 using Dapper.Contrib.Extensions;
 
 namespace CRUD.DataAccess.Repositories
@@ -16,6 +15,7 @@ namespace CRUD.DataAccess.Repositories
 
         public PublisherRepository(string connectionString)
         {
+            Context context = new Context(connectionString);
             _db = new SqlConnection(connectionString);
         }
 

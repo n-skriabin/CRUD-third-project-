@@ -10,5 +10,7 @@ namespace CRUD.Domain
     public class Publisher : BaseEntity
     {
         public string Name { get; set; }
+        public List<Book> Books { get; set; }
+        public List<Journal> Journals { get; set; }
     }
 }
