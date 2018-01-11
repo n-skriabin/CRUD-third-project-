@@ -18,15 +18,15 @@ namespace CRUD.Web.Core.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            try
-            {
+            //try
+            //{
                 var authorViewModel = _authorsService.GetAll();
                 return Ok(authorViewModel);
-            }
-            catch(Exception exception)
-            {
-                return BadRequest(exception.HResult);
-            }
+            //}
+            //catch(Exception exception)
+            //{
+            //    return BadRequest(exception.HResult);
+            //}
         }
 
         [HttpPost]

@@ -16,7 +16,6 @@ namespace CRUD.DataAccess.Repositories
 
         public BookRepository(string connectionString)
         {
-            Context context = new Context(connectionString);
             _db = new SqlConnection(connectionString);
         }
 
