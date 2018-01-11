@@ -31,7 +31,7 @@ namespace CRUD.DataAccess.Repositories
             _db.Query<Author, BookResponseModel, Book>(query, (author, bookResponseModel) =>
             {
                 Book book = new Book();
-                if (!booksDictionary.TryGetValue(book.Id.ToString(), out book))
+                if (!booksDictionary.TryGetValue(bookResponseModel.Id.ToString(), out book))
                 {
                     book = new Book
                     {
@@ -39,7 +39,7 @@ namespace CRUD.DataAccess.Repositories
                         Name = bookResponseModel.Name,
                         Year = bookResponseModel.Year
                     };
-                    booksDictionary.Add(book.Id.ToString(), book);
+                    booksDictionary.Add(bookResponseModel.Id.ToString(), book);
                 }
 
                 if (book.Authors == null)

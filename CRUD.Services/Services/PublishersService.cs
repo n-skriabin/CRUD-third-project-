@@ -36,6 +36,7 @@ namespace CRUD.Services
                     BookIds = GetBookIds(publisher.Books),
                     JournalIds = GetJournalIds(publisher.Journals)
                 };
+                publisherViewModelList.Add(publisherViewModel);
             }
 
             return publisherViewModelList;

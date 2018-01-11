@@ -30,14 +30,14 @@ namespace CRUD.DataAccess.Repositories
             _db.Query<Book, Journal, PublisherResponseModel, Publisher>(query, (book, journal, publisherResponseModel) =>
             {
                 var publisher = new Publisher();
-                if (!publishersDictionary.TryGetValue(publisher.Id.ToString(), out publisher))
+                if (!publishersDictionary.TryGetValue(publisherResponseModel.Id.ToString(), out publisher))
                 {
                     publisher = new Publisher
                     {
                         Id = publisherResponseModel.Id,
                         Name = publisherResponseModel.Name,
                     };
-                    publishersDictionary.Add(publisher.Id.ToString(), publisher);
+                    publishersDictionary.Add(publisherResponseModel.Id.ToString(), publisher);
                 }
 
                 if (publisher.Books == null)
