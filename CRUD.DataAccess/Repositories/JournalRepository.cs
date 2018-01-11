@@ -72,7 +72,8 @@ namespace CRUD.DataAccess.Repositories
             _db.Query(query, new { arrayArticlesIds, Id = journal.Id });
 
             journal.LastUpdateDate = DateTime.UtcNow;
-            _db.Update(journal);
+            query = "UPDATE Journals SET Name = @Name, Date = @Date, LastUpdateDate = @LastUpdateDate WHERE Id = @Id";
+            _db.Query(query, journal);
         }
 
         public void Delete(Guid journalId)
