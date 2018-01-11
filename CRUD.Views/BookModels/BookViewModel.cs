@@ -1,5 +1,4 @@
-﻿using CRUD.DataAccess;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CRUD.Views
 {
@@ -9,6 +8,5 @@ namespace CRUD.Views
         public string Year { get; set; }
         public string Author { get; set; }
         public List<string> AuthorIds { get; set; }
-        public List<Author> AuthorList { get; set; }
     }
 }

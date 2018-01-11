@@ -1,5 +1,4 @@
-﻿using CRUD.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CRUD.Views
 {
@@ -9,6 +8,5 @@ namespace CRUD.Views
         public string Date { get; set; }
         public string Articles { get; set; }
         public List<string> ArticleIds { get; set; }
-        public List<Article> ArticleList { get; set; }
     }
 }

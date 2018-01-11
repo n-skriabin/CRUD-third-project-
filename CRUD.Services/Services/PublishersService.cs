@@ -31,8 +31,6 @@ namespace CRUD.Services
                 {
                     Id = publisher.Id.ToString(),
                     Name = publisher.Name,
-                    BookList = publisher.Books,
-                    JournalList = publisher.Journals,
                     BookIds = GetBookIds(publisher.Books),
                     JournalIds = GetJournalIds(publisher.Journals)
                 };
@@ -85,8 +83,6 @@ namespace CRUD.Services
             {
                 Id = postPublisherViewModel.Id,
                 Name = postPublisherViewModel.Name,
-                BookList = _bookRepository.GetBooks(publisherId),
-                JournalList = _journalRepository.GetJournals(publisherId),
             };
             return publisherViewModel;
         }

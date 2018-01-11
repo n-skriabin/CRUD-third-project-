@@ -34,7 +34,6 @@ namespace CRUD.Services
                     Id = journal.Id.ToString(),
                     Name = journal.Name,
                     Date = journal.Date,
-                    ArticleList = journal.Articles,
                     ArticleIds = GetArticleIds(journal.Articles)
                 };
 
@@ -84,12 +83,12 @@ namespace CRUD.Services
 
         private JournalViewModel DomainToViewModel(PostJournalViewModel postJournalViewModel)
         {
+            var articleList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds);
             var journalViewModel = new JournalViewModel
             {
                 Id = postJournalViewModel.Id,
                 Name = postJournalViewModel.Name,
-                Date = postJournalViewModel.Date,
-                ArticleList = _articleRepository.GetArticles(postJournalViewModel.ArticleIds)
+                Date = postJournalViewModel.Date
             };
             return journalViewModel;
         }
