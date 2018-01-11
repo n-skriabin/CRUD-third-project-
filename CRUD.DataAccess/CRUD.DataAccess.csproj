@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReponseModels\ArticleResponseModel.cs" />
     <Compile Include="ReponseModels\BaseResponseModel.cs" />
+    <Compile Include="ReponseModels\BookResponseModel.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />

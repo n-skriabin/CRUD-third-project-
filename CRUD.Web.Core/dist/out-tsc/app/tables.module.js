@@ -29,8 +29,22 @@ var TablesModule = /** @class */ (function () {
     }
     TablesModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule.forChild(routes), common_1.CommonModule, grid_module_1.GridModule, kendo_angular_dropdowns_1.DropDownsModule, kendo_angular_dropdowns_1.DropDownListModule, forms_1.ReactiveFormsModule, forms_1.FormsModule],
-            declarations: [publishersComponent_1.PublishersComponent]
+            imports: [
+                router_1.RouterModule.forChild(routes),
+                common_1.CommonModule,
+                grid_module_1.GridModule,
+                kendo_angular_dropdowns_1.DropDownsModule,
+                kendo_angular_dropdowns_1.DropDownListModule,
+                forms_1.ReactiveFormsModule,
+                forms_1.FormsModule
+            ],
+            declarations: [
+                authorsComponent_1.AuthorsComponent,
+                articlesComponent_1.ArticlesComponent,
+                booksComponent_1.BooksComponent,
+                journalsComponent_1.JournalsComponent,
+                publishersComponent_1.PublishersComponent
+            ]
         })
     ], TablesModule);
     return TablesModule;

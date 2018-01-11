@@ -21,8 +21,24 @@ namespace CRUD.Services
 
         public List<BookViewModel> GetAll()
         {
-            var books = _bookRepository.GetAll();
-            return books;
+            var bookList = _bookRepository.GetAll();
+            var bookViewModelList = new List<BookViewModel>();
+
+            foreach(var book in bookList)
+            {
+                var bookViewModel = new BookViewModel
+                {
+                    Id = book.Id.ToString(),
+                    Name = book.Name,
+                    Year = book.Year,
+                    AuthorIds = GetAuthorIds(book.Authors),
+                    AuthorsList = book.Authors
+                };
+
+                bookViewModelList.Add(bookViewModel);
+            }
+
+            return bookViewModelList;
         }
 
         public BookViewModel Create(PostBookViewModel postBookViewModel)
@@ -72,6 +88,18 @@ namespace CRUD.Services
                 AuthorsList = _authorRepository.GetAuthors(Guid.Parse(postBookViewModel.Id)),
             };
             return bookViewModel;
+        }
+
+        private List<string> GetAuthorIds(List<Author> authors)
+        {
+            var authorIds = new List<string>();
+
+            foreach (var author in authors)
+            {
+                authorIds.Add(author.Id.ToString());
+            }
+
+            return authorIds;
         }
     }
 }

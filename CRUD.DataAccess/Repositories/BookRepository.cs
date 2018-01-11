@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using Dapper;
 using CRUD.Views;
 using Dapper.Contrib.Extensions;
+using CRUD.DataAccess.ReponseModels;
 
 namespace CRUD.DataAccess.Repositories
 {
@@ -20,42 +21,38 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<BookViewModel> GetAll()
+        public List<Book> GetAll()
         {
             string query = @"SELECT Authors.*, Books.*
                              FROM Authors 
                              INNER JOIN BooksAuthors on BooksAuthors.AuthorId = Authors.Id
                              INNER JOIN Books on BooksAuthors.BookId = Books.Id";
-            var booksDictionary = new Dictionary<string, BookViewModel>();
+            var booksDictionary = new Dictionary<string, Book>();
 
-            _db.Query<Author, Book, BookViewModel>(query, (author, book) =>
+            _db.Query<Author, BookResponseModel, Book>(query, (author, bookResponseModel) =>
             {
-                BookViewModel bookViewModel = new BookViewModel();
-                if (!booksDictionary.TryGetValue(book.Id.ToString(), out bookViewModel))
+                Book book = new Book();
+                if (!booksDictionary.TryGetValue(book.Id.ToString(), out book))
                 {
-                    bookViewModel = new BookViewModel
+                    book = new Book
                     {
-                        Id = book.Id.ToString(),
-                        Name = book.Name,
-                        Year = book.Year
+                        Id = bookResponseModel.Id,
+                        Name = bookResponseModel.Name,
+                        Year = bookResponseModel.Year
                     };
-                    booksDictionary.Add(book.Id.ToString(), bookViewModel);
+                    booksDictionary.Add(book.Id.ToString(), book);
                 }
 
-                if (bookViewModel.AuthorsList == null)
-                    bookViewModel.AuthorsList = new List<Author>();
+                if (book.Authors == null)
+                    book.Authors = new List<Author>();
 
-                if (bookViewModel.AuthorIds == null)
-                    bookViewModel.AuthorIds = new List<string>();
+                book.Authors.Add(author);
 
-                bookViewModel.AuthorsList.Add(author);
-                bookViewModel.AuthorIds.Add(author.Id.ToString());
-
-                return bookViewModel;
+                return book;
             }).AsQueryable();
 
-            var bookViewModelList = booksDictionary.Values.ToList();
-            return bookViewModelList;
+            var bookList = booksDictionary.Values.ToList();
+            return bookList;
         }
 
         public void Create(Book book, List<string> authorsListIds)
