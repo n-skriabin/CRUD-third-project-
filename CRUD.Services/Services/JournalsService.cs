@@ -36,7 +36,6 @@ namespace CRUD.Services
                     Date = journal.Date,
                     ArticleIds = GetArticleIds(journal.Articles)
                 };
-
                 journalsViewModelList.Add(journalViewModel);
             }
 

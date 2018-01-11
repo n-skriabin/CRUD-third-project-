@@ -12,7 +12,6 @@
     <button kendoGridAddCommand>Add new</button>
   </ng-template>
   <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
-
   <kendo-grid-column field="BookIds" title="Books" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
       {{booksView(dataItem.BookIds)}}     

@@ -39,5 +39,4 @@ const routes: Routes = [
     ]
   })
 
-export class TablesModule {
-}
+export class TablesModule {}
