@@ -15,6 +15,7 @@ namespace CRUD.DataAccess.Repositories
 
         public AuthorRepository(string connectionString)
         {
+            var context = new Context(connectionString);
             _db = new SqlConnection(connectionString);
         }
 
