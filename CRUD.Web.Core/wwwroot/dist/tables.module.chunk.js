@@ -443,23 +443,13 @@ var JournalsComponent = (function () {
         this.editServiceJournal.read();
         this.titleService.setTitle('Journals Page');
     };
-    JournalsComponent.prototype.articlesView = function (id) {
-        if (id === void 0) { id = []; }
+    JournalsComponent.prototype.articlesView = function (articles) {
+        if (articles === void 0) { articles = []; }
         this.articleNames = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.articles.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.articleNames += this_1.articles.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.articles.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.articleNames += this.articles.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < articles.length - 1; i++) {
+            this.articleNames += articles[i].Name + ", ";
         }
+        this.articleNames += articles[articles.length].Name + ".";
         return this.articleNames;
     };
     JournalsComponent.prototype.addHandler = function (_a) {
@@ -475,12 +465,12 @@ var JournalsComponent = (function () {
         sender.addRow(this.formGroup);
     };
     JournalsComponent.prototype.selectFromArticles = function (articleIds) {
-        var _loop_2 = function (i) {
-            this_2.articlesForDefaultValue[i] = this_2.articles.find(function (item) { return item.Id === articleIds[i]; });
+        var _loop_1 = function (i) {
+            this_1.articlesForDefaultValue[i] = this_1.articles.find(function (item) { return item.Id === articleIds[i]; });
         };
-        var this_2 = this;
+        var this_1 = this;
         for (var i = 0; i < articleIds.length; i++) {
-            _loop_2(i);
+            _loop_1(i);
         }
         return this.articlesForDefaultValue;
     };
@@ -547,7 +537,7 @@ var JournalsComponent = (function () {
 /***/ "../../../../../src/app/journals-component/journalsView.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Journals</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Date\" title=\"Date\"></kendo-grid-column>\n  <kendo-grid-column field=\"ArticleIds\" title=\"Articles\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{articlesView(dataItem.ArticleIds)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"articles\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select articles...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n\n"
+module.exports = "<h3>Journals</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Date\" title=\"Date\"></kendo-grid-column>\n  <kendo-grid-column field=\"ArticleIds\" title=\"Articles\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{articlesView(dataItem.Articles)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"articles\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select articles...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n\n"
 
 /***/ }),
 

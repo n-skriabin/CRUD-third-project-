@@ -29,11 +29,13 @@ namespace CRUD.Services
 
             foreach (var journal in journalList)
             {
-                var journalViewModel = new JournalViewModel
+                var articles = ArticlesToJournalArticles(journal.Articles);
+                 var journalViewModel = new JournalViewModel
                 {
                     Id = journal.Id.ToString(),
                     Name = journal.Name,
                     Date = journal.Date,
+                    Articles = articles,
                     ArticleIds = GetArticleIds(journal.Articles)
                 };
                 journalsViewModelList.Add(journalViewModel);
@@ -102,6 +104,22 @@ namespace CRUD.Services
             }
 
             return articleIds;
+        }
+
+        private List<ArticleViewModel> ArticlesToJournalArticles(List<Article> articles)
+        {
+            var articleService = new ArticlesService();
+            var journalArticles = new List<ArticleViewModel>();
+            foreach (var article in articles)
+            {
+                var articleViewModel = new ArticleViewModel();
+                articleViewModel.Id = article.Id.ToString();
+                articleViewModel.Name = article.Name;
+                articleViewModel.Year = article.Year;
+
+                journalArticles.Add(articleViewModel);
+            }
+            return journalArticles;
         }
     }
 }

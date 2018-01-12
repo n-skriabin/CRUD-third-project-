@@ -48,20 +48,12 @@ export class JournalsComponent implements OnInit {
     this.titleService.setTitle('Journals Page');
   }
 
-  public articlesView(id: string[]=[]): string {  
+  public articlesView(articles: Article[]=[]): string {  
     this.articleNames = " ";
-    if(id[0] !== ""){
-      for(let i = 0; i <= id.length-2; i++){
-        if(this.articles.find(x => x.Id === id[i]) !== undefined)
-        {
-          this.articleNames += this.articles.find(x => x.Id === id[i]).Name + ', ';
-        }
-      }
-      if(this.articles.find(x => x.Id === id[id.length-1]) !== undefined)
-      {
-        this.articleNames += this.articles.find(x => x.Id === id[id.length-1]).Name + '.';   
-      }
-   }
+    for(var i = 0; i < articles.length-1; i++){
+      this.articleNames += articles[i].Name + ", ";  
+    }
+    this.articleNames += articles[articles.length].Name + ".";
    return this.articleNames;
   }
 

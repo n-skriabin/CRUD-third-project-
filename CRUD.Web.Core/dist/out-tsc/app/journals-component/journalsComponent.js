@@ -44,23 +44,13 @@ var JournalsComponent = /** @class */ (function () {
         this.editServiceJournal.read();
         this.titleService.setTitle('Journals Page');
     };
-    JournalsComponent.prototype.articlesView = function (id) {
-        if (id === void 0) { id = []; }
+    JournalsComponent.prototype.articlesView = function (articles) {
+        if (articles === void 0) { articles = []; }
         this.articleNames = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.articles.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.articleNames += this_1.articles.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.articles.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.articleNames += this.articles.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < articles.length - 1; i++) {
+            this.articleNames += articles[i].Name + ", ";
         }
+        this.articleNames += articles[articles.length].Name + ".";
         return this.articleNames;
     };
     JournalsComponent.prototype.addHandler = function (_a) {
@@ -76,12 +66,12 @@ var JournalsComponent = /** @class */ (function () {
         sender.addRow(this.formGroup);
     };
     JournalsComponent.prototype.selectFromArticles = function (articleIds) {
-        var _loop_2 = function (i) {
-            this_2.articlesForDefaultValue[i] = this_2.articles.find(function (item) { return item.Id === articleIds[i]; });
+        var _loop_1 = function (i) {
+            this_1.articlesForDefaultValue[i] = this_1.articles.find(function (item) { return item.Id === articleIds[i]; });
         };
-        var this_2 = this;
+        var this_1 = this;
         for (var i = 0; i < articleIds.length; i++) {
-            _loop_2(i);
+            _loop_1(i);
         }
         return this.articlesForDefaultValue;
     };

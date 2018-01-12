@@ -19,18 +19,18 @@ namespace CRUD.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            try { 
+            //try { 
             var journals = _journalsService.GetAll();
             if (journals == null)
             {
                 return null;
             }
             return Ok(journals);
-            }
-            catch(Exception exception)
-            {
-                return BadRequest(exception.HResult);
-            }
+            //}
+            //catch(Exception exception)
+            //{
+            //    return BadRequest(exception.HResult);
+            //}
         }
 
         [HttpPost]

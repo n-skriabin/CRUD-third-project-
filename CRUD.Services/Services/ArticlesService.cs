@@ -11,6 +11,8 @@ namespace CRUD.Services
         private ArticleRepository _articleRepository;
         private AuthorRepository _authorRepository;
 
+        public ArticlesService() { }
+
         public ArticlesService(string connectionString)
         {
             _articleRepository = new ArticleRepository(connectionString);
@@ -73,7 +75,7 @@ namespace CRUD.Services
             return article;
         }
 
-        private AuthorViewModel AuthorToArticleAuthor(Author author)
+        public AuthorViewModel AuthorToArticleAuthor(Author author)
         {
             var authorViewModel = new AuthorViewModel();
             authorViewModel.Id = author.Id.ToString();

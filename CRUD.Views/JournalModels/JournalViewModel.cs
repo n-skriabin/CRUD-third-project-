@@ -6,7 +6,7 @@ namespace CRUD.Views
     {
         public string Name { get; set; }
         public string Date { get; set; }
-        public string Articles { get; set; }
+        public List<ArticleViewModel> Articles { get; set; }
         public List<string> ArticleIds { get; set; }
     }
 }
