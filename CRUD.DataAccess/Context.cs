@@ -13,6 +13,11 @@ namespace CRUD.DataAccess
         {
         }
 
+        public Context(string connectionString)
+            : base(connectionString)
+        {
+        }
+
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }

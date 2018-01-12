@@ -19,37 +19,37 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Book> GetAll()
+        public List<BookResponseModel> GetAll()
         {
             string query = @"SELECT Authors.*, Books.*
                              FROM Authors 
                              INNER JOIN BooksAuthors on BooksAuthors.AuthorId = Authors.Id
                              INNER JOIN Books on BooksAuthors.BookId = Books.Id";
-            var booksDictionary = new Dictionary<string, Book>();
+            var booksDictionary = new Dictionary<string, BookResponseModel>();
 
-            _db.Query<Author, BookResponseModel, Book>(query, (author, bookResponseModel) =>
+            _db.Query<Author, Book, BookResponseModel>(query, (author, book) =>
             {
-                Book book = new Book();
-                if (!booksDictionary.TryGetValue(bookResponseModel.Id.ToString(), out book))
+                var bookResponseModel = new BookResponseModel();
+                if (!booksDictionary.TryGetValue(book.Id.ToString(), out bookResponseModel))
                 {
-                    book = new Book
+                    bookResponseModel = new BookResponseModel
                     {
-                        Id = bookResponseModel.Id,
-                        Name = bookResponseModel.Name,
-                        Year = bookResponseModel.Year
+                        Id = book.Id,
+                        Name = book.Name,
+                        Year = book.Year
                     };
-                    booksDictionary.Add(bookResponseModel.Id.ToString(), book);
+                    booksDictionary.Add(bookResponseModel.Id.ToString(), bookResponseModel);
                 }
 
-                if (book.Authors == null)
-                    book.Authors = new List<Author>();
+                if (bookResponseModel.Authors == null)
+                    bookResponseModel.Authors = new List<Author>();
 
-                book.Authors.Add(author);
+                bookResponseModel.Authors.Add(author);
 
-                return book;
+                return bookResponseModel;
             }).AsQueryable();
 
-            var bookList = booksDictionary.Values.ToList();
+            List<BookResponseModel> bookList = booksDictionary.Values.ToList();
             return bookList;
         }
 

@@ -19,36 +19,40 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Publisher> GetAll()
+        public List<PublisherResponseModel> GetAll()
         {
             string query = @"SELECT Books.*, Journals.*, Publishers.*
                              FROM Publishers 
-                             INNER JOIN Journals ON Journals.PublisherId = Publishers.Id
-                             INNER JOIN Books ON Books.PublisherId = Publishers.Id";
-            var publishersDictionary = new Dictionary<string, Publisher>();
-            _db.Query<Book, Journal, PublisherResponseModel, Publisher>(query, (book, journal, publisherResponseModel) =>
+                             FULL OUTER JOIN Journals ON Journals.PublisherId = Publishers.Id
+                             FULL OUTER JOIN Books ON Books.PublisherId = Publishers.Id";
+            var publishersDictionary = new Dictionary<string, PublisherResponseModel>();
+            _db.Query<Book, Journal, Publisher, PublisherResponseModel>(query, (book, journal, publisher) =>
             {
-                var publisher = new Publisher();
-                if (!publishersDictionary.TryGetValue(publisherResponseModel.Id.ToString(), out publisher))
+                if (publisher != null)
                 {
-                    publisher = new Publisher
+                    var publisherResponseModel = new PublisherResponseModel();
+                    if (!publishersDictionary.TryGetValue(publisher.Id.ToString(), out publisherResponseModel))
                     {
-                        Id = publisherResponseModel.Id,
-                        Name = publisherResponseModel.Name,
-                    };
-                    publishersDictionary.Add(publisherResponseModel.Id.ToString(), publisher);
+                        publisherResponseModel = new PublisherResponseModel
+                        {
+                            Id = publisher.Id,
+                            Name = publisher.Name,
+                        };
+                        publishersDictionary.Add(publisherResponseModel.Id.ToString(), publisherResponseModel);
+                    }
+
+                    if (publisherResponseModel.Books == null)
+                        publisherResponseModel.Books = new HashSet<Book>();
+
+                    if (publisherResponseModel.Journals == null)
+                        publisherResponseModel.Journals = new HashSet<Journal>();
+
+                    publisherResponseModel.Books.Add(book);
+                    publisherResponseModel.Journals.Add(journal);
+
+                    return publisherResponseModel;
                 }
-
-                if (publisher.Books == null)
-                    publisher.Books = new List<Book>();
-
-                if (publisher.Journals == null)
-                    publisher.Journals = new List<Journal>();
-
-                publisher.Books.Add(book);
-                publisher.Journals.Add(journal);
-
-                return publisher;
+                return null;
             }).AsQueryable();
 
             var publisherlViewModelList = publishersDictionary.Values.ToList();

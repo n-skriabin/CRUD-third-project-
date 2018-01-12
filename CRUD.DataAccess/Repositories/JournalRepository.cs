@@ -19,32 +19,36 @@ namespace CRUD.DataAccess.Repositories
             _db = new SqlConnection(connectionString);
         }
 
-        public List<Journal> GetAll()
+        public List<JournalResponseModel> GetAll()
         {
             string query = @"SELECT Articles.*, Journals.*
                              FROM Articles 
-                             INNER JOIN Journals on Articles.JournalId = Journals.Id";
-            var journalsDictionary = new Dictionary<string, Journal>();
-            _db.Query<Article, JournalResponseModel, Journal>(query, (article, journalResponseModel) =>
+                             FULL OUTER JOIN Journals on Articles.JournalId = Journals.Id";
+            var journalsDictionary = new Dictionary<string, JournalResponseModel>();
+            _db.Query<Article, Journal, JournalResponseModel>(query, (article, journal) =>
             {
-                var journal = new Journal();
-                if (!journalsDictionary.TryGetValue(journal.Id.ToString(), out journal))
+                if (journal != null)
                 {
-                    journal = new Journal
+                    var journalResponseModel = new JournalResponseModel();
+                    if (!journalsDictionary.TryGetValue(journal.Id.ToString(), out journalResponseModel))
                     {
-                        Id = journalResponseModel.Id,
-                        Name = journalResponseModel.Name,
-                        Date = journalResponseModel.Date
-                    };
-                    journalsDictionary.Add(journal.Id.ToString(), journal);
+                        journalResponseModel = new JournalResponseModel
+                        {
+                            Id = journal.Id,
+                            Name = journal.Name,
+                            Date = journal.Date
+                        };
+                        journalsDictionary.Add(journal.Id.ToString(), journalResponseModel);
+                    }
+
+                    if (journalResponseModel.Articles == null)
+                        journalResponseModel.Articles = new List<Article>();
+
+                    journalResponseModel.Articles.Add(article);
+
+                    return journalResponseModel;
                 }
-
-                if (journal.Articles == null)
-                    journal.Articles = new List<Article>();
-
-                journal.Articles.Add(article);
-
-                return journal;
+                return null;
             }).AsQueryable();
 
             var journalList = journalsDictionary.Values.ToList();

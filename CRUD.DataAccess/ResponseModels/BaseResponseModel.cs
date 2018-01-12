@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUD.DataAccess.ReponseModels
 {
-    class BaseResponseModel
+    public class BaseResponseModel
     {
         public Guid Id { get; set; }
     }

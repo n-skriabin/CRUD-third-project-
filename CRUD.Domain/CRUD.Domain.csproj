@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7998E84-F069-4249-8846-941284AE81CF}</ProjectGuid>
+    <ProjectGuid>{5DF53B3F-BF7E-44F3-AC24-009CD4CB072B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CRUD.Services</RootNamespace>
-    <AssemblyName>CRUD.Services</AssemblyName>
+    <RootNamespace>CRUD.Domain</RootNamespace>
+    <AssemblyName>CRUD.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,29 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ArticlesService.cs" />
-    <Compile Include="Services\AuthorsService.cs" />
-    <Compile Include="Services\BooksService.cs" />
-    <Compile Include="Services\JournalsService.cs" />
+    <Compile Include="Article.cs" />
+    <Compile Include="Author.cs" />
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="BooksAuthors.cs" />
+    <Compile Include="Journal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PublishersService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CRUD.DataAccess\CRUD.DataAccess.csproj">
-      <Project>{47ec1448-b9a0-4ed9-a581-d2551568d29c}</Project>
-      <Name>CRUD.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CRUD.Domain\CRUD.Domain.csproj">
-      <Project>{5df53b3f-bf7e-44f3-ac24-009cd4cb072b}</Project>
-      <Name>CRUD.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CRUD.Views\CRUD.Views.csproj">
-      <Project>{d47e8f23-47dc-4699-9c9b-46a011b52adf}</Project>
-      <Name>CRUD.Views</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Publisher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

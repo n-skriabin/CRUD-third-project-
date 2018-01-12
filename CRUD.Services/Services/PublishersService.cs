@@ -70,7 +70,7 @@ namespace CRUD.Services
 
         private Publisher ViewModelToDomain(PostPublisherViewModel postPublisherViewModel)
         {
-            Publisher publisher = new Publisher
+            var publisher = new Publisher
             {
                 Name = postPublisherViewModel.Name,
             };
@@ -79,7 +79,7 @@ namespace CRUD.Services
 
         private PublisherViewModel DomainToViewModel(PostPublisherViewModel postPublisherViewModel, Guid publisherId)
         {
-            PublisherViewModel publisherViewModel = new PublisherViewModel
+            var publisherViewModel = new PublisherViewModel
             {
                 Id = postPublisherViewModel.Id,
                 Name = postPublisherViewModel.Name,
@@ -87,7 +87,7 @@ namespace CRUD.Services
             return publisherViewModel;
         }
 
-        private HashSet<string> GetBookIds(List<Book> books)
+        private HashSet<string> GetBookIds(HashSet<Book> books)
         {
             var bookIds = new HashSet<string>();
 
@@ -99,7 +99,7 @@ namespace CRUD.Services
             return bookIds;
         }
 
-        private HashSet<string> GetJournalIds(List<Journal> journals)
+        private HashSet<string> GetJournalIds(HashSet<Journal> journals)
         {
             var journalIds = new HashSet<string>();
 
