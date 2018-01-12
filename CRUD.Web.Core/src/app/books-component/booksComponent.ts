@@ -53,10 +53,12 @@ export class BooksComponent implements OnInit {
 
   public authorsView(authors: Author[]=[]): string {  
     this.authorAbbreviateds = " ";
-    for(var i = 0;i < authors.length-1; i++){
-      this.authorAbbreviateds += authors[i].Abbreviated + ", ";
+    for(var i = 0;i < authors.length; i++){
+      if(authors[i] !== undefined){
+        this.authorAbbreviateds += authors[i].Abbreviated + "; ";
+      }
     }
-    this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
+  
    return this.authorAbbreviateds;
   }
 

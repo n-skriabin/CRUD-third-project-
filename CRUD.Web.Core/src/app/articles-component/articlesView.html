@@ -15,7 +15,7 @@
   <kendo-grid-column field="Year" title="Year"></kendo-grid-column>
   <kendo-grid-column field="AuthorId" title="Author" width="150">
     <ng-template kendoGridCellTemplate let-dataItem>
-     {{dataItem.Author.Abbreviated}}
+     {{authorView(dataItem.Author)}}
     </ng-template>
     <ng-template kendoGridEditTemplate
       let-dataItem="dataItem"

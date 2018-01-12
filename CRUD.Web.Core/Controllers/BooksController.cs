@@ -20,19 +20,19 @@ namespace CRUD.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            //try
-            //{
+            try
+            {
                 var books = _booksService.GetAll();
                 if (books == null)
                 {
                     return null;
                 }
                 return Ok(books);
-            //}
-            //catch (Exception exception)
-            //{
-            //    return BadRequest(exception.HResult);
-            //}
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.HResult);
+            }
         }
 
         [HttpPost]

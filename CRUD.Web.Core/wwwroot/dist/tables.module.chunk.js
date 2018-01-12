@@ -48,8 +48,8 @@ var ArticlesComponent = (function () {
         this.editServiceArticle = editServiceFactoryArticle();
         this.editServiceAuthor = editServiceFactoryAuthor();
     }
-    ArticlesComponent.prototype.author = function (id) {
-        return this.authors.find(function (x) { return x.Id === id; });
+    ArticlesComponent.prototype.authorView = function (Author) {
+        return Author !== undefined ? Author.Abbreviated : "";
     };
     ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -125,7 +125,7 @@ var ArticlesComponent = (function () {
 /***/ "../../../../../src/app/articles-component/articlesView.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Articles</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | async\"\r\n            [height]=\"533\"\r\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\r\n            [pageable]=\"true\" [sortable]=\"true\"\r\n            (dataStateChange)=\"onStateChange($event)\"\r\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\r\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\r\n            (add)=\"addHandler($event)\">\r\n  <ng-template kendoGridToolbarTemplate>\r\n    <button kendoGridAddCommand>Add new</button>\r\n  </ng-template>\r\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"AuthorId\" title=\"Author\" width=\"150\">\r\n    <ng-template kendoGridCellTemplate let-dataItem>\r\n     {{dataItem.Author.Abbreviated}}\r\n    </ng-template>\r\n    <ng-template kendoGridEditTemplate\r\n      let-dataItem=\"dataItem\"\r\n      let-formGroup=\"formGroup\">    \r\n      <kendo-dropdownlist\r\n                  [data]=\"authors\"\r\n                  textField = \"Abbreviated\"\r\n                  valueField=\"Id\"     \r\n                  [valuePrimitive]=\"true\"          \r\n                  [formControl]=\"formGroup.get('AuthorId')\">\r\n                </kendo-dropdownlist>\r\n    </ng-template>\r\n  </kendo-grid-column>\r\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\r\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\r\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\r\n      <button kendoGridRemoveCommand>Remove</button>\r\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\r\n      <button kendoGridCancelCommand>Cancel</button>\r\n    </ng-template>\r\n  </kendo-grid-command-column>\r\n</kendo-grid>\r\n"
+module.exports = "<h3>Articles</h3>\r\n<p></p>\r\n<kendo-grid [data]=\"view | async\"\r\n            [height]=\"533\"\r\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\r\n            [pageable]=\"true\" [sortable]=\"true\"\r\n            (dataStateChange)=\"onStateChange($event)\"\r\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\r\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\r\n            (add)=\"addHandler($event)\">\r\n  <ng-template kendoGridToolbarTemplate>\r\n    <button kendoGridAddCommand>Add new</button>\r\n  </ng-template>\r\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\r\n  <kendo-grid-column field=\"AuthorId\" title=\"Author\" width=\"150\">\r\n    <ng-template kendoGridCellTemplate let-dataItem>\r\n     {{authorView(dataItem.Author)}}\r\n    </ng-template>\r\n    <ng-template kendoGridEditTemplate\r\n      let-dataItem=\"dataItem\"\r\n      let-formGroup=\"formGroup\">    \r\n      <kendo-dropdownlist\r\n                  [data]=\"authors\"\r\n                  textField = \"Abbreviated\"\r\n                  valueField=\"Id\"     \r\n                  [valuePrimitive]=\"true\"          \r\n                  [formControl]=\"formGroup.get('AuthorId')\">\r\n                </kendo-dropdownlist>\r\n    </ng-template>\r\n  </kendo-grid-column>\r\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\r\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\r\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\r\n      <button kendoGridRemoveCommand>Remove</button>\r\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\r\n      <button kendoGridCancelCommand>Cancel</button>\r\n    </ng-template>\r\n  </kendo-grid-command-column>\r\n</kendo-grid>\r\n"
 
 /***/ }),
 
@@ -294,10 +294,11 @@ var BooksComponent = (function () {
     BooksComponent.prototype.authorsView = function (authors) {
         if (authors === void 0) { authors = []; }
         this.authorAbbreviateds = " ";
-        for (var i = 0; i < authors.length - 1; i++) {
-            this.authorAbbreviateds += authors[i].Abbreviated + ", ";
+        for (var i = 0; i < authors.length; i++) {
+            if (authors[i] !== undefined) {
+                this.authorAbbreviateds += authors[i].Abbreviated + "; ";
+            }
         }
-        this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
         return this.authorAbbreviateds;
     };
     BooksComponent.prototype.addHandler = function (_a) {
@@ -385,7 +386,7 @@ var BooksComponent = (function () {
 /***/ "../../../../../src/app/books-component/booksView.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Books</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\n  <kendo-grid-column field=\"AuthorIds\" title=\"Authors\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      <!-- {{authorsView(dataItem.AuthorIds)}} -->  \n      {{authorsView(dataItem.Authors)}}   \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"authors\"\n        textField=\"Abbreviated\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select authors...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
+module.exports = "<h3>Books</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\n  <kendo-grid-column field=\"AuthorIds\" title=\"Authors\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{authorsView(dataItem.Authors)}}   \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"authors\"\n        textField=\"Abbreviated\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select authors...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
 
 /***/ }),
 
@@ -446,10 +447,11 @@ var JournalsComponent = (function () {
     JournalsComponent.prototype.articlesView = function (articles) {
         if (articles === void 0) { articles = []; }
         this.articleNames = " ";
-        for (var i = 0; i < articles.length - 1; i++) {
-            this.articleNames += articles[i].Name + ", ";
+        for (var i = 0; i < articles.length; i++) {
+            if (articles[i] !== undefined) {
+                this.articleNames += articles[i].Name + "; ";
+            }
         }
-        this.articleNames += articles[articles.length].Name + ".";
         return this.articleNames;
     };
     JournalsComponent.prototype.addHandler = function (_a) {
@@ -602,20 +604,31 @@ var PublishersComponent = (function () {
     };
     PublishersComponent.prototype.booksView = function (books) {
         if (books === void 0) { books = []; }
-        this.bookNames = " ";
-        for (var i = 0; i < books.length - 1; i++) {
-            this.bookNames += books[i].Name + ", ";
+        this.bookNames = "null";
+        if (books !== null) {
+            this.bookNames = " ";
+            console.log("books");
+            for (var i = 0; i < books.length; i++) {
+                if (books[i] !== undefined) {
+                    this.bookNames += books[i].Name + "; ";
+                }
+            }
         }
-        this.bookNames += books[books.length].Name + ".";
         return this.bookNames;
     };
     PublishersComponent.prototype.journalsView = function (journals) {
         if (journals === void 0) { journals = []; }
-        this.journalNames = " ";
-        for (var i = 0; i < journals.length - 1; i++) {
-            this.journalNames += journals[i].Name + ", ";
+        this.journalNames = "null";
+        if (journals !== null && journals !== undefined) {
+            console.log("journals");
+            console.log(journals);
+            this.journalNames = " ";
+            for (var i = 0; i < journals.length; i++) {
+                if (journals[i] !== undefined) {
+                    this.journalNames += journals[i].Name + "; ";
+                }
+            }
         }
-        this.journalNames += journals[journals.length].Name + ".";
         return this.journalNames;
     };
     PublishersComponent.prototype.addHandler = function (_a) {
@@ -632,7 +645,7 @@ var PublishersComponent = (function () {
         sender.addRow(this.formGroup);
     };
     PublishersComponent.prototype.selectFromBooks = function (bookIds) {
-        if (bookIds !== undefined) {
+        if (bookIds !== undefined && bookIds !== null) {
             var _loop_1 = function (i) {
                 this_1.booksForDefaultValue[i] = this_1.books.find(function (item) { return item.Id === bookIds[i]; });
             };
@@ -644,7 +657,7 @@ var PublishersComponent = (function () {
         return this.booksForDefaultValue;
     };
     PublishersComponent.prototype.selectFromJournals = function (journalIds) {
-        if (journalIds !== undefined) {
+        if (journalIds !== undefined && journalIds !== null) {
             var _loop_2 = function (i) {
                 this_2.journalsForDefaultValue[i] = this_2.journals.find(function (item) { return item.Id === journalIds[i]; });
             };

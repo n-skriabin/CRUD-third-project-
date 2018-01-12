@@ -57,20 +57,31 @@ export class PublishersComponent implements OnInit {
   }
 
   public booksView(books: Book[]=[]): string {  
-    this.bookNames = " ";
-    for(var i = 0;i < books.length-1; i++){
-      this.bookNames += books[i].Name + ", ";
+    this.bookNames = "null";
+    if(books !== null){
+      this.bookNames = " ";
+      console.log("books");
+      for(var i = 0;i < books.length; i++){
+        if(books[i] !== undefined){
+          this.bookNames += books[i].Name + "; ";
+        }
+      }
     }
-    this.bookNames += books[books.length].Name + ".";
     return this.bookNames;
   }
 
   public journalsView(journals: Journal[]=[]): string {  
-    this.journalNames = " ";
-    for(var i = 0;i < journals.length-1; i++){
-      this.journalNames += journals[i].Name + ", ";
+    this.journalNames = "null";
+    if(journals !== null && journals !== undefined){
+      console.log("journals");
+      console.log(journals);
+      this.journalNames = " ";
+      for(var i = 0;i < journals.length; i++){
+        if(journals[i] !== undefined){
+          this.journalNames += journals[i].Name + "; ";
+        }
+      }
     }
-    this.journalNames += journals[journals.length].Name + ".";
     return this.journalNames;
   }
 
@@ -90,7 +101,7 @@ export class PublishersComponent implements OnInit {
   }
 
   public selectFromBooks(bookIds: string []): Book[]{
-    if(bookIds !== undefined){
+    if(bookIds !== undefined && bookIds !== null){
       for(let i = 0; i < bookIds.length; i++){
         this.booksForDefaultValue[i] = this.books.find(item => item.Id === bookIds[i]);
       }
@@ -99,7 +110,7 @@ export class PublishersComponent implements OnInit {
   }
 
   public selectFromJournals(journalIds: string []): Journal[]{
-    if(journalIds !== undefined){
+    if(journalIds !== undefined && journalIds !== null){
       for(let i = 0; i < journalIds.length; i++){
         this.journalsForDefaultValue[i] = this.journals.find(item => item.Id === journalIds[i]);
       }

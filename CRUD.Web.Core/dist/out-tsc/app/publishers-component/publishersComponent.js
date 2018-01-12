@@ -51,20 +51,31 @@ var PublishersComponent = /** @class */ (function () {
     };
     PublishersComponent.prototype.booksView = function (books) {
         if (books === void 0) { books = []; }
-        this.bookNames = " ";
-        for (var i = 0; i < books.length - 1; i++) {
-            this.bookNames += books[i].Name + ", ";
+        this.bookNames = "null";
+        if (books !== null) {
+            this.bookNames = " ";
+            console.log("books");
+            for (var i = 0; i < books.length; i++) {
+                if (books[i] !== undefined) {
+                    this.bookNames += books[i].Name + "; ";
+                }
+            }
         }
-        this.bookNames += books[books.length].Name + ".";
         return this.bookNames;
     };
     PublishersComponent.prototype.journalsView = function (journals) {
         if (journals === void 0) { journals = []; }
-        this.journalNames = " ";
-        for (var i = 0; i < journals.length - 1; i++) {
-            this.journalNames += journals[i].Name + ", ";
+        this.journalNames = "null";
+        if (journals !== null && journals !== undefined) {
+            console.log("journals");
+            console.log(journals);
+            this.journalNames = " ";
+            for (var i = 0; i < journals.length; i++) {
+                if (journals[i] !== undefined) {
+                    this.journalNames += journals[i].Name + "; ";
+                }
+            }
         }
-        this.journalNames += journals[journals.length].Name + ".";
         return this.journalNames;
     };
     PublishersComponent.prototype.addHandler = function (_a) {
@@ -81,7 +92,7 @@ var PublishersComponent = /** @class */ (function () {
         sender.addRow(this.formGroup);
     };
     PublishersComponent.prototype.selectFromBooks = function (bookIds) {
-        if (bookIds !== undefined) {
+        if (bookIds !== undefined && bookIds !== null) {
             var _loop_1 = function (i) {
                 this_1.booksForDefaultValue[i] = this_1.books.find(function (item) { return item.Id === bookIds[i]; });
             };
@@ -93,7 +104,7 @@ var PublishersComponent = /** @class */ (function () {
         return this.booksForDefaultValue;
     };
     PublishersComponent.prototype.selectFromJournals = function (journalIds) {
-        if (journalIds !== undefined) {
+        if (journalIds !== undefined && journalIds !== null) {
             var _loop_2 = function (i) {
                 this_2.journalsForDefaultValue[i] = this_2.journals.find(function (item) { return item.Id === journalIds[i]; });
             };

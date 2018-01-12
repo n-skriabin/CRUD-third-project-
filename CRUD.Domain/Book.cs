@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CRUD.Domain
@@ -9,8 +8,6 @@ namespace CRUD.Domain
     {
         public string Name { get; set; }
         public string Year { get; set; }
-        [ForeignKey("PublisherId")]
-        public virtual Publisher Publisher { get; set; }
         public Guid? PublisherId { get; set; }
     }
 }

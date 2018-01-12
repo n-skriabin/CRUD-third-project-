@@ -39,8 +39,8 @@ export class ArticlesComponent implements OnInit {
     private editServiceAuthor: AuthorsService;
     private editedRowIndex: number;
 
-    public author(id: string): Author {
-      return this.authors.find(x => x.Id === id);
+    public authorView(Author: Author): string {
+      return Author !== undefined ? Author.Abbreviated : "";
   }
   
     constructor( @Inject(ArticlesService) editServiceFactoryArticle: any, @Inject(AuthorsService) editServiceFactoryAuthor: any, private titleService: Title) {

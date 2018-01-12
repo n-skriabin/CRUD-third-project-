@@ -24,8 +24,9 @@ namespace CRUD.DataAccess.Repositories
         {
             string query = @"SELECT Books.*, Journals.*, Publishers.*
                              FROM Publishers 
-                             FULL OUTER JOIN Journals ON Journals.PublisherId = Publishers.Id
-                             FULL OUTER JOIN Books ON Books.PublisherId = Publishers.Id";
+                             LEFT JOIN Journals ON Journals.PublisherId = Publishers.Id
+                             LEFT JOIN Books ON Books.PublisherId = Publishers.Id";
+
             var publishersDictionary = new Dictionary<string, PublisherResponseModel>();
             _db.Query<Book, Journal, Publisher, PublisherResponseModel>(query, (book, journal, publisher) =>
             {
@@ -50,6 +51,7 @@ namespace CRUD.DataAccess.Repositories
 
                     publisherResponseModel.Books.Add(book);
                     publisherResponseModel.Journals.Add(journal);
+                    
 
                     return publisherResponseModel;
                 }

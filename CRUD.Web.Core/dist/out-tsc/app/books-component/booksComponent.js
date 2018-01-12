@@ -47,10 +47,11 @@ var BooksComponent = /** @class */ (function () {
     BooksComponent.prototype.authorsView = function (authors) {
         if (authors === void 0) { authors = []; }
         this.authorAbbreviateds = " ";
-        for (var i = 0; i < authors.length - 1; i++) {
-            this.authorAbbreviateds += authors[i].Abbreviated + ", ";
+        for (var i = 0; i < authors.length; i++) {
+            if (authors[i] !== undefined) {
+                this.authorAbbreviateds += authors[i].Abbreviated + "; ";
+            }
         }
-        this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
         return this.authorAbbreviateds;
     };
     BooksComponent.prototype.addHandler = function (_a) {

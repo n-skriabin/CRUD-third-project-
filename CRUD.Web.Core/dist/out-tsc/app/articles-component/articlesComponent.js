@@ -37,8 +37,8 @@ var ArticlesComponent = /** @class */ (function () {
         this.editServiceArticle = editServiceFactoryArticle();
         this.editServiceAuthor = editServiceFactoryAuthor();
     }
-    ArticlesComponent.prototype.author = function (id) {
-        return this.authors.find(function (x) { return x.Id === id; });
+    ArticlesComponent.prototype.authorView = function (Author) {
+        return Author !== undefined ? Author.Abbreviated : "";
     };
     ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;

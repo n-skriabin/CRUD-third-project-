@@ -50,10 +50,11 @@ export class JournalsComponent implements OnInit {
 
   public articlesView(articles: Article[]=[]): string {  
     this.articleNames = " ";
-    for(var i = 0; i < articles.length-1; i++){
-      this.articleNames += articles[i].Name + ", ";  
+    for(var i = 0; i < articles.length; i++){
+      if(articles[i] !== undefined){
+        this.articleNames += articles[i].Name + "; ";
+      }  
     }
-    this.articleNames += articles[articles.length].Name + ".";
    return this.articleNames;
   }
 

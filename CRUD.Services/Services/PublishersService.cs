@@ -4,6 +4,7 @@ using CRUD.Views;
 using CRUD.Views.ResponseModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CRUD.Services
 {
@@ -30,15 +31,22 @@ namespace CRUD.Services
                 var books = BooksToBookViewModels(publisher.Books);
                 var journals = JournalsToJournalViewModels(publisher.Journals);
 
-                var publisherViewModel = new PublisherViewModel
+                var publisherViewModel = new PublisherViewModel();
+
+                publisherViewModel.Id = publisher.Id.ToString();
+                publisherViewModel.Name = publisher.Name;
+                if (books != null)
                 {
-                    Id = publisher.Id.ToString(),
-                    Name = publisher.Name,
-                    Books = books,
-                    Journals = journals,
-                    BookIds = GetBookIds(publisher.Books),
-                    JournalIds = GetJournalIds(publisher.Journals)
-                };
+                    publisherViewModel.Books = books;
+                }
+
+                if (journals != null)
+                {
+                    publisherViewModel.Journals = journals;
+                }
+                publisherViewModel.BookIds = GetBookIds(publisher.Books);
+                publisherViewModel.JournalIds = GetJournalIds(publisher.Journals);
+                
                 publisherViewModelList.Add(publisherViewModel);
             }
             return publisherViewModelList;
@@ -117,14 +125,20 @@ namespace CRUD.Services
 
             foreach (var book in books)
             {
-                var bookViewModel = new BookViewModel();
-                bookViewModel.Id = book.Id.ToString();
-                bookViewModel.Name = book.Name;
-                bookViewModel.Year = book.Year;
+                if (book != null)
+                {
+                    var bookViewModel = new BookViewModel();
+                    bookViewModel.Id = book.Id.ToString();
+                    bookViewModel.Name = book.Name;
+                    bookViewModel.Year = book.Year;
 
-                bookViewModels.Add(bookViewModel);
+                    bookViewModels.Add(bookViewModel);
+                }
             }
-            return bookViewModels;
+            var result = bookViewModels.GroupBy(x => x.Id)
+                                  .Select(g => g.First())
+                                  .ToList();
+            return result;
         }
 
         private List<JournalViewModel> JournalsToJournalViewModels(HashSet<Journal> journals)
@@ -133,14 +147,21 @@ namespace CRUD.Services
 
             foreach (var journal in journals)
             {
-                var journalViewModel = new JournalViewModel();
-                journalViewModel.Id = journal.Id.ToString();
-                journalViewModel.Name = journal.Name;
-                journalViewModel.Date = journal.Date;
+                if (journal != null)
+                {
+                    var journalViewModel = new JournalViewModel();
+                    journalViewModel.Id = journal.Id.ToString();
+                    journalViewModel.Name = journal.Name;
+                    journalViewModel.Date = journal.Date;
 
-                journalViewModels.Add(journalViewModel);
+                    journalViewModels.Add(journalViewModel);
+                }
             }
-            return journalViewModels;
+
+            var result = journalViewModels.GroupBy(x => x.Id)
+                                  .Select(g => g.First())
+                                  .ToList();
+            return result;
         }
     }
 }

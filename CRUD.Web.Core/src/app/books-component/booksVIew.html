@@ -15,7 +15,6 @@
   <kendo-grid-column field="Year" title="Year"></kendo-grid-column>
   <kendo-grid-column field="AuthorIds" title="Authors" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <!-- {{authorsView(dataItem.AuthorIds)}} -->  
       {{authorsView(dataItem.Authors)}}   
     </ng-template>
     <ng-template kendoGridEditTemplate
