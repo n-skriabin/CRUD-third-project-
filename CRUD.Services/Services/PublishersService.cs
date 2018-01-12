@@ -41,7 +41,6 @@ namespace CRUD.Services
                 };
                 publisherViewModelList.Add(publisherViewModel);
             }
-
             return publisherViewModelList;
         }
 
@@ -51,7 +50,6 @@ namespace CRUD.Services
             _publisherRepository.Create(publisher, postPublisherViewModel.JournalIds, postPublisherViewModel.BookIds);
 
             var publisherViewModel = DomainToViewModel(postPublisherViewModel, publisher.Id);
-
             return publisherViewModel;
         }
 
@@ -63,7 +61,6 @@ namespace CRUD.Services
             publisher.Id = Guid.Parse(postPublisherViewModel.Id);
 
             var publisherViewModel = DomainToViewModel(postPublisherViewModel, publisher.Id);
-
             return publisherViewModel;
         }
 
@@ -100,7 +97,6 @@ namespace CRUD.Services
             {
                 bookIds.Add(book.Id.ToString());
             }
-
             return bookIds;
         }
 
@@ -112,7 +108,6 @@ namespace CRUD.Services
             {
                 journalIds.Add(journal.Id.ToString());
             }
-
             return journalIds;
         }
 

@@ -40,7 +40,6 @@ namespace CRUD.Services
 
                 bookViewModelList.Add(bookViewModel);
             }
-
             return bookViewModelList;
         }
 
@@ -50,7 +49,6 @@ namespace CRUD.Services
             var bookViewModel = DomainToViewModel(postBookViewModel);
 
             _bookRepository.Create(book, postBookViewModel.AuthorIds);
-
             return bookViewModel;
         }
 
@@ -61,7 +59,6 @@ namespace CRUD.Services
             book.Id = Guid.Parse(postBookViewModel.Id);
 
             _bookRepository.Update(book, postBookViewModel.AuthorIds);
-
             return bookViewModel;
         }
 
@@ -100,7 +97,6 @@ namespace CRUD.Services
             {
                 authorIds.Add(author.Id.ToString());
             }
-
             return authorIds;
         }
 

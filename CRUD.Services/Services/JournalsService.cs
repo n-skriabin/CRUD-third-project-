@@ -40,7 +40,6 @@ namespace CRUD.Services
                 };
                 journalsViewModelList.Add(journalViewModel);
             }
-
             return journalsViewModelList;
         }
 
@@ -51,7 +50,6 @@ namespace CRUD.Services
             var journalViewModel = DomainToViewModel(postJournalViewModel);
 
             _journalRepository.Create(journal, articlesIdList);
-
             return journalViewModel;
         }
 
@@ -62,7 +60,6 @@ namespace CRUD.Services
             journal.Id = Guid.Parse(postJournalViewModel.Id);
 
             _journalRepository.Update(journal, postJournalViewModel.ArticleIds);
-
             return journalViewModel;
         }
 
@@ -102,7 +99,6 @@ namespace CRUD.Services
             {
                 articleIds.Add(article.Id.ToString());
             }
-
             return articleIds;
         }
 
