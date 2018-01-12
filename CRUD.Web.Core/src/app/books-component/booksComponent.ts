@@ -51,20 +51,12 @@ export class BooksComponent implements OnInit {
     this.titleService.setTitle('Books Page');
   }
 
-  public authorsView(id: string[]=[]): string {  
+  public authorsView(authors: Author[]=[]): string {  
     this.authorAbbreviateds = " ";
-    if(id[0] !== ""){
-      for(let i = 0; i <= id.length-2; i++){
-        if(this.authors.find(x => x.Id === id[i]) !== undefined)
-        {
-          this.authorAbbreviateds += this.authors.find(x => x.Id === id[i]).Abbreviated + ', ';
-        }
-      }
-      if(this.authors.find(x => x.Id === id[id.length-1]) !== undefined)
-      {
-        this.authorAbbreviateds += this.authors.find(x => x.Id === id[id.length-1]).Abbreviated + '.';   
-      }
-   }
+    for(var i = 0;i < authors.length-1; i++){
+      this.authorAbbreviateds += authors[i].Abbreviated + ", ";
+    }
+    this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
    return this.authorAbbreviateds;
   }
 

@@ -291,23 +291,13 @@ var BooksComponent = (function () {
         this.editServiceBook.read();
         this.titleService.setTitle('Books Page');
     };
-    BooksComponent.prototype.authorsView = function (id) {
-        if (id === void 0) { id = []; }
+    BooksComponent.prototype.authorsView = function (authors) {
+        if (authors === void 0) { authors = []; }
         this.authorAbbreviateds = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.authors.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.authorAbbreviateds += this_1.authors.find(function (x) { return x.Id === id[i]; }).Abbreviated + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.authors.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.authorAbbreviateds += this.authors.find(function (x) { return x.Id === id[id.length - 1]; }).Abbreviated + '.';
-            }
+        for (var i = 0; i < authors.length - 1; i++) {
+            this.authorAbbreviateds += authors[i].Abbreviated + ", ";
         }
+        this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
         return this.authorAbbreviateds;
     };
     BooksComponent.prototype.addHandler = function (_a) {
@@ -323,12 +313,12 @@ var BooksComponent = (function () {
         sender.addRow(this.formGroup);
     };
     BooksComponent.prototype.selectFromAuthors = function (authorIds) {
-        var _loop_2 = function (i) {
-            this_2.authorsForDefaultValue[i] = this_2.authors.find(function (item) { return item.Id === authorIds[i]; });
+        var _loop_1 = function (i) {
+            this_1.authorsForDefaultValue[i] = this_1.authors.find(function (item) { return item.Id === authorIds[i]; });
         };
-        var this_2 = this;
+        var this_1 = this;
         for (var i = 0; i < authorIds.length; i++) {
-            _loop_2(i);
+            _loop_1(i);
         }
         return this.authorsForDefaultValue;
     };
@@ -395,7 +385,7 @@ var BooksComponent = (function () {
 /***/ "../../../../../src/app/books-component/booksView.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Books</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\n  <kendo-grid-column field=\"AuthorIds\" title=\"Authors\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{authorsView(dataItem.AuthorIds)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"authors\"\n        textField=\"Abbreviated\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select authors...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
+module.exports = "<h3>Books</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"Year\" title=\"Year\"></kendo-grid-column>\n  <kendo-grid-column field=\"AuthorIds\" title=\"Authors\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      <!-- {{authorsView(dataItem.AuthorIds)}} -->  \n      {{authorsView(dataItem.Authors)}}   \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"authors\"\n        textField=\"Abbreviated\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedItems\"\n        [placeholder]=\"'Select authors...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
 
 /***/ }),
 

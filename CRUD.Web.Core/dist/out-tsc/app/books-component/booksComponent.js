@@ -44,23 +44,13 @@ var BooksComponent = /** @class */ (function () {
         this.editServiceBook.read();
         this.titleService.setTitle('Books Page');
     };
-    BooksComponent.prototype.authorsView = function (id) {
-        if (id === void 0) { id = []; }
+    BooksComponent.prototype.authorsView = function (authors) {
+        if (authors === void 0) { authors = []; }
         this.authorAbbreviateds = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.authors.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.authorAbbreviateds += this_1.authors.find(function (x) { return x.Id === id[i]; }).Abbreviated + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.authors.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.authorAbbreviateds += this.authors.find(function (x) { return x.Id === id[id.length - 1]; }).Abbreviated + '.';
-            }
+        for (var i = 0; i < authors.length - 1; i++) {
+            this.authorAbbreviateds += authors[i].Abbreviated + ", ";
         }
+        this.authorAbbreviateds += authors[authors.length].Abbreviated + ".";
         return this.authorAbbreviateds;
     };
     BooksComponent.prototype.addHandler = function (_a) {
@@ -76,12 +66,12 @@ var BooksComponent = /** @class */ (function () {
         sender.addRow(this.formGroup);
     };
     BooksComponent.prototype.selectFromAuthors = function (authorIds) {
-        var _loop_2 = function (i) {
-            this_2.authorsForDefaultValue[i] = this_2.authors.find(function (item) { return item.Id === authorIds[i]; });
+        var _loop_1 = function (i) {
+            this_1.authorsForDefaultValue[i] = this_1.authors.find(function (item) { return item.Id === authorIds[i]; });
         };
-        var this_2 = this;
+        var this_1 = this;
         for (var i = 0; i < authorIds.length; i++) {
-            _loop_2(i);
+            _loop_1(i);
         }
         return this.authorsForDefaultValue;
     };

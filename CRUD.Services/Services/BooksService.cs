@@ -26,11 +26,13 @@ namespace CRUD.Services
 
             foreach(var book in bookList)
             {
+                var authors = AuthorsToBookAuthors(book.Authors);
                 var bookViewModel = new BookViewModel
                 {
                     Id = book.Id.ToString(),
                     Name = book.Name,
                     Year = book.Year,
+                    Authors = authors,
                     AuthorIds = GetAuthorIds(book.Authors),
                 };
 
@@ -98,6 +100,24 @@ namespace CRUD.Services
             }
 
             return authorIds;
+        }
+
+        public List<AuthorViewModel> AuthorsToBookAuthors(List<Author> authors)
+        {
+            var bookAuthors = new List<AuthorViewModel>();
+
+            foreach (var author in authors)
+            {
+                var authorViewModel = new AuthorViewModel();
+                authorViewModel.Id = author.Id.ToString();
+                authorViewModel.FirstName = author.FirstName;
+                authorViewModel.LastName = author.LastName;
+                authorViewModel.Patronymic = author.Patronymic;
+                authorViewModel.Abbreviated = author.Abbreviated;
+
+                bookAuthors.Add(authorViewModel);
+            }
+            return bookAuthors;
         }
     }
 }
