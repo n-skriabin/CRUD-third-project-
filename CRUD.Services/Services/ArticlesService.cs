@@ -26,7 +26,7 @@ namespace CRUD.Services
 
             foreach (var article in articleList)
             {
-                var author = AuthorToArticleAuthor(article.Author);
+                var author = AuthorToAuthorViewModel(article.Author);
                 var articleViewModel = new ArticleViewModel
                 {
                     Id = article.Id.ToString(),
@@ -75,7 +75,7 @@ namespace CRUD.Services
             return article;
         }
 
-        public AuthorViewModel AuthorToArticleAuthor(Author author)
+        public AuthorViewModel AuthorToAuthorViewModel(Author author)
         {
             var authorViewModel = new AuthorViewModel();
             authorViewModel.Id = author.Id.ToString();

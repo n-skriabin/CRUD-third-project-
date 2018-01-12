@@ -49,42 +49,22 @@ var PublishersComponent = /** @class */ (function () {
         this.view = this.editServicePublisher.map(function (data) { return kendo_data_query_1.process(data, _this.gridState); });
         this.editServicePublisher.read();
     };
-    PublishersComponent.prototype.booksView = function (id) {
-        if (id === void 0) { id = []; }
+    PublishersComponent.prototype.booksView = function (books) {
+        if (books === void 0) { books = []; }
         this.bookNames = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.books.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.bookNames += this_1.books.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.books.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.bookNames += this.books.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < books.length - 1; i++) {
+            this.bookNames += books[i].Name + ", ";
         }
+        this.bookNames += books[books.length].Name + ".";
         return this.bookNames;
     };
-    PublishersComponent.prototype.journalsView = function (id) {
-        if (id === void 0) { id = []; }
+    PublishersComponent.prototype.journalsView = function (journals) {
+        if (journals === void 0) { journals = []; }
         this.journalNames = " ";
-        if (id[0] !== "") {
-            var _loop_2 = function (i) {
-                if (this_2.journals.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_2.journalNames += this_2.journals.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_2 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_2(i);
-            }
-            if (this.journals.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.journalNames += this.journals.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < journals.length - 1; i++) {
+            this.journalNames += journals[i].Name + ", ";
         }
+        this.journalNames += journals[journals.length].Name + ".";
         return this.journalNames;
     };
     PublishersComponent.prototype.addHandler = function (_a) {
@@ -102,24 +82,24 @@ var PublishersComponent = /** @class */ (function () {
     };
     PublishersComponent.prototype.selectFromBooks = function (bookIds) {
         if (bookIds !== undefined) {
-            var _loop_3 = function (i) {
-                this_3.booksForDefaultValue[i] = this_3.books.find(function (item) { return item.Id === bookIds[i]; });
+            var _loop_1 = function (i) {
+                this_1.booksForDefaultValue[i] = this_1.books.find(function (item) { return item.Id === bookIds[i]; });
             };
-            var this_3 = this;
+            var this_1 = this;
             for (var i = 0; i < bookIds.length; i++) {
-                _loop_3(i);
+                _loop_1(i);
             }
         }
         return this.booksForDefaultValue;
     };
     PublishersComponent.prototype.selectFromJournals = function (journalIds) {
         if (journalIds !== undefined) {
-            var _loop_4 = function (i) {
-                this_4.journalsForDefaultValue[i] = this_4.journals.find(function (item) { return item.Id === journalIds[i]; });
+            var _loop_2 = function (i) {
+                this_2.journalsForDefaultValue[i] = this_2.journals.find(function (item) { return item.Id === journalIds[i]; });
             };
-            var this_4 = this;
+            var this_2 = this;
             for (var i = 0; i < journalIds.length; i++) {
-                _loop_4(i);
+                _loop_2(i);
             }
         }
         return this.journalsForDefaultValue;

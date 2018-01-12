@@ -600,42 +600,22 @@ var PublishersComponent = (function () {
         this.view = this.editServicePublisher.map(function (data) { return Object(__WEBPACK_IMPORTED_MODULE_3__progress_kendo_data_query__["d" /* process */])(data, _this.gridState); });
         this.editServicePublisher.read();
     };
-    PublishersComponent.prototype.booksView = function (id) {
-        if (id === void 0) { id = []; }
+    PublishersComponent.prototype.booksView = function (books) {
+        if (books === void 0) { books = []; }
         this.bookNames = " ";
-        if (id[0] !== "") {
-            var _loop_1 = function (i) {
-                if (this_1.books.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_1.bookNames += this_1.books.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_1 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_1(i);
-            }
-            if (this.books.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.bookNames += this.books.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < books.length - 1; i++) {
+            this.bookNames += books[i].Name + ", ";
         }
+        this.bookNames += books[books.length].Name + ".";
         return this.bookNames;
     };
-    PublishersComponent.prototype.journalsView = function (id) {
-        if (id === void 0) { id = []; }
+    PublishersComponent.prototype.journalsView = function (journals) {
+        if (journals === void 0) { journals = []; }
         this.journalNames = " ";
-        if (id[0] !== "") {
-            var _loop_2 = function (i) {
-                if (this_2.journals.find(function (x) { return x.Id === id[i]; }) !== undefined) {
-                    this_2.journalNames += this_2.journals.find(function (x) { return x.Id === id[i]; }).Name + ', ';
-                }
-            };
-            var this_2 = this;
-            for (var i = 0; i <= id.length - 2; i++) {
-                _loop_2(i);
-            }
-            if (this.journals.find(function (x) { return x.Id === id[id.length - 1]; }) !== undefined) {
-                this.journalNames += this.journals.find(function (x) { return x.Id === id[id.length - 1]; }).Name + '.';
-            }
+        for (var i = 0; i < journals.length - 1; i++) {
+            this.journalNames += journals[i].Name + ", ";
         }
+        this.journalNames += journals[journals.length].Name + ".";
         return this.journalNames;
     };
     PublishersComponent.prototype.addHandler = function (_a) {
@@ -653,24 +633,24 @@ var PublishersComponent = (function () {
     };
     PublishersComponent.prototype.selectFromBooks = function (bookIds) {
         if (bookIds !== undefined) {
-            var _loop_3 = function (i) {
-                this_3.booksForDefaultValue[i] = this_3.books.find(function (item) { return item.Id === bookIds[i]; });
+            var _loop_1 = function (i) {
+                this_1.booksForDefaultValue[i] = this_1.books.find(function (item) { return item.Id === bookIds[i]; });
             };
-            var this_3 = this;
+            var this_1 = this;
             for (var i = 0; i < bookIds.length; i++) {
-                _loop_3(i);
+                _loop_1(i);
             }
         }
         return this.booksForDefaultValue;
     };
     PublishersComponent.prototype.selectFromJournals = function (journalIds) {
         if (journalIds !== undefined) {
-            var _loop_4 = function (i) {
-                this_4.journalsForDefaultValue[i] = this_4.journals.find(function (item) { return item.Id === journalIds[i]; });
+            var _loop_2 = function (i) {
+                this_2.journalsForDefaultValue[i] = this_2.journals.find(function (item) { return item.Id === journalIds[i]; });
             };
-            var this_4 = this;
+            var this_2 = this;
             for (var i = 0; i < journalIds.length; i++) {
-                _loop_4(i);
+                _loop_2(i);
             }
         }
         return this.journalsForDefaultValue;
@@ -746,7 +726,7 @@ var PublishersComponent = (function () {
 /***/ "../../../../../src/app/publishers-component/publishersView.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Publishers</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"BookIds\" title=\"Books\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{booksView(dataItem.BookIds)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"books\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedBooksItems\"\n        [placeholder]=\"'Select books...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n\n  <kendo-grid-column field=\"JournalIds\" title=\"Journals\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{journalsView(dataItem.JournalIds)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"journals\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedJournalsItems\"\n        [placeholder]=\"'Select journals...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
+module.exports = "<h3>Publishers</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"BookIds\" title=\"Books\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{booksView(dataItem.Books)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"books\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedBooksItems\"\n        [placeholder]=\"'Select books...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n\n  <kendo-grid-column field=\"JournalIds\" title=\"Journals\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{journalsView(dataItem.Journals)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"journals\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedJournalsItems\"\n        [placeholder]=\"'Select journals...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
 
 /***/ }),
 

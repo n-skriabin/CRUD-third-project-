@@ -27,10 +27,15 @@ namespace CRUD.Services
 
             foreach (var publisher in publisherList)
             {
+                var books = BooksToBookViewModels(publisher.Books);
+                var journals = JournalsToJournalViewModels(publisher.Journals);
+
                 var publisherViewModel = new PublisherViewModel
                 {
                     Id = publisher.Id.ToString(),
                     Name = publisher.Name,
+                    Books = books,
+                    Journals = journals,
                     BookIds = GetBookIds(publisher.Books),
                     JournalIds = GetJournalIds(publisher.Journals)
                 };
@@ -109,6 +114,38 @@ namespace CRUD.Services
             }
 
             return journalIds;
+        }
+
+        private List<BookViewModel> BooksToBookViewModels(HashSet<Book> books)
+        {
+            var bookViewModels = new List<BookViewModel>();
+
+            foreach (var book in books)
+            {
+                var bookViewModel = new BookViewModel();
+                bookViewModel.Id = book.Id.ToString();
+                bookViewModel.Name = book.Name;
+                bookViewModel.Year = book.Year;
+
+                bookViewModels.Add(bookViewModel);
+            }
+            return bookViewModels;
+        }
+
+        private List<JournalViewModel> JournalsToJournalViewModels(HashSet<Journal> journals)
+        {
+            var journalViewModels = new List<JournalViewModel>();
+
+            foreach (var journal in journals)
+            {
+                var journalViewModel = new JournalViewModel();
+                journalViewModel.Id = journal.Id.ToString();
+                journalViewModel.Name = journal.Name;
+                journalViewModel.Date = journal.Date;
+
+                journalViewModels.Add(journalViewModel);
+            }
+            return journalViewModels;
         }
     }
 }

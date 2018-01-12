@@ -14,7 +14,7 @@
   <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
   <kendo-grid-column field="BookIds" title="Books" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
-      {{booksView(dataItem.BookIds)}}     
+      {{booksView(dataItem.Books)}}     
     </ng-template>
     <ng-template kendoGridEditTemplate
       let-dataItem="dataItem"
@@ -31,7 +31,7 @@
 
   <kendo-grid-column field="JournalIds" title="Journals" width="400">
     <ng-template kendoGridCellTemplate let-dataItem>
-      {{journalsView(dataItem.JournalIds)}}     
+      {{journalsView(dataItem.Journals)}}     
     </ng-template>
     <ng-template kendoGridEditTemplate
       let-dataItem="dataItem"

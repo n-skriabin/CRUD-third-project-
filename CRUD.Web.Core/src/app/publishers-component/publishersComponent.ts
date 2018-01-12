@@ -56,38 +56,22 @@ export class PublishersComponent implements OnInit {
     this.editServicePublisher.read();
   }
 
-  public booksView(id: string[]=[]): string {  
+  public booksView(books: Book[]=[]): string {  
     this.bookNames = " ";
-    if(id[0] !== ""){
-      for(let i = 0; i <= id.length-2; i++){
-        if(this.books.find(x => x.Id === id[i]) !== undefined)
-        {
-          this.bookNames += this.books.find(x => x.Id === id[i]).Name + ', ';
-        }
-      }
-      if(this.books.find(x => x.Id === id[id.length-1]) !== undefined)
-      {
-        this.bookNames += this.books.find(x => x.Id === id[id.length-1]).Name + '.';   
-      }
-   }
-   return this.bookNames;
+    for(var i = 0;i < books.length-1; i++){
+      this.bookNames += books[i].Name + ", ";
+    }
+    this.bookNames += books[books.length].Name + ".";
+    return this.bookNames;
   }
 
-  public journalsView(id: string[]=[]): string {  
+  public journalsView(journals: Journal[]=[]): string {  
     this.journalNames = " ";
-    if(id[0] !== ""){
-      for(let i = 0; i <= id.length-2; i++){
-        if(this.journals.find(x => x.Id === id[i]) !== undefined)
-        {
-          this.journalNames += this.journals.find(x => x.Id === id[i]).Name + ', ';
-        }
-      }
-      if(this.journals.find(x => x.Id === id[id.length-1]) !== undefined)
-      {
-        this.journalNames += this.journals.find(x => x.Id === id[id.length-1]).Name + '.';   
-      }
-   }
-   return this.journalNames;
+    for(var i = 0;i < journals.length-1; i++){
+      this.journalNames += journals[i].Name + ", ";
+    }
+    this.journalNames += journals[journals.length].Name + ".";
+    return this.journalNames;
   }
 
   public addHandler({ sender }) {

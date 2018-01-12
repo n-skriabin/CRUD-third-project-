@@ -13,6 +13,8 @@ namespace CRUD.Services
         private BookRepository _bookRepository;
         private AuthorRepository _authorRepository;
 
+        public BooksService() { }
+
         public BooksService(string connectionString)
         {
             _bookRepository = new BookRepository(connectionString);
@@ -26,7 +28,7 @@ namespace CRUD.Services
 
             foreach(var book in bookList)
             {
-                var authors = AuthorsToBookAuthors(book.Authors);
+                var authors = AuthorsToAuthorViewModels(book.Authors);
                 var bookViewModel = new BookViewModel
                 {
                     Id = book.Id.ToString(),
@@ -102,7 +104,7 @@ namespace CRUD.Services
             return authorIds;
         }
 
-        public List<AuthorViewModel> AuthorsToBookAuthors(List<Author> authors)
+        public List<AuthorViewModel> AuthorsToAuthorViewModels(List<Author> authors)
         {
             var bookAuthors = new List<AuthorViewModel>();
 

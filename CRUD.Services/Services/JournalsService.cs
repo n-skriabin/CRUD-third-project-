@@ -29,7 +29,7 @@ namespace CRUD.Services
 
             foreach (var journal in journalList)
             {
-                var articles = ArticlesToJournalArticles(journal.Articles);
+                var articles = ArticlesToArticleViewModels(journal.Articles);
                  var journalViewModel = new JournalViewModel
                 {
                     Id = journal.Id.ToString(),
@@ -106,9 +106,8 @@ namespace CRUD.Services
             return articleIds;
         }
 
-        private List<ArticleViewModel> ArticlesToJournalArticles(List<Article> articles)
+        private List<ArticleViewModel> ArticlesToArticleViewModels(List<Article> articles)
         {
-            var articleService = new ArticlesService();
             var journalArticles = new List<ArticleViewModel>();
             foreach (var article in articles)
             {
