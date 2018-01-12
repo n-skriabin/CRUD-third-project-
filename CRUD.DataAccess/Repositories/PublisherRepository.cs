@@ -30,6 +30,10 @@ namespace CRUD.DataAccess.Repositories
             var publishersDictionary = new Dictionary<string, PublisherResponseModel>();
             _db.Query<Book, Journal, Publisher, PublisherResponseModel>(query, (book, journal, publisher) =>
             {
+                if (book.Name == null)
+                {
+                    book = null;
+                }
                 if (publisher != null)
                 {
                     var publisherResponseModel = new PublisherResponseModel();
