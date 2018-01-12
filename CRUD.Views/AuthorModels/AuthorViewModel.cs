@@ -7,5 +7,7 @@
         public string LastName { get; set; }
         
         public string Patronymic { get; set; }
+
+        public string Abbreviated { get; set; }
     }
 }

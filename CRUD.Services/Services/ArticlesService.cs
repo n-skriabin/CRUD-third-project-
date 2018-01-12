@@ -24,11 +24,13 @@ namespace CRUD.Services
 
             foreach (var article in articleList)
             {
+                var author = AuthorToArticleAuthor(article.Author);
                 var articleViewModel = new ArticleViewModel
                 {
                     Id = article.Id.ToString(),
                     Name = article.Name,
                     Year = article.Year,
+                    Author = author,
                     AuthorId = article.Author.Id.ToString(),
                     Abbreviated = article.Author.Abbreviated
                 };
@@ -69,6 +71,17 @@ namespace CRUD.Services
                 AuthorId = Guid.Parse(articleViewModel.AuthorId),
             };
             return article;
+        }
+
+        private AuthorViewModel AuthorToArticleAuthor(Author author)
+        {
+            var authorViewModel = new AuthorViewModel();
+            authorViewModel.Id = author.Id.ToString();
+            authorViewModel.FirstName = author.FirstName;
+            authorViewModel.LastName = author.LastName;
+            authorViewModel.Patronymic = author.Patronymic;
+            authorViewModel.Abbreviated = author.Abbreviated;
+            return authorViewModel;
         }
     }
 }
