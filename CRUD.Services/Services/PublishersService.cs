@@ -1,4 +1,4 @@
-﻿using CRUD.DataAccess.Repositories;
+using CRUD.DataAccess.Repositories;
 using CRUD.Domain;
 using CRUD.Views;
 using CRUD.Views.ResponseModels;
@@ -38,14 +38,14 @@ namespace CRUD.Services
                 if (books != null)
                 {
                     publisherViewModel.Books = books;
+                    publisherViewModel.BookIds = GetBookIds(publisher.Books);
                 }
 
                 if (journals != null)
                 {
                     publisherViewModel.Journals = journals;
+                    publisherViewModel.JournalIds = GetJournalIds(publisher.Journals);
                 }
-                publisherViewModel.BookIds = GetBookIds(publisher.Books);
-                publisherViewModel.JournalIds = GetJournalIds(publisher.Journals);
                 
                 publisherViewModelList.Add(publisherViewModel);
             }
@@ -103,7 +103,10 @@ namespace CRUD.Services
 
             foreach (var book in books)
             {
-                bookIds.Add(book.Id.ToString());
+                if (book != null)
+                {
+                    bookIds.Add(book.Id.ToString());
+                }
             }
             return bookIds;
         }
@@ -114,7 +117,10 @@ namespace CRUD.Services
 
             foreach (var journal in journals)
             {
-                journalIds.Add(journal.Id.ToString());
+                if (journal != null)
+                {
+                    journalIds.Add(journal.Id.ToString());
+                }
             }
             return journalIds;
         }
@@ -165,3 +171,4 @@ namespace CRUD.Services
         }
     }
 }
+
