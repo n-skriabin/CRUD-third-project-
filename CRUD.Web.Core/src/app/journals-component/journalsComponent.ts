@@ -49,13 +49,14 @@ export class JournalsComponent implements OnInit {
   }
 
   public articlesView(articles: Article[]=[]): string {  
-    this.articleNames = " ";
+    this.articleNames = "null;";
+    if(articles !== null && articles !== undefined && articles.length !== 0){
+      this.articleNames = " ";
     for(var i = 0; i < articles.length; i++){
-      if(articles[i] !== undefined){
-        this.articleNames += articles[i].Name + "; ";
-      }  
+        this.articleNames += articles[i].Name + "; ";   
     }
-   return this.articleNames;
+      return this.articleNames;
+    }
   }
 
   public addHandler({ sender }) {
