@@ -57,29 +57,24 @@ export class PublishersComponent implements OnInit {
   }
 
   public booksView(books: Book[]=[]): string {  
-    this.bookNames = "null";
-    if(books !== null){
+    this.bookNames = "null;";
+    if(books !== null && books !== undefined && books.length !== 0){
       this.bookNames = " ";
-      console.log("books");
       for(var i = 0;i < books.length; i++){
-        if(books[i] !== undefined){
-          this.bookNames += books[i].Name + "; ";
-        }
+          this.bookNames += books[i].Name + "; ";     
       }
     }
     return this.bookNames;
   }
 
   public journalsView(journals: Journal[]=[]): string {  
-    this.journalNames = "null";
-    if(journals !== null && journals !== undefined){
-      console.log("journals");
-      console.log(journals);
+    this.journalNames = "null;";
+    console.log("journals:");
+    console.log(journals);
+    if(journals !== null && journals !== undefined && journals.length !== 0){
       this.journalNames = " ";
       for(var i = 0;i < journals.length; i++){
-        if(journals[i] !== undefined){
-          this.journalNames += journals[i].Name + "; ";
-        }
+          this.journalNames += journals[i].Name + "; ";      
       }
     }
     return this.journalNames;
