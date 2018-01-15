@@ -544,6 +544,53 @@ module.exports = "<h3>Journals</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\
 
 /***/ }),
 
+/***/ "../../../../../src/app/library/library-layout.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink='Home/load-Home'>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles/load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='Books/load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='Journals/load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='Publishers/load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n\r\n  <router-outlet></router-outlet>\r\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/library-layout.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LibraryComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LibraryComponent = (function () {
+    function LibraryComponent(titleService) {
+        this.titleService = titleService;
+    }
+    LibraryComponent.prototype.ngOnInit = function () {
+        this.titleService.setTitle('Home Page');
+    };
+    LibraryComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'library-layout',
+            styles: [__webpack_require__("../../../../../src/app/library/styles.css")],
+            template: __webpack_require__("../../../../../src/app/library/library-layout.component.html"),
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* Title */]])
+    ], LibraryComponent);
+    return LibraryComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/library/library.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -561,6 +608,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__ = __webpack_require__("../../../../../src/app/library/books-component/booksComponent.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__journals_component_journalsComponent__ = __webpack_require__("../../../../../src/app/library/journals-component/journalsComponent.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__publishers_component_publishersComponent__ = __webpack_require__("../../../../../src/app/library/publishers-component/publishersComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__library_layout_component__ = __webpack_require__("../../../../../src/app/library/library-layout.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -578,12 +626,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
-    { path: 'load-AuthorsTable', component: __WEBPACK_IMPORTED_MODULE_7__authors_component_authorsComponent__["a" /* AuthorsComponent */] },
-    { path: 'load-ArticlesTable', component: __WEBPACK_IMPORTED_MODULE_4__articles_component_articlesComponent__["a" /* ArticlesComponent */] },
-    { path: 'load-BooksTable', component: __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__["a" /* BooksComponent */] },
-    { path: 'load-JournalsTable', component: __WEBPACK_IMPORTED_MODULE_9__journals_component_journalsComponent__["a" /* JournalsComponent */] },
-    { path: 'load-PublishersTable', component: __WEBPACK_IMPORTED_MODULE_10__publishers_component_publishersComponent__["a" /* PublishersComponent */] }
+    {
+        path: 'library', component: __WEBPACK_IMPORTED_MODULE_11__library_layout_component__["a" /* LibraryComponent */], children: [
+            { path: 'load-AuthorsTable', component: __WEBPACK_IMPORTED_MODULE_7__authors_component_authorsComponent__["a" /* AuthorsComponent */] },
+            { path: 'load-ArticlesTable', component: __WEBPACK_IMPORTED_MODULE_4__articles_component_articlesComponent__["a" /* ArticlesComponent */] },
+            { path: 'load-BooksTable', component: __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__["a" /* BooksComponent */] },
+            { path: 'load-JournalsTable', component: __WEBPACK_IMPORTED_MODULE_9__journals_component_journalsComponent__["a" /* JournalsComponent */] },
+            { path: 'load-PublishersTable', component: __WEBPACK_IMPORTED_MODULE_10__publishers_component_publishersComponent__["a" /* PublishersComponent */] }
+        ]
+    }
 ];
 var LibraryModule = (function () {
     function LibraryModule() {
@@ -600,6 +653,7 @@ var LibraryModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* FormsModule */]
             ],
             declarations: [
+                __WEBPACK_IMPORTED_MODULE_11__library_layout_component__["a" /* LibraryComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__authors_component_authorsComponent__["a" /* AuthorsComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__articles_component_articlesComponent__["a" /* ArticlesComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__["a" /* BooksComponent */],
@@ -805,6 +859,24 @@ var PublishersComponent = (function () {
 /***/ (function(module, exports) {
 
 module.exports = "<h3>Publishers</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\"\n            [height]=\"533\"\n            [pageSize]=\"gridState.take\" [skip]=\"gridState.skip\" [sort]=\"gridState.sort\"\n            [pageable]=\"true\" [sortable]=\"true\"\n            (dataStateChange)=\"onStateChange($event)\"\n            (edit)=\"editHandler($event)\" (cancel)=\"cancelHandler($event)\"\n            (save)=\"saveHandler($event)\" (remove)=\"removeHandler($event)\"\n            (add)=\"addHandler($event)\">\n  <ng-template kendoGridToolbarTemplate>\n    <button kendoGridAddCommand>Add new</button>\n  </ng-template>\n  <kendo-grid-column field=\"Name\" title=\"Name\"></kendo-grid-column>\n  <kendo-grid-column field=\"BookIds\" title=\"Books\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{booksView(dataItem.Books)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"books\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedBooksItems\"\n        [placeholder]=\"'Select books...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n\n  <kendo-grid-column field=\"JournalIds\" title=\"Journals\" width=\"400\">\n    <ng-template kendoGridCellTemplate let-dataItem>\n      {{journalsView(dataItem.Journals)}}     \n    </ng-template>\n    <ng-template kendoGridEditTemplate\n      let-dataItem=\"dataItem\"\n      let-formGroup=\"formGroup\">    \n      <kendo-multiselect \n        [data]=\"journals\"\n        textField=\"Name\"\n        valueField=\"Id\"\n        [(ngModel)]=\"selectedJournalsItems\"\n        [placeholder]=\"'Select journals...'\" >\n      </kendo-multiselect >\n    </ng-template>\n  </kendo-grid-column>\n  <kendo-grid-command-column title=\"Actions\" width=\"220\">\n    <ng-template kendoGridCellTemplate let-isNew=\"isNew\">\n      <button kendoGridEditCommand class=\"k-primary\">Edit</button>\n      <button kendoGridRemoveCommand>Remove</button>\n      <button kendoGridSaveCommand [disabled]=\"formGroup?.invalid\">{{ isNew ? 'Add' : 'Update' }}</button>\n      <button kendoGridCancelCommand>Cancel</button>\n    </ng-template>\n  </kendo-grid-command-column>\n</kendo-grid>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/styles.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    background-color: #333;\r\n    border-radius: 10px 10px 10px 10px;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\nli a:hover {\r\n    background-color: rgb(255, 104, 88);\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ })
 

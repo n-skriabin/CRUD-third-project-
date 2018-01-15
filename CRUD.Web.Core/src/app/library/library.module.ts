@@ -9,13 +9,17 @@ import { AuthorsComponent } from './authors-component/authorsComponent';
 import { BooksComponent } from './books-component/booksComponent';
 import { JournalsComponent } from './journals-component/journalsComponent';
 import { PublishersComponent } from './publishers-component/publishersComponent';
+import { LibraryComponent } from './library-layout.component';
 
 const routes: Routes = [
-  { path: 'load-AuthorsTable', component: AuthorsComponent },
-  { path: 'load-ArticlesTable', component: ArticlesComponent },
-  { path: 'load-BooksTable', component: BooksComponent },
-  { path: 'load-JournalsTable', component: JournalsComponent },
-  { path: 'load-PublishersTable', component: PublishersComponent }
+    {
+        path: 'library', component: LibraryComponent, children: [
+        { path: 'load-AuthorsTable', component: AuthorsComponent },
+        { path: 'load-ArticlesTable', component: ArticlesComponent },
+        { path: 'load-BooksTable', component: BooksComponent },
+        { path: 'load-JournalsTable', component: JournalsComponent },
+        { path: 'load-PublishersTable', component: PublishersComponent }
+    ]}
 ];
 
 @NgModule({
@@ -30,7 +34,8 @@ const routes: Routes = [
           FormsModule
     ],
     declarations:
-    [
+        [
+          LibraryComponent,
           AuthorsComponent,
           ArticlesComponent,
           BooksComponent,

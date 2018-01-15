@@ -5,7 +5,6 @@ import { GridModule } from '@progress/kendo-angular-grid/dist/es/grid.module';
 import { DropDownsModule, DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home.routing';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -20,7 +19,6 @@ const routes: Routes = [
 @NgModule({
     imports:
         [
-            /* HomeRoutingModule, */
             RouterModule.forChild(routes),
             CommonModule,
             GridModule,

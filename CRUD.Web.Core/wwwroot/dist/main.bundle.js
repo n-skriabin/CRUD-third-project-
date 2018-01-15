@@ -48,7 +48,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var PanelbarRoutes = [
-    { path: '', loadChildren: './home-component/home.module#HomeModule' },
+    { path: '', loadChildren: './home-component/home.module#HomeModule' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

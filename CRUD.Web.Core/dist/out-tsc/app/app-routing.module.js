@@ -10,7 +10,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 exports.PanelbarRoutes = [
-    { path: '', loadChildren: './home-component/home.module#HomeModule' },
+    { path: '', loadChildren: './home-component/home.module#HomeModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

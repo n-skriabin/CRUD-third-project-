@@ -47,13 +47,15 @@
   <ItemGroup>
     <None Remove="src\app\home-component\home.module.ts" />
     <None Remove="src\app\home-component\layout.css" />
+    <None Remove="src\app\library\library-layout.component.html" />
+    <None Remove="src\app\library\library-layout.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\home-component\home.component.html" />
-    <Content Include="src\app\home-component\layout.css" />
     <Content Include="src\app\layout.css" />
+    <Content Include="src\app\library\library-layout.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.scss" />
@@ -87,6 +89,7 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\home-component\home.component.ts" />
     <TypeScriptCompile Include="src\app\home-component\home.module.ts" />
+    <TypeScriptCompile Include="src\app\library\library-layout.component.ts" />
     <TypeScriptCompile Include="src\app\library\library.module.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />

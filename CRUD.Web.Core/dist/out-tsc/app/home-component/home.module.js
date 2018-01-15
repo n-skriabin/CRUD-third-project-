@@ -28,7 +28,6 @@ var HomeModule = /** @class */ (function () {
     HomeModule = __decorate([
         core_1.NgModule({
             imports: [
-                /* HomeRoutingModule, */
                 router_1.RouterModule.forChild(routes),
                 common_1.CommonModule,
                 grid_module_1.GridModule,

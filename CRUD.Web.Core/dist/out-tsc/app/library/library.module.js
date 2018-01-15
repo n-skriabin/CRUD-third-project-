@@ -17,12 +17,17 @@ var authorsComponent_1 = require("./authors-component/authorsComponent");
 var booksComponent_1 = require("./books-component/booksComponent");
 var journalsComponent_1 = require("./journals-component/journalsComponent");
 var publishersComponent_1 = require("./publishers-component/publishersComponent");
+var library_layout_component_1 = require("./library-layout.component");
 var routes = [
-    { path: 'load-AuthorsTable', component: authorsComponent_1.AuthorsComponent },
-    { path: 'load-ArticlesTable', component: articlesComponent_1.ArticlesComponent },
-    { path: 'load-BooksTable', component: booksComponent_1.BooksComponent },
-    { path: 'load-JournalsTable', component: journalsComponent_1.JournalsComponent },
-    { path: 'load-PublishersTable', component: publishersComponent_1.PublishersComponent }
+    {
+        path: 'library', component: library_layout_component_1.LibraryComponent, children: [
+            { path: 'load-AuthorsTable', component: authorsComponent_1.AuthorsComponent },
+            { path: 'load-ArticlesTable', component: articlesComponent_1.ArticlesComponent },
+            { path: 'load-BooksTable', component: booksComponent_1.BooksComponent },
+            { path: 'load-JournalsTable', component: journalsComponent_1.JournalsComponent },
+            { path: 'load-PublishersTable', component: publishersComponent_1.PublishersComponent }
+        ]
+    }
 ];
 var LibraryModule = /** @class */ (function () {
     function LibraryModule() {
@@ -39,6 +44,7 @@ var LibraryModule = /** @class */ (function () {
                 forms_1.FormsModule
             ],
             declarations: [
+                library_layout_component_1.LibraryComponent,
                 authorsComponent_1.AuthorsComponent,
                 articlesComponent_1.ArticlesComponent,
                 booksComponent_1.BooksComponent,
