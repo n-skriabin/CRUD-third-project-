@@ -45,13 +45,8 @@
     <Content Include="obj\Debug\net461\CRUD.Web.Core.csproj.FileListAbsolute.txt" />
     <Content Include="obj\project.assets.json" />
     <Content Include="src\app\app.component.html" />
-    <Content Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesView.html" />
-    <Content Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsView.html" />
-    <Content Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksVIew.html" />
     <Content Include="src\app\home-component\home.component.html" />
-    <Content Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsView.html" />
     <Content Include="src\app\layout.css" />
-    <Content Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersView.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.scss" />
@@ -83,23 +78,8 @@
     <TypeScriptCompile Include="src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articleModel.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesComponent.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesService.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorModel.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsComponent.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsService.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\bookModel.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksComponent.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksService.ts" />
     <TypeScriptCompile Include="src\app\home-component\home.component.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalModel.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsComponent.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsService.ts" />
     <TypeScriptCompile Include="src\app\library\library.module.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publisherModel.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersComponent.ts" />
-    <TypeScriptCompile Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersService.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
@@ -113,26 +93,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articleModel.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesComponent.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesService.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\articles-component\articlesView.html" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorModel.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsComponent.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsService.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\authors-component\authorsView.html" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\bookModel.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksComponent.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksService.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\books-component\booksVIew.html" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalModel.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsComponent.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsService.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\journals-component\journalsView.html" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publisherModel.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersComponent.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersService.ts" />
-    <None Include="..\..\CRUD%2528Angular, API, Dapper%2529\CRUD.Web.Core\src\app\library\publishers-component\publishersView.html" />
     <None Include="bin\Debug\net461\CRUD.DataAccess.dll" />
     <None Include="bin\Debug\net461\CRUD.DataAccess.dll.config" />
     <None Include="bin\Debug\net461\CRUD.DataAccess.pdb" />
