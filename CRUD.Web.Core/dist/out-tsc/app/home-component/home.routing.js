@@ -10,19 +10,25 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 exports.PanelbarRoutes = [
-    { path: '', loadChildren: './home-component/home.module#HomeModule' },
+    { path: '', loadChildren: './home.module#HomeModule' },
+    { path: 'Home', loadChildren: './home.module#HomeModule' },
+    { path: 'Authors', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Articles', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Books', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Journals', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Publishers', loadChildren: '../library/library.module#LibraryModule' }
 ];
-var AppRoutingModule = /** @class */ (function () {
-    function AppRoutingModule() {
+var HomeRoutingModule = /** @class */ (function () {
+    function HomeRoutingModule() {
     }
-    AppRoutingModule = __decorate([
+    HomeRoutingModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(exports.PanelbarRoutes)],
+            imports: [router_1.RouterModule.forChild(exports.PanelbarRoutes)],
             exports: [router_1.RouterModule],
             providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }]
         })
-    ], AppRoutingModule);
-    return AppRoutingModule;
+    ], HomeRoutingModule);
+    return HomeRoutingModule;
 }());
-exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=app-routing.module.js.map
+exports.HomeRoutingModule = HomeRoutingModule;
+//# sourceMappingURL=home.routing.js.map

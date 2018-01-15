@@ -7,7 +7,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, RouterModule } from '@angular/router';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { FormsModule } from '@angular/forms';
-import { panelbarRouting, appRoutingProviders, PanelbarRoutes } from './app-routing.module';
+import { PanelbarRoutes, AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from '../app/home-component/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,11 +26,11 @@ import { PublishersService } from './library/publishers-component/publishersServ
   ],
 
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
     RouterModule,
-    panelbarRouting,
     FormsModule,
     HttpClientModule,
     BrowserModule,
@@ -43,8 +43,7 @@ import { PublishersService } from './library/publishers-component/publishersServ
   ],
 
   providers: [
-    appRoutingProviders,
-    { provide: APP_BASE_HREF, useValue: window.location.pathname },
+   /*  { provide: APP_BASE_HREF, useValue: window.location.pathname }, */
     {
       deps: [HttpClient],
       provide: AuthorsService,

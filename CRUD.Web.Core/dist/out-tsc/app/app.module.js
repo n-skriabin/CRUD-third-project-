@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_component_1 = require("./app.component");
-var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var animations_1 = require("@angular/platform-browser/animations");
@@ -34,11 +33,11 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent
             ],
             imports: [
+                app_routing_module_1.AppRoutingModule,
                 platform_browser_1.BrowserModule,
                 animations_1.BrowserAnimationsModule,
                 kendo_angular_layout_1.LayoutModule,
                 router_1.RouterModule,
-                app_routing_module_1.panelbarRouting,
                 forms_1.FormsModule,
                 http_1.HttpClientModule,
                 platform_browser_1.BrowserModule,
@@ -50,8 +49,7 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule
             ],
             providers: [
-                app_routing_module_1.appRoutingProviders,
-                { provide: common_1.APP_BASE_HREF, useValue: window.location.pathname },
+                /*  { provide: APP_BASE_HREF, useValue: window.location.pathname }, */
                 {
                     deps: [http_1.HttpClient],
                     provide: authorsService_1.AuthorsService,

@@ -14,7 +14,13 @@ var kendo_angular_dropdowns_1 = require("@progress/kendo-angular-dropdowns");
 var forms_1 = require("@angular/forms");
 var home_component_1 = require("./home.component");
 var routes = [
-    { path: '', component: home_component_1.HomeComponent }
+    { path: '', component: home_component_1.HomeComponent },
+    { path: 'load-Home', component: home_component_1.HomeComponent },
+    { path: 'Authors', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Articles', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Books', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Journals', loadChildren: '../library/library.module#LibraryModule' },
+    { path: 'Publishers', loadChildren: '../library/library.module#LibraryModule' }
 ];
 var HomeModule = /** @class */ (function () {
     function HomeModule() {
@@ -22,6 +28,7 @@ var HomeModule = /** @class */ (function () {
     HomeModule = __decorate([
         core_1.NgModule({
             imports: [
+                /* HomeRoutingModule, */
                 router_1.RouterModule.forChild(routes),
                 common_1.CommonModule,
                 grid_module_1.GridModule,

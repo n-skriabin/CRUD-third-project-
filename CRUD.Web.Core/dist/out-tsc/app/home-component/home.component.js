@@ -21,6 +21,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'app-home',
+            styleUrls: ['/styles.css'],
             templateUrl: './home.component.html',
         }),
         __metadata("design:paramtypes", [platform_browser_1.Title])

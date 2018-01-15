@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
+    styleUrls: ['/styles.css'],
     templateUrl: './home.component.html',
 })
 
