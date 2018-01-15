@@ -18,7 +18,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            styleUrls: ['./layout-navbar/styles.css'],
+            styleUrls: ['./styles.css'],
             templateUrl: "./app.component.html"
         }),
         __metadata("design:paramtypes", [router_1.Router])

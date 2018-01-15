@@ -4,11 +4,11 @@ var router_1 = require("@angular/router");
 var home_component_1 = require("../app/home-component/home.component");
 exports.PanelbarRoutes = [
     { path: '', component: home_component_1.HomeComponent },
-    { path: 'Authors', loadChildren: './tables.module#TablesModule' },
-    { path: 'Articles', loadChildren: './tables.module#TablesModule' },
-    { path: 'Books', loadChildren: './tables.module#TablesModule' },
-    { path: 'Journals', loadChildren: './tables.module#TablesModule' },
-    { path: 'Publishers', loadChildren: './tables.module#TablesModule' }
+    { path: 'Authors', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Articles', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Books', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Journals', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Publishers', loadChildren: './library/library.module#LibraryModule' }
 ];
 exports.appRoutingProviders = [];
 exports.panelbarRouting = router_1.RouterModule.forRoot(exports.PanelbarRoutes);

@@ -4,9 +4,9 @@ webpackJsonp(["main"],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./tables.module": [
-		"../../../../../src/app/tables.module.ts",
-		"tables.module"
+	"./library/library.module": [
+		"../../../../../src/app/library/library.module.ts",
+		"library.module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -38,11 +38,11 @@ module.exports = webpackAsyncContext;
 
 var PanelbarRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__["a" /* HomeComponent */] },
-    { path: 'Authors', loadChildren: './tables.module#TablesModule' },
-    { path: 'Articles', loadChildren: './tables.module#TablesModule' },
-    { path: 'Books', loadChildren: './tables.module#TablesModule' },
-    { path: 'Journals', loadChildren: './tables.module#TablesModule' },
-    { path: 'Publishers', loadChildren: './tables.module#TablesModule' }
+    { path: 'Authors', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Articles', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Books', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Journals', loadChildren: './library/library.module#LibraryModule' },
+    { path: 'Publishers', loadChildren: './library/library.module#LibraryModule' }
 ];
 var appRoutingProviders = [];
 var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(PanelbarRoutes);
@@ -82,7 +82,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'my-app',
-            styles: [__webpack_require__("../../../../../src/app/layout-navbar/styles.css")],
+            styles: [__webpack_require__("../../../../../src/app/styles.css")],
             template: __webpack_require__("../../../../../src/app/app.component.html")
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
@@ -111,13 +111,13 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__ = __webpack_require__("../../../../../src/app/home-component/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__ = __webpack_require__("../../../../@progress/kendo-angular-grid/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__authors_component_authorsService__ = __webpack_require__("../../../../../src/app/authors-component/authorsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__ = __webpack_require__("../../../../../src/app/library/authors-component/authorsService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__progress_kendo_angular_popup__ = __webpack_require__("../../../../@progress/kendo-angular-popup/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/articles-component/articlesService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/library/articles-component/articlesService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_dropdowns__ = __webpack_require__("../../../../@progress/kendo-angular-dropdowns/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__books_component_booksService__ = __webpack_require__("../../../../../src/app/books-component/booksService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__journals_component_journalsService__ = __webpack_require__("../../../../../src/app/journals-component/journalsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/publishers-component/publishersService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__ = __webpack_require__("../../../../../src/app/library/books-component/booksService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__ = __webpack_require__("../../../../../src/app/library/journals-component/journalsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/library/publishers-component/publishersService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -174,28 +174,28 @@ var AppModule = (function () {
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* APP_BASE_HREF */], useValue: window.location.pathname },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_12__authors_component_authorsService__["a" /* AuthorsService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_12__authors_component_authorsService__["a" /* AuthorsService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__["a" /* AuthorsService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__["a" /* AuthorsService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_14__app_articles_component_articlesService__["a" /* ArticlesService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_14__app_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__["a" /* ArticlesService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_16__books_component_booksService__["a" /* BooksService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_16__books_component_booksService__["a" /* BooksService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__["a" /* BooksService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__["a" /* BooksService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_17__journals_component_journalsService__["a" /* JournalsService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_17__journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__["a" /* JournalsService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
                 },
                 {
                     deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_18__publishers_component_publishersService__["a" /* PublishersService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_18__publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
+                    provide: __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__["a" /* PublishersService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
                 }
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */]]
@@ -208,7 +208,53 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/articles-component/articlesService.ts":
+/***/ "../../../../../src/app/home-component/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <h2>Home page</h2>\r\n  <div>\r\n    <p>However engaging wherever growled much methodic shamefully more human agreeable gracefully and less equitable insistent gasped that when wasp baboon rebuilt more slept stingily along knew llama.</p>\r\n    <p>Prim crud far healthy wholesomely more far chortled ouch in adroitly gawked affably reasonably manfully reindeer mysteriously overpaid considering far far until.</p>\r\n    <p>Red-handed off thickly save aboard mawkishly that amidst moth pending jerkily monogamous some much or creatively indecent neat far jeepers up spoiled about.</p>\r\n    <p>Owing desperate like one shark or bit yikes up so thus grumbled gosh more bawled much and regardless hey far bought through crud well staunchly hysteric inside incorrect the closed.</p>\r\n    <p>Industrious jubilant blanched bestially yet that less far far a wow the militant preparatory crudely acrimonious under a towards lemur wedded that while decorously this peered darn a much.</p>\r\n    <p>Dizzy boundless hence but because moodily and alas a truculently less hardheaded so on ambiguously incompetently less moaned hilarious until one jeepers amid heinously.</p>\r\n    <p>Where beneath less misspelled across artistically spiteful jeepers much more that when blushed a much a this groundhog therefore far arduous dependent much satanic where dear goodness hummingbird.</p>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/home-component/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HomeComponent = (function () {
+    function HomeComponent(titleService) {
+        this.titleService = titleService;
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+        this.titleService.setTitle('Home Page');
+    };
+    HomeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-home',
+            template: __webpack_require__("../../../../../src/app/home-component/home.component.html"),
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* Title */]])
+    ], HomeComponent);
+    return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/articles-component/articlesService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -331,7 +377,7 @@ var ArticlesService = (function (_super) {
 
 /***/ }),
 
-/***/ "../../../../../src/app/authors-component/authorsService.ts":
+/***/ "../../../../../src/app/library/authors-component/authorsService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -463,7 +509,7 @@ var AuthorsService = (function (_super) {
 
 /***/ }),
 
-/***/ "../../../../../src/app/books-component/booksService.ts":
+/***/ "../../../../../src/app/library/books-component/booksService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -586,53 +632,7 @@ var BooksService = (function (_super) {
 
 /***/ }),
 
-/***/ "../../../../../src/app/home-component/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div>\r\n  <h2>Home page</h2>\r\n  <div>\r\n    <p>However engaging wherever growled much methodic shamefully more human agreeable gracefully and less equitable insistent gasped that when wasp baboon rebuilt more slept stingily along knew llama.</p>\r\n    <p>Prim crud far healthy wholesomely more far chortled ouch in adroitly gawked affably reasonably manfully reindeer mysteriously overpaid considering far far until.</p>\r\n    <p>Red-handed off thickly save aboard mawkishly that amidst moth pending jerkily monogamous some much or creatively indecent neat far jeepers up spoiled about.</p>\r\n    <p>Owing desperate like one shark or bit yikes up so thus grumbled gosh more bawled much and regardless hey far bought through crud well staunchly hysteric inside incorrect the closed.</p>\r\n    <p>Industrious jubilant blanched bestially yet that less far far a wow the militant preparatory crudely acrimonious under a towards lemur wedded that while decorously this peered darn a much.</p>\r\n    <p>Dizzy boundless hence but because moodily and alas a truculently less hardheaded so on ambiguously incompetently less moaned hilarious until one jeepers amid heinously.</p>\r\n    <p>Where beneath less misspelled across artistically spiteful jeepers much more that when blushed a much a this groundhog therefore far arduous dependent much satanic where dear goodness hummingbird.</p>\r\n  </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/home-component/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var HomeComponent = (function () {
-    function HomeComponent(titleService) {
-        this.titleService = titleService;
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-        this.titleService.setTitle('Home Page');
-    };
-    HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            selector: 'app-home',
-            template: __webpack_require__("../../../../../src/app/home-component/home.component.html"),
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* Title */]])
-    ], HomeComponent);
-    return HomeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/journals-component/journalsService.ts":
+/***/ "../../../../../src/app/library/journals-component/journalsService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -755,25 +755,7 @@ var JournalsService = (function (_super) {
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout-navbar/styles.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    background-color: #333;\r\n    border-radius: 10px 10px 10px 10px;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\n/* Change the link color to #111 (black) on hover */\r\nli a:hover {\r\n    background-color: rgb(255, 104, 88);\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/publishers-component/publishersService.ts":
+/***/ "../../../../../src/app/library/publishers-component/publishersService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -896,6 +878,24 @@ var PublishersService = (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]));
 
 
+
+/***/ }),
+
+/***/ "../../../../../src/app/styles.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    background-color: #333;\r\n    border-radius: 10px 10px 10px 10px;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\n/* Change the link color to #111 (black) on hover */\r\nli a:hover {\r\n    background-color: rgb(255, 104, 88);\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 

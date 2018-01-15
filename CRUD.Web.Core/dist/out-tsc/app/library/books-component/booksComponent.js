@@ -16,121 +16,120 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var kendo_data_query_1 = require("@progress/kendo-data-query");
-var journalsService_1 = require("./journalsService");
+var booksService_1 = require("./booksService");
 var formGroup = function (dataItem) { return new forms_1.FormGroup({
     'Id': new forms_1.FormControl(dataItem.Id),
     'Name': new forms_1.FormControl(dataItem.Name, forms_1.Validators.required),
-    'Date': new forms_1.FormControl(dataItem.Date, forms_1.Validators.required),
-    'ArticleIds': new forms_1.FormControl(dataItem.ArticleIds, forms_1.Validators.required),
+    'Year': new forms_1.FormControl(dataItem.Year, forms_1.Validators.required),
+    'AuthorIds': new forms_1.FormControl(dataItem.AuthorIds, forms_1.Validators.required),
 }); };
-var JournalsComponent = /** @class */ (function () {
-    function JournalsComponent(editServiceFactoryJournal, titleService) {
+var BooksComponent = /** @class */ (function () {
+    function BooksComponent(editServiceFactoryBook, titleService) {
         this.titleService = titleService;
         this.selectedItems = [];
-        this.articlesForDefaultValue = [];
-        this.articles = [];
-        this.articleNames = '';
+        this.authorsForDefaultValue = [];
+        this.authors = [];
+        this.authorAbbreviateds = '';
         this.gridState = {
             sort: [],
             skip: 0,
             take: 10
         };
-        this.editServiceJournal = editServiceFactoryJournal();
+        this.editServiceBook = editServiceFactoryBook();
     }
-    JournalsComponent.prototype.ngOnInit = function () {
+    BooksComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.editServiceJournal.readArticles().subscribe(function (data) { _this.articles = data; });
-        this.view = this.editServiceJournal.map(function (data) { return kendo_data_query_1.process(data, _this.gridState); });
-        this.editServiceJournal.read();
-        this.titleService.setTitle('Journals Page');
+        this.editServiceBook.readAuthors().subscribe(function (data) { _this.authors = data; });
+        this.view = this.editServiceBook.map(function (data) { return kendo_data_query_1.process(data, _this.gridState); });
+        this.editServiceBook.read();
+        this.titleService.setTitle('Books Page');
     };
-    JournalsComponent.prototype.articlesView = function (articles) {
-        if (articles === void 0) { articles = []; }
-        this.articleNames = "null;";
-        if (articles !== null && articles !== undefined && articles.length !== 0) {
-            this.articleNames = " ";
-            for (var i = 0; i < articles.length; i++) {
-                this.articleNames += articles[i].Name + "; ";
+    BooksComponent.prototype.authorsView = function (authors) {
+        if (authors === void 0) { authors = []; }
+        this.authorAbbreviateds = " ";
+        for (var i = 0; i < authors.length; i++) {
+            if (authors[i] !== undefined) {
+                this.authorAbbreviateds += authors[i].Abbreviated + "; ";
             }
-            return this.articleNames;
         }
+        return this.authorAbbreviateds;
     };
-    JournalsComponent.prototype.addHandler = function (_a) {
+    BooksComponent.prototype.addHandler = function (_a) {
         var sender = _a.sender;
         this.closeEditor(sender);
         this.selectedItems = undefined;
         this.formGroup = new forms_1.FormGroup({
             'Id': new forms_1.FormControl(),
             'Name': new forms_1.FormControl('', forms_1.Validators.required),
-            'Date': new forms_1.FormControl('', forms_1.Validators.required),
-            'ArticleIds': new forms_1.FormControl(forms_1.Validators.required),
+            'Year': new forms_1.FormControl('', forms_1.Validators.required),
+            'AuthorIds': new forms_1.FormControl(forms_1.Validators.required),
         });
         sender.addRow(this.formGroup);
     };
-    JournalsComponent.prototype.selectFromArticles = function (articleIds) {
+    BooksComponent.prototype.selectFromAuthors = function (authorIds) {
         var _loop_1 = function (i) {
-            this_1.articlesForDefaultValue[i] = this_1.articles.find(function (item) { return item.Id === articleIds[i]; });
+            this_1.authorsForDefaultValue[i] = this_1.authors.find(function (item) { return item.Id === authorIds[i]; });
         };
         var this_1 = this;
-        for (var i = 0; i < articleIds.length; i++) {
+        for (var i = 0; i < authorIds.length; i++) {
             _loop_1(i);
         }
-        return this.articlesForDefaultValue;
+        return this.authorsForDefaultValue;
     };
-    JournalsComponent.prototype.editHandler = function (_a) {
+    BooksComponent.prototype.editHandler = function (_a) {
         var sender = _a.sender, rowIndex = _a.rowIndex, dataItem = _a.dataItem;
         this.closeEditor(sender);
-        this.selectedItems = this.selectFromArticles(dataItem.ArticleIds);
+        this.selectedItems = this.selectFromAuthors(dataItem.AuthorIds);
         this.formGroup = new forms_1.FormGroup({
             'Id': new forms_1.FormControl(dataItem.Id),
             'Name': new forms_1.FormControl(dataItem.Name, forms_1.Validators.required),
-            'Date': new forms_1.FormControl(dataItem.Date, forms_1.Validators.required),
-            'ArticleIds': new forms_1.FormControl(dataItem.ArticleIds, forms_1.Validators.required),
+            'Year': new forms_1.FormControl(dataItem.Year, forms_1.Validators.required),
+            'AuthorIds': new forms_1.FormControl(dataItem.AuthorIds, forms_1.Validators.required),
         });
         this.editedRowIndex = rowIndex;
         sender.editRow(rowIndex, this.formGroup);
     };
-    JournalsComponent.prototype.cancelHandler = function (_a) {
+    BooksComponent.prototype.cancelHandler = function (_a) {
         var sender = _a.sender, rowIndex = _a.rowIndex;
         this.closeEditor(sender, rowIndex);
     };
-    JournalsComponent.prototype.saveHandler = function (_a) {
+    BooksComponent.prototype.saveHandler = function (_a) {
         var sender = _a.sender, rowIndex = _a.rowIndex, formGroup = _a.formGroup, isNew = _a.isNew;
-        var journal = formGroup.value;
-        journal.ArticleIds = [];
+        var book = formGroup.value;
+        book.AuthorIds = [];
         if (this.selectedItems !== undefined) {
             for (var i = 0; i < this.selectedItems.length; i++) {
-                journal.ArticleIds[i] = this.selectedItems[i].Id;
+                book.AuthorIds[i] = this.selectedItems[i].Id;
             }
         }
-        if (journal.ArticleIds.length !== 0) {
+        if (book.AuthorIds.length !== 0) {
             this.selectedItems = undefined;
-            this.editServiceJournal.save(journal, isNew);
+            this.editServiceBook.save(book, isNew);
             sender.closeRow(rowIndex);
         }
         else {
-            alert("Select at least one article!");
+            alert("Select at least one author!");
         }
     };
-    JournalsComponent.prototype.removeHandler = function (_a) {
+    BooksComponent.prototype.removeHandler = function (_a) {
         var dataItem = _a.dataItem;
-        this.editServiceJournal.remove(dataItem);
+        this.editServiceBook.remove(dataItem);
     };
-    JournalsComponent.prototype.closeEditor = function (grid, rowIndex) {
+    BooksComponent.prototype.closeEditor = function (grid, rowIndex) {
         if (rowIndex === void 0) { rowIndex = this.editedRowIndex; }
         grid.closeRow(rowIndex);
         this.editedRowIndex = undefined;
         this.formGroup = undefined;
     };
-    JournalsComponent = __decorate([
+    BooksComponent = __decorate([
         core_1.Component({
-            selector: 'app-journals',
-            templateUrl: './journalsView.html',
+            selector: 'app-books',
+            templateUrl: './booksView.html',
         }),
-        __param(0, core_1.Inject(journalsService_1.JournalsService)),
+        __param(0, core_1.Inject(booksService_1.BooksService)),
         __metadata("design:paramtypes", [Object, platform_browser_1.Title])
-    ], JournalsComponent);
-    return JournalsComponent;
+    ], BooksComponent);
+    return BooksComponent;
 }());
-exports.JournalsComponent = JournalsComponent;
-//# sourceMappingURL=journalsComponent.js.map
+exports.BooksComponent = BooksComponent;
+//# sourceMappingURL=booksComponent.js.map

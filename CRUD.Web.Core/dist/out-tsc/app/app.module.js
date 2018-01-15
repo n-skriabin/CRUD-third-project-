@@ -19,13 +19,13 @@ var home_component_1 = require("../app/home-component/home.component");
 var http_1 = require("@angular/common/http");
 var forms_2 = require("@angular/forms");
 var kendo_angular_grid_1 = require("@progress/kendo-angular-grid");
-var authorsService_1 = require("./authors-component/authorsService");
+var authorsService_1 = require("./library/authors-component/authorsService");
 var kendo_angular_popup_1 = require("@progress/kendo-angular-popup");
-var articlesService_1 = require("../app/articles-component/articlesService");
+var articlesService_1 = require("../app/library/articles-component/articlesService");
 var kendo_angular_dropdowns_1 = require("@progress/kendo-angular-dropdowns");
-var booksService_1 = require("./books-component/booksService");
-var journalsService_1 = require("./journals-component/journalsService");
-var publishersService_1 = require("./publishers-component/publishersService");
+var booksService_1 = require("./library/books-component/booksService");
+var journalsService_1 = require("./library/journals-component/journalsService");
+var publishersService_1 = require("./library/publishers-component/publishersService");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }

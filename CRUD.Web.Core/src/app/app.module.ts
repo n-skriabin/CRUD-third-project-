@@ -12,13 +12,13 @@ import { HomeComponent } from '../app/home-component/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { AuthorsService } from './authors-component/authorsService';
+import { AuthorsService } from './library/authors-component/authorsService';
 import { PopupModule } from '@progress/kendo-angular-popup';
-import { ArticlesService } from '../app/articles-component/articlesService';
+import { ArticlesService } from '../app/library/articles-component/articlesService';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { BooksService } from './books-component/booksService';
-import { JournalsService } from './journals-component/journalsService';
-import { PublishersService } from './publishers-component/publishersService';
+import { BooksService } from './library/books-component/booksService';
+import { JournalsService } from './library/journals-component/journalsService';
+import { PublishersService } from './library/publishers-component/publishersService';
 
 @NgModule({
   declarations: [
