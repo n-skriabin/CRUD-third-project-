@@ -547,7 +547,7 @@ module.exports = "<h3>Journals</h3>\n<p></p>\n<kendo-grid [data]=\"view | async\
 /***/ "../../../../../src/app/library/library-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink='Home/load-Home'>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles/load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='Books/load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='Journals/load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='Publishers/load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n\r\n  <router-outlet></router-outlet>\r\n</div>"
+module.exports = "<div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink='load-Home'>Home</a></li>\r\n    <li><a routerLink='load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n\r\n  <router-outlet></router-outlet>\r\n</div>"
 
 /***/ }),
 
@@ -630,6 +630,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var routes = [
     {
         path: 'library', component: __WEBPACK_IMPORTED_MODULE_11__library_layout_component__["a" /* LibraryComponent */], children: [
+            { path: 'load-Home', loadChildren: '../home-component/home.module#HomeModule' },
             { path: 'load-AuthorsTable', component: __WEBPACK_IMPORTED_MODULE_7__authors_component_authorsComponent__["a" /* AuthorsComponent */] },
             { path: 'load-ArticlesTable', component: __WEBPACK_IMPORTED_MODULE_4__articles_component_articlesComponent__["a" /* ArticlesComponent */] },
             { path: 'load-BooksTable', component: __WEBPACK_IMPORTED_MODULE_8__books_component_booksComponent__["a" /* BooksComponent */] },

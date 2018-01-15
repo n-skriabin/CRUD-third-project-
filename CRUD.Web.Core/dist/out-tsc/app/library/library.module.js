@@ -21,6 +21,7 @@ var library_layout_component_1 = require("./library-layout.component");
 var routes = [
     {
         path: 'library', component: library_layout_component_1.LibraryComponent, children: [
+            { path: 'load-Home', loadChildren: '../home-component/home.module#HomeModule' },
             { path: 'load-AuthorsTable', component: authorsComponent_1.AuthorsComponent },
             { path: 'load-ArticlesTable', component: articlesComponent_1.ArticlesComponent },
             { path: 'load-BooksTable', component: booksComponent_1.BooksComponent },

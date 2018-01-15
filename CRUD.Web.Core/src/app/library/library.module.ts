@@ -14,6 +14,7 @@ import { LibraryComponent } from './library-layout.component';
 const routes: Routes = [
     {
         path: 'library', component: LibraryComponent, children: [
+        { path: 'load-Home', loadChildren: '../home-component/home.module#HomeModule' },
         { path: 'load-AuthorsTable', component: AuthorsComponent },
         { path: 'load-ArticlesTable', component: ArticlesComponent },
         { path: 'load-BooksTable', component: BooksComponent },

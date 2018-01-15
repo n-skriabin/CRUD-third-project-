@@ -4,6 +4,10 @@ webpackJsonp(["main"],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"../home-component/home.module": [
+		"../../../../../src/app/home-component/home.module.ts",
+		"home.module"
+	],
 	"../library/library.module": [
 		"../../../../../src/app/library/library.module.ts",
 		"library.module"
