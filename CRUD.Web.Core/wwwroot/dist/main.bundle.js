@@ -74,7 +74,7 @@ var AppRoutingModule = (function () {
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink='Home/load-Home'>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles/load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='Books/load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='Journals/load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='Publishers/load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n    <router-outlet></router-outlet> \r\n</div> -->\r\n<router-outlet></router-outlet> "
+module.exports = "<router-outlet></router-outlet> "
 
 /***/ }),
 

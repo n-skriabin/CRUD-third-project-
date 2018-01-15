@@ -7,13 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'load-Home', component: HomeComponent },
-    { path: 'Authors', loadChildren: '../library/library.module#LibraryModule' },
-    { path: 'Articles', loadChildren: '../library/library.module#LibraryModule' },
-    { path: 'Books', loadChildren: '../library/library.module#LibraryModule' },
-    { path: 'Journals', loadChildren: '../library/library.module#LibraryModule' },
-    { path: 'Publishers', loadChildren: '../library/library.module#LibraryModule' }
+            { path: '', component: HomeComponent },
+            { path: 'load-Home', component: HomeComponent },
+            { path: 'Authors', loadChildren: '../library/library.module#LibraryModule' },
+            { path: 'Articles', loadChildren: '../library/library.module#LibraryModule' },
+            { path: 'Books', loadChildren: '../library/library.module#LibraryModule' },
+            { path: 'Journals', loadChildren: '../library/library.module#LibraryModule' },
+            { path: 'Publishers', loadChildren: '../library/library.module#LibraryModule' }
 ];
 
 @NgModule({

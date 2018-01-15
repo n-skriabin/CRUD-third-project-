@@ -15,7 +15,7 @@ const routes: Routes = [
     {
         path: 'library', component: LibraryComponent, children: [
         { path: 'load-Home', loadChildren: '../home-component/home.module#HomeModule' },
-        { path: 'load-AuthorsTable', component: AuthorsComponent },
+            { path: 'load-AuthorsTable', component: AuthorsComponent },
         { path: 'load-ArticlesTable', component: ArticlesComponent },
         { path: 'load-BooksTable', component: BooksComponent },
         { path: 'load-JournalsTable', component: JournalsComponent },
