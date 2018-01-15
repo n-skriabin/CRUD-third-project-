@@ -15,7 +15,6 @@ var router_1 = require("@angular/router");
 var kendo_angular_layout_1 = require("@progress/kendo-angular-layout");
 var forms_1 = require("@angular/forms");
 var app_routing_module_1 = require("./app-routing.module");
-var home_component_1 = require("../app/home-component/home.component");
 var http_1 = require("@angular/common/http");
 var forms_2 = require("@angular/forms");
 var kendo_angular_grid_1 = require("@progress/kendo-angular-grid");
@@ -32,8 +31,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent,
-                home_component_1.HomeComponent
+                app_component_1.AppComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

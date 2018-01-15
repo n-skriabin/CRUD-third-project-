@@ -69,8 +69,6 @@ export class PublishersComponent implements OnInit {
 
   public journalsView(journals: Journal[]=[]): string {  
     this.journalNames = "null;";
-    console.log("journals:");
-    console.log(journals);
     if(journals !== null && journals !== undefined && journals.length !== 0){
       this.journalNames = " ";
       for(var i = 0;i < journals.length; i++){

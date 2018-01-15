@@ -22,8 +22,7 @@ import { PublishersService } from './library/publishers-component/publishersServ
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
 
   imports: [

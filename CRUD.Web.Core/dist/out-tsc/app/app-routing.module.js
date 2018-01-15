@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = require("@angular/router");
-var home_component_1 = require("../app/home-component/home.component");
 exports.PanelbarRoutes = [
-    { path: '', component: home_component_1.HomeComponent },
+    { path: '', loadChildren: './home-component/home.module#HomeModule' },
     { path: 'Authors', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Articles', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Books', loadChildren: './library/library.module#LibraryModule' },

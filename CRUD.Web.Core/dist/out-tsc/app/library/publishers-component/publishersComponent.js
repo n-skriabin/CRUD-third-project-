@@ -63,8 +63,6 @@ var PublishersComponent = /** @class */ (function () {
     PublishersComponent.prototype.journalsView = function (journals) {
         if (journals === void 0) { journals = []; }
         this.journalNames = "null;";
-        console.log("journals:");
-        console.log(journals);
         if (journals !== null && journals !== undefined && journals.length !== 0) {
             this.journalNames = " ";
             for (var i = 0; i < journals.length; i++) {

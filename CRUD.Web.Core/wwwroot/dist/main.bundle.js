@@ -4,6 +4,10 @@ webpackJsonp(["main"],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./home-component/home.module": [
+		"../../../../../src/app/home-component/home.module.ts",
+		"home.module"
+	],
 	"./library/library.module": [
 		"../../../../../src/app/library/library.module.ts",
 		"library.module"
@@ -33,11 +37,9 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appRoutingProviders; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return panelbarRouting; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__ = __webpack_require__("../../../../../src/app/home-component/home.component.ts");
-
 
 var PanelbarRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_home_component_home_component__["a" /* HomeComponent */] },
+    { path: '', loadChildren: './home-component/home.module#HomeModule' },
     { path: 'Authors', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Articles', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Books', loadChildren: './library/library.module#LibraryModule' },
@@ -53,7 +55,7 @@ var panelbarRouting = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Route
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink=''>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles/load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='Books/load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='Journals/load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='Publishers/load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n    <router-outlet></router-outlet> \r\n</div>\r\n"
+module.exports = "<div class=\"layout\">\r\n  <ul>\r\n    <li><a routerLink='/'>Home</a></li>\r\n    <li><a routerLink='Authors/load-AuthorsTable'>Authors</a></li>\r\n    <li><a routerLink='Articles/load-ArticlesTable'>Articles</a></li>\r\n    <li><a routerLink='Books/load-BooksTable'>Books</a></li>\r\n    <li><a routerLink='Journals/load-JournalsTable'>Journals</a></li>\r\n    <li><a routerLink='Publishers/load-PublishersTable'>Publishers</a></li>\r\n  </ul>\r\n    <router-outlet></router-outlet> \r\n</div>\r\n"
 
 /***/ }),
 
@@ -108,23 +110,21 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__progress_kendo_angular_layout__ = __webpack_require__("../../../../@progress/kendo-angular-layout/dist/es/main.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__ = __webpack_require__("../../../../../src/app/home-component/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__ = __webpack_require__("../../../../@progress/kendo-angular-grid/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__ = __webpack_require__("../../../../../src/app/library/authors-component/authorsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__progress_kendo_angular_popup__ = __webpack_require__("../../../../@progress/kendo-angular-popup/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/library/articles-component/articlesService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_dropdowns__ = __webpack_require__("../../../../@progress/kendo-angular-dropdowns/dist/es/main.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__ = __webpack_require__("../../../../../src/app/library/books-component/booksService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__ = __webpack_require__("../../../../../src/app/library/journals-component/journalsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/library/publishers-component/publishersService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__progress_kendo_angular_grid__ = __webpack_require__("../../../../@progress/kendo-angular-grid/dist/es/main.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__library_authors_component_authorsService__ = __webpack_require__("../../../../../src/app/library/authors-component/authorsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__progress_kendo_angular_popup__ = __webpack_require__("../../../../@progress/kendo-angular-popup/dist/es/main.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_library_articles_component_articlesService__ = __webpack_require__("../../../../../src/app/library/articles-component/articlesService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__progress_kendo_angular_dropdowns__ = __webpack_require__("../../../../@progress/kendo-angular-dropdowns/dist/es/main.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__library_books_component_booksService__ = __webpack_require__("../../../../../src/app/library/books-component/booksService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__library_journals_component_journalsService__ = __webpack_require__("../../../../../src/app/library/journals-component/journalsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__library_publishers_component_publishersService__ = __webpack_require__("../../../../../src/app/library/publishers-component/publishersService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -150,8 +150,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["K" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__app_home_component_home_component__["a" /* HomeComponent */]
+                __WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -160,94 +159,48 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["b" /* panelbarRouting */],
                 __WEBPACK_IMPORTED_MODULE_7__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__angular_forms__["g" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_11__progress_kendo_angular_grid__["a" /* GridModule */],
-                __WEBPACK_IMPORTED_MODULE_13__progress_kendo_angular_popup__["a" /* PopupModule */],
-                __WEBPACK_IMPORTED_MODULE_15__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
-                __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */]
+                __WEBPACK_IMPORTED_MODULE_10__progress_kendo_angular_grid__["a" /* GridModule */],
+                __WEBPACK_IMPORTED_MODULE_12__progress_kendo_angular_popup__["a" /* PopupModule */],
+                __WEBPACK_IMPORTED_MODULE_14__progress_kendo_angular_dropdowns__["c" /* DropDownsModule */],
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["a" /* appRoutingProviders */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* APP_BASE_HREF */], useValue: window.location.pathname },
                 {
-                    deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__["a" /* AuthorsService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_12__library_authors_component_authorsService__["a" /* AuthorsService */](jsonp); }; }
+                    deps: [__WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClient */]],
+                    provide: __WEBPACK_IMPORTED_MODULE_11__library_authors_component_authorsService__["a" /* AuthorsService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_11__library_authors_component_authorsService__["a" /* AuthorsService */](jsonp); }; }
                 },
                 {
-                    deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__["a" /* ArticlesService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_14__app_library_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
+                    deps: [__WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClient */]],
+                    provide: __WEBPACK_IMPORTED_MODULE_13__app_library_articles_component_articlesService__["a" /* ArticlesService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_13__app_library_articles_component_articlesService__["a" /* ArticlesService */](jsonp); }; }
                 },
                 {
-                    deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__["a" /* BooksService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_16__library_books_component_booksService__["a" /* BooksService */](jsonp); }; }
+                    deps: [__WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClient */]],
+                    provide: __WEBPACK_IMPORTED_MODULE_15__library_books_component_booksService__["a" /* BooksService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_15__library_books_component_booksService__["a" /* BooksService */](jsonp); }; }
                 },
                 {
-                    deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__["a" /* JournalsService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_17__library_journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
+                    deps: [__WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClient */]],
+                    provide: __WEBPACK_IMPORTED_MODULE_16__library_journals_component_journalsService__["a" /* JournalsService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_16__library_journals_component_journalsService__["a" /* JournalsService */](jsonp); }; }
                 },
                 {
-                    deps: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["a" /* HttpClient */]],
-                    provide: __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__["a" /* PublishersService */],
-                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_18__library_publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
+                    deps: [__WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClient */]],
+                    provide: __WEBPACK_IMPORTED_MODULE_17__library_publishers_component_publishersService__["a" /* PublishersService */],
+                    useFactory: function (jsonp) { return function () { return new __WEBPACK_IMPORTED_MODULE_17__library_publishers_component_publishersService__["a" /* PublishersService */](jsonp); }; }
                 }
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/home-component/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div>\r\n  <h2>Home page</h2>\r\n  <div>\r\n    <p>However engaging wherever growled much methodic shamefully more human agreeable gracefully and less equitable insistent gasped that when wasp baboon rebuilt more slept stingily along knew llama.</p>\r\n    <p>Prim crud far healthy wholesomely more far chortled ouch in adroitly gawked affably reasonably manfully reindeer mysteriously overpaid considering far far until.</p>\r\n    <p>Red-handed off thickly save aboard mawkishly that amidst moth pending jerkily monogamous some much or creatively indecent neat far jeepers up spoiled about.</p>\r\n    <p>Owing desperate like one shark or bit yikes up so thus grumbled gosh more bawled much and regardless hey far bought through crud well staunchly hysteric inside incorrect the closed.</p>\r\n    <p>Industrious jubilant blanched bestially yet that less far far a wow the militant preparatory crudely acrimonious under a towards lemur wedded that while decorously this peered darn a much.</p>\r\n    <p>Dizzy boundless hence but because moodily and alas a truculently less hardheaded so on ambiguously incompetently less moaned hilarious until one jeepers amid heinously.</p>\r\n    <p>Where beneath less misspelled across artistically spiteful jeepers much more that when blushed a much a this groundhog therefore far arduous dependent much satanic where dear goodness hummingbird.</p>\r\n  </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/home-component/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var HomeComponent = (function () {
-    function HomeComponent(titleService) {
-        this.titleService = titleService;
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-        this.titleService.setTitle('Home Page');
-    };
-    HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            selector: 'app-home',
-            template: __webpack_require__("../../../../../src/app/home-component/home.component.html"),
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* Title */]])
-    ], HomeComponent);
-    return HomeComponent;
 }());
 
 
@@ -889,7 +842,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    background-color: #333;\r\n    border-radius: 10px 10px 10px 10px;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\n/* Change the link color to #111 (black) on hover */\r\nli a:hover {\r\n    background-color: rgb(255, 104, 88);\r\n}", ""]);
+exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    background-color: #333;\r\n    border-radius: 10px 10px 10px 10px;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\nli a:hover {\r\n    background-color: rgb(255, 104, 88);\r\n}", ""]);
 
 // exports
 

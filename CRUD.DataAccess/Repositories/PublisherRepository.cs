@@ -56,7 +56,6 @@ namespace CRUD.DataAccess.Repositories
                     publisherResponseModel.Books.Add(book);
                     publisherResponseModel.Journals.Add(journal);
                     
-
                     return publisherResponseModel;
                 }
                 return null;

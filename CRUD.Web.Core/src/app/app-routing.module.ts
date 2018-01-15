@@ -8,7 +8,7 @@ import { JournalsComponent } from './library/journals-component/journalsComponen
 import { PublishersComponent } from './library/publishers-component/publishersComponent';
 
 export const PanelbarRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', loadChildren: './home-component/home.module#HomeModule' },
     { path: 'Authors', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Articles', loadChildren: './library/library.module#LibraryModule' },
     { path: 'Books', loadChildren: './library/library.module#LibraryModule' },
